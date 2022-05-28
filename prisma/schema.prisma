@@ -9,9 +9,41 @@ datasource db {
 
 model Usuario {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
-  codigo String @unique
+  codigo String @unique 
   email  String @unique
   nome   String
   senha  String
   tipo   Int
+  aulas Aula[]
+}
+
+model Turma {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  codigo String @unique
+  descricao  String 
+  nome   String
+}
+
+model Disciplina {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  codigo String @unique
+  descricao  String 
+  nome   String
+}
+
+model Aula {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  datahorainicio  DateTime 
+  datahorafim   DateTime
+  nome  String
+  descricao   String
+  aluno   Usuario   @relation(fields: [usuarioId], references: [id])
+  usuarioId String @db.ObjectId
+}
+
+model Curso {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  codigo String @unique
+  descricao  String 
+  nome   String
 }

@@ -1,6 +1,6 @@
 import { Usuario } from "../../../../data/entities/usuario";
 import { IUsuarioRepository } from "../../../repositories/usuarioRepository";
-import { ICriarUsuarioRequestDTO } from "../../../model/criarUsuarioDTO";
+import { ICriarUsuarioRequestDTO } from "../../../model/usuario/criarUsuarioDTO";
 import { ValidacaoBase } from "../../../validations/ValidacaoBase";
 
 export class CriarUsuarioUseCase {
