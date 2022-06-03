@@ -14,7 +14,7 @@ model Usuario {
   nome   String
   senha  String
   tipo   Int
-  aulas Aula[]
+  aula Aula[]
 }
 
 model Turma {
@@ -33,11 +33,12 @@ model Disciplina {
 
 model Aula {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
+  codigo String @unique
   datahorainicio  DateTime 
   datahorafim   DateTime
   nome  String
   descricao   String
-  aluno   Usuario   @relation(fields: [usuarioId], references: [id])
+  usuario Usuario   @relation(fields: [usuarioId], references: [id])
   usuarioId String @db.ObjectId
 }
 

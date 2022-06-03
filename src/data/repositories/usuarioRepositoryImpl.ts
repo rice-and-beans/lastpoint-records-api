@@ -21,14 +21,23 @@ export class UsuarioRepositoryImpl implements IUsuarioRepository {
               tipo: usuario.tipo
             },
           })
-        console.log(usuarioSalvo)
         return usuarioSalvo
     }
 
-   async atualizar(email:string, usuario:Usuario){  
+    async pesquisar(){
+        const usuarios = await prismaClient.usuario.findMany({
+            select: {
+                codigo: true,
+                nome: true
+            }
+        })
+        return usuarios
+    }
+
+   async atualizar(usuario:Usuario){  
        const usuarioAtualizado = await prismaClient.usuario.update({
            where:{
-               email: email,
+               codigo: usuario.codigo,
            },
            data:{
             codigo: usuario.codigo,
@@ -41,10 +50,10 @@ export class UsuarioRepositoryImpl implements IUsuarioRepository {
        return usuarioAtualizado
    }
 
-   async deletar(email:string){
+   async deletar(codigo:string){
        const usuarioDeletado = await prismaClient.usuario.delete({
            where:{
-               email: email,
+               codigo: codigo,
            }
        })
        return usuarioDeletado

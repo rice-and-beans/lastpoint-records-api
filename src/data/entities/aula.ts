@@ -5,6 +5,7 @@ export class Aula {
     public datahorafim: Date;
     public nome: string;
     public descricao: string;
+    public usuarioId: string;
 
     constructor(props: Omit<Aula, 'id'>, id?: string){
         Object.assign(this, props);

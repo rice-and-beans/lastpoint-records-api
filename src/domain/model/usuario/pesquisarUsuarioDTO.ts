@@ -1,3 +1,3 @@
 export interface IPesquisarUsuarioRequestDTO {
-    email: string;
+    codigo: string;
 }

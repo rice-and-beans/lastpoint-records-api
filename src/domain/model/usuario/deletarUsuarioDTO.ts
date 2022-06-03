@@ -1,3 +1,3 @@
 export interface IdeletarUsuarioRequestDTO {
-    email: string;
+    codigo: string;
 }
