@@ -11,14 +11,18 @@ export class AtualizarAulaController extends BaseController {
     }
 
     async execute(request: Request, response: Response): Promise<Response>{
-        const { codigo, nome, descricao, datahorainicio, datahorafim, usuarioId } = request.body;
+        const { codigo, nome, descricao, datahorainicio, datahorafim, usuarioCodigo,
+                turmaCodigo, disciplinaCodigo, cursoCodigo } = request.body;
         await this.atualizarAulaUseCase.execute({
             codigo,
             datahorainicio,
             datahorafim,
             nome,
             descricao,
-            usuarioId
+            usuarioCodigo,
+            turmaCodigo,
+            cursoCodigo,
+            disciplinaCodigo
         });
         return response.status(200).send();
     }

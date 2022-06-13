@@ -8,9 +8,11 @@ export class CriarUsuarioUseCase {
     constructor(
         private usuarioRepository: IUsuarioRepository,
         private validaUsuarioExiste: ValidacaoBase,
+        private validaParamObrigatorio: ValidacaoBase
     ){}
 
     async execute(data: ICriarUsuarioRequestDTO){
+        await this.validaParamObrigatorio.valida(data);
         await this.validaUsuarioExiste.valida(data);
         const usuario = new Usuario(data);
         await this.usuarioRepository.salvar(usuario);

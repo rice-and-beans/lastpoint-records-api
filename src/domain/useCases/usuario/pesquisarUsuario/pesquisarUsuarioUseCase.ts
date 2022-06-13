@@ -6,9 +6,12 @@ export class PesquisarUsuarioUseCase {
         private usuarioRepository: IUsuarioRepository
     ){}
 
-    async execute(){
-        return await this.usuarioRepository.pesquisar();
-        
+    async execute(nome?: string){
+        if(nome){
+            return await this.usuarioRepository.pesquisar(nome);
+        }else{
+            return await this.usuarioRepository.pesquisar();
+        }
     }
 
 }

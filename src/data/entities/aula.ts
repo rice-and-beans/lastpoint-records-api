@@ -5,7 +5,10 @@ export class Aula {
     public datahorafim: Date;
     public nome: string;
     public descricao: string;
-    public usuarioId: string;
+    public usuarioCodigo: string;
+    public turmaCodigo: string;
+    public cursoCodigo: string;
+    public disciplinaCodigo: string;
 
     constructor(props: Omit<Aula, 'id'>, id?: string){
         Object.assign(this, props);

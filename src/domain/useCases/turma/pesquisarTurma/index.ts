@@ -1,4 +1,4 @@
-import { TurmaRepositoryImpl } from "../../../../data/repositories/turmaRepository";
+import { TurmaRepositoryImpl } from "../../../../data/repositories/turmaRepositoryImpl";
 import { PesquisarTurmaUseCase } from "./pesquisarTurmaUseCase";
 
 const turmaRepositoryImpl = new TurmaRepositoryImpl();

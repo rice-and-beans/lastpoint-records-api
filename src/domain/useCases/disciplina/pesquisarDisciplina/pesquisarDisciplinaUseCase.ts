@@ -6,8 +6,12 @@ export class PesquisarDisciplinaUseCase {
         private disciplinaRepository: IDisciplinaRepository
     ){}
 
-    async execute(){
-        return await this.disciplinaRepository.pesquisar();
+    async execute(nome?: string){
+        if(nome){
+            return await this.disciplinaRepository.pesquisar(nome);
+        }else{
+            return await this.disciplinaRepository.pesquisar();
+        }
     }
 
 }

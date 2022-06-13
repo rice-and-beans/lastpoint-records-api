@@ -11,7 +11,8 @@ export class PesquisarUsuarioController extends BaseController {
     }
 
     async execute(request: Request, response: Response): Promise<Response>{
-        const listaUsuarios = await this.pesquisarUsuarioUseCase.execute();
+        const nome = request.body.nome;
+        const listaUsuarios = await this.pesquisarUsuarioUseCase.execute(nome);
         return response.status(200).send(listaUsuarios);
     }
 

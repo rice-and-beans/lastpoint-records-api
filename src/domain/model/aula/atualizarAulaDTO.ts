@@ -4,5 +4,8 @@ export interface IAtualizarAulaRequestDTO {
     datahorafim: Date;
     nome: string;
     descricao: string;
-    usuarioId: string;
+    usuarioCodigo: string;
+    turmaCodigo: string;
+    cursoCodigo: string;
+    disciplinaCodigo: string;
 }

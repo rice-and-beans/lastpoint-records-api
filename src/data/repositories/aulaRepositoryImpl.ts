@@ -16,6 +16,7 @@ export class AulaRepositoryImpl implements IAulaRepository {
         const datahorainicio = new Date(aula.datahorainicio);
         const datahorafim = new Date(aula.datahorafim);
         console.log(datahorainicio)
+        console.log(datahorafim)
         const aulaSalvo = await prismaClient.aula.create({
             data:{
               codigo: aula.codigo,
@@ -23,42 +24,100 @@ export class AulaRepositoryImpl implements IAulaRepository {
               nome: aula.nome,
               datahorainicio: datahorainicio,
               datahorafim: datahorafim,
-              usuarioId: aula.usuarioId
+              usuarioCodigo: aula.usuarioCodigo,
+              turmaCodigo: aula.turmaCodigo,
+              cursoCodigo: aula.cursoCodigo,
+              disciplinaCodigo: aula.disciplinaCodigo
             }
           })
         return aulaSalvo
     }
 
-    async pesquisar(){
-        const aulas = await prismaClient.aula.findMany({
-            select: {
-                codigo: true,
-                nome: true
-            }
-        })
-        return aulas
-    }
-
-    async pesquisarDatas(datainicio: Date, datafim: Date){
-        const aulas = await prismaClient.aula.findMany({
-            where: {
-                OR: [
-                    {
-                      datahorainicio: {
-                        gt: datainicio,
-                      },
-                    },
-                    {
-                      AND: {
-                        datahorafim: {
-                          lt: datafim,
+    async pesquisar(data?){
+        const datainicio = new Date(data.datahorainicio);
+        const datafim = new Date(data.datahorafim);
+        console.log(datainicio)
+        console.log(datafim)
+        if(datainicio && datafim){
+            const aulasLista = await prismaClient.aula.findMany({
+                where: {
+                    OR:[
+                        {
+                            datahorainicio:{
+                                gte: datainicio
+                            },
+                            datahorafim: {
+                                lte: datafim
+                            },
+                            nome:{
+                                contains: data.nome
+                            }
+                        },
+                        {
+                            datahorainicio:{
+                                gte: datainicio
+                            },
+                            datahorafim: {
+                                lte: datafim
+                            },
+                            codigo:{
+                                contains: data.nome
+                            }
                         }
-                      },
+                    ]
+                },
+                select: {
+                    codigo: true,
+                    nome: true
+                }
+            })
+            return aulasLista
+        } else if(datainicio && !datafim){
+            const aulasLista = await prismaClient.aula.findMany({
+                where: {
+                    datahorainicio:{
+                        gte: datainicio
                     },
-                  ],
-            }            
-        })
-        return aulas
+                    nome:{
+                        startsWith: data.nome
+                    }
+                },
+                select: {
+                    codigo: true,
+                    nome: true
+                }
+            })
+            return aulasLista
+        } else if(!datainicio && datafim){
+            const aulasLista = await prismaClient.aula.findMany({
+                where: {
+                    datahorafim:{
+                        gte: datafim
+                    },
+                    nome:{
+                        startsWith: data.nome
+                    }
+                },
+                select: {
+                    codigo: true,
+                    nome: true
+                }
+            })
+            return aulasLista
+        } else if(!datainicio && !datafim){
+            const aulasLista = await prismaClient.aula.findMany({
+                where: {
+                    nome:{
+                        startsWith: data.nome
+                    }
+                },
+                select: {
+                    codigo: true,
+                    nome: true
+                }
+            })
+            return aulasLista
+        }
     }
 
     async atualizar(aula:Aula){  

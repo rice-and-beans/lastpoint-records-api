@@ -11,7 +11,11 @@ export class PesquisarAulaController extends BaseController {
     }
 
     async execute(request: Request, response: Response): Promise<Response>{
-        const listaAula = await this.pesquisarAulaUseCase.execute();
+        const {datahorainicio, datahorafim} = request.body;
+        const listaAula = await this.pesquisarAulaUseCase.execute(
+            {datahorafim,
+            datahorainicio}
+        );
         return response.status(200).send(listaAula);
     }
 

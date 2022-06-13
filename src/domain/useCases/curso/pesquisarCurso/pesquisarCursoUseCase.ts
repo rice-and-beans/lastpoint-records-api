@@ -6,8 +6,12 @@ export class PesquisarCursoUseCase {
         private cursoRepository: ICursoRepository
     ){}
 
-    async execute(){
-        return await this.cursoRepository.pesquisar();
+    async execute(nome?: string){
+        if(nome){
+            return await this.cursoRepository.pesquisar(nome);
+        }else{
+            return await this.cursoRepository.pesquisar();
+        }
     }
 
 }

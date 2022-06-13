@@ -15,6 +15,7 @@ model Usuario {
   senha  String
   tipo   Int
   aula Aula[]
+  chamada Chamada[]
 }
 
 model Turma {
@@ -22,6 +23,7 @@ model Turma {
   codigo String @unique
   descricao  String 
   nome   String
+  aula Aula[]
 }
 
 model Disciplina {
@@ -29,6 +31,7 @@ model Disciplina {
   codigo String @unique
   descricao  String 
   nome   String
+  aula Aula[]
 }
 
 model Aula {
@@ -38,8 +41,15 @@ model Aula {
   datahorafim   DateTime
   nome  String
   descricao   String
-  usuario Usuario   @relation(fields: [usuarioId], references: [id])
-  usuarioId String @db.ObjectId
+  chamada Chamada[]
+  usuario Usuario   @relation(fields: [usuarioCodigo], references: [codigo])
+  usuarioCodigo String 
+  turma Turma   @relation(fields: [turmaCodigo], references: [codigo])
+  turmaCodigo String 
+  curso Curso   @relation(fields: [cursoCodigo], references: [codigo])
+  cursoCodigo String 
+  disciplina Disciplina   @relation(fields: [disciplinaCodigo], references: [codigo])
+  disciplinaCodigo String 
 }
 
 model Curso {
@@ -47,4 +57,14 @@ model Curso {
   codigo String @unique
   descricao  String 
   nome   String
+  aula Aula[]
+}
+
+model Chamada {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  codigo String @unique
+  usuario Usuario   @relation(fields: [usuarioCodigo], references: [codigo])
+  usuarioCodigo String 
+  aula Aula   @relation(fields: [aulaCodigo], references: [codigo])
+  aulaCodigo String 
 }

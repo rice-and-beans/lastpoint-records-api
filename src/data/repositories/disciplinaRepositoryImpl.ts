@@ -22,9 +22,34 @@ export class DisciplinaRepositoryImpl implements IDisciplinaRepository {
         return disciplinaSalva
     }
 
-    async pesquisar(){
-        const disciplinas = await prismaClient.disciplina.findMany()
-        return disciplinas
+    async pesquisar(nome: string){
+        if(nome){
+            const disciplinas = await prismaClient.disciplina.findMany({
+                where: {
+                    OR:[
+                        {
+                            nome:{
+                                startsWith: nome
+                            }
+                        }
+                    ]},
+                select: {
+                    codigo: true,
+                    nome: true,
+                    descricao: true
+                }
+            })
+            return disciplinas
+        }else{
+            const disciplinas = await prismaClient.disciplina.findMany({
+                select: {
+                    codigo: true,
+                    nome: true,
+                    descricao: true
+                }
+            })
+            return disciplinas
+        }
     }
 
    async atualizar(disciplina:Disciplina){  

@@ -1,3 +1,4 @@
 export interface IPesquisarAulaRequestDTO {
-    codigo: string;
+    datahorainicio: Date;
+    datahorafim: Date;
 }

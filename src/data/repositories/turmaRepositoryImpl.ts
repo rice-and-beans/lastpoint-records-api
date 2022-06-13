@@ -22,9 +22,34 @@ export class TurmaRepositoryImpl implements ITurmaRepository {
         return turmaSalvo
     }
 
-    async pesquisar(){
-        const turmas = await prismaClient.turma.findMany()
-        return turmas
+    async pesquisar(nome: string){
+        if(nome){
+            const turmas = await prismaClient.turma.findMany({
+                where: {
+                    OR:[
+                        {
+                            nome:{
+                                startsWith: nome
+                            }
+                        }
+                    ]},
+                select: {
+                    codigo: true,
+                    nome: true,
+                    descricao: true
+                }
+            })
+            return turmas
+        }else{
+            const turmas = await prismaClient.turma.findMany({
+                select: {
+                    codigo: true,
+                    nome: true,
+                    descricao: true
+                }
+            })
+            return turmas
+        }
     }
 
    async atualizar(turma:Turma){  

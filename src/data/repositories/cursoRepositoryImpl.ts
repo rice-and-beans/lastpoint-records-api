@@ -22,9 +22,34 @@ export class CursoRepositoryImpl implements ICursoRepository {
         return cursoSalvo
     }
 
-    async pesquisar(){
-        const cursos = await prismaClient.curso.findMany()
-        return cursos
+    async pesquisar(nome: string){
+        if(nome){
+            const cursos = await prismaClient.curso.findMany({
+                where: {
+                    OR:[
+                        {
+                            nome:{
+                                startsWith: nome
+                            }
+                        }
+                    ]},
+                select: {
+                    codigo: true,
+                    nome: true,
+                    descricao: true
+                }
+            })
+            return cursos
+        }else{
+            const cursos = await prismaClient.curso.findMany({
+                select: {
+                    codigo: true,
+                    nome: true,
+                    descricao: true
+                }
+            })
+            return cursos
+        }
     }
 
    async atualizar(curso:Curso){  
