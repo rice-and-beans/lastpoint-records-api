@@ -8,4 +8,5 @@ export interface IAtualizarAulaRequestDTO {
     turmaCodigo: string;
     cursoCodigo: string;
     disciplinaCodigo: string;
+    token?: string;
 }

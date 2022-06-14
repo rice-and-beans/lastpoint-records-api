@@ -5,5 +5,6 @@ export interface IAulaRepository {
     pesquisar(data?);
     salvar(Curso: Aula);
     atualizar(codigo: Aula);
+    adicionarToken(aula: Object);
     deletar(codigo:string)
 }

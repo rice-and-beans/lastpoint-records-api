@@ -1,6 +1,6 @@
 import { UsuarioRepositoryImpl } from "../../../../data/repositories/usuarioRepositoryImpl";
 import { ValidaUsuarioExiste } from "../../../validations/usuario/validaUsuarioExiste";
-import { ValidaCamposPreenchidos } from "../../../validations/usuario/validaCamposPreenchidos";
+import { ValidaParamObrigatorios } from "../../../validations/usuario/validaParamObrigatorio";
 
 import { CriarUsuarioUseCase } from "./criarUsuarioUseCase";
 
@@ -10,13 +10,12 @@ const validaUsuarioExiste = new ValidaUsuarioExiste(
     usuarioRepositoryImpl
 );
 
-const validaCamposFaltantes = new ValidaCamposPreenchidos(
-    usuarioRepositoryImpl
+const validaParamObrigatorios = new ValidaParamObrigatorios(
 );
 
 const criarUsuarioUseCase = new CriarUsuarioUseCase(
     usuarioRepositoryImpl,
-    validaCamposFaltantes,
+    validaParamObrigatorios,
     validaUsuarioExiste,
 );
 

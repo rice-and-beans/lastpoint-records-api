@@ -1,4 +1,6 @@
 import { ParamObrigatorioException } from "../../exceptions/paramObrigatorioException";
+import { IUsuarioRepository } from "../../repositories/usuarioRepository";
+import { ICriarUsuarioRequestDTO } from "../../model/usuario/criarUsuarioDTO";
 import { ValidacaoBase } from "../ValidacaoBase";
 
 export class ValidaParamObrigatorios extends ValidacaoBase {

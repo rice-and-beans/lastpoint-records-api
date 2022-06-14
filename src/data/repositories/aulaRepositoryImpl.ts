@@ -132,11 +132,24 @@ export class AulaRepositoryImpl implements IAulaRepository {
                 datahorainicio: datahorainicio,
                 datahorafim: datahorafim,
                 nome: aula.nome,
-                descricao: aula.descricao
+                descricao: aula.descricao,
+                token: aula.token
             }
        })
        return aulaAtualizado
    }
+
+   async adicionarToken(aula:Aula){ 
+   const aulaAtualizado = await prismaClient.aula.update({
+       where:{
+           codigo: aula.codigo,
+       },
+       data:{
+            token: aula.token
+        }
+   })
+   return aulaAtualizado
+}
 
    async deletar(codigo:string){
        const aulaDeletado = await prismaClient.aula.delete({

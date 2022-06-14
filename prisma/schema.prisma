@@ -41,6 +41,7 @@ model Aula {
   datahorafim   DateTime
   nome  String
   descricao   String
+  token String? 
   chamada Chamada[]
   usuario Usuario   @relation(fields: [usuarioCodigo], references: [codigo])
   usuarioCodigo String 

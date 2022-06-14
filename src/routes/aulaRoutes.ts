@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { criarAulaController } from "../controllers/aula/criarAula";
 import { atualizarAulaController } from "../controllers/aula/atualizarAula";
+import { atualizarAulaTokenController } from "../controllers/aula/atualizarAulaToken";
 import { deletarAulaController } from "../controllers/aula/deletarAula";
 import { pesquisarAulaController } from "../controllers/aula/PesquisarAula";
 
@@ -16,6 +17,10 @@ router.get('/', async (request, response) => {
 
 router.put('/', async (request, response) => {
     return await atualizarAulaController.handle(request, response);
+});
+
+router.put('/token', async (request, response) => {
+    return await atualizarAulaTokenController.handle(request, response);
 });
 
 router.delete('/', async (request, response) => {

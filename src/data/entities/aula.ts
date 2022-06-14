@@ -9,6 +9,7 @@ export class Aula {
     public turmaCodigo: string;
     public cursoCodigo: string;
     public disciplinaCodigo: string;
+    public token?: string;
 
     constructor(props: Omit<Aula, 'id'>, id?: string){
         Object.assign(this, props);
