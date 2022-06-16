@@ -6,6 +6,7 @@ export abstract class BaseController {
 
     public async handle(request: Request, response: Response): Promise<Response>{
         try{
+            await this.auth(request, response);
             return await this.execute(request, response);
         }catch(err){
             const status = this.trataStatusRetornoException(err);
@@ -32,5 +33,7 @@ export abstract class BaseController {
             observacao: err.message ? err.message : retornoPadraoConstants.MSG_NAO_TRATADA
         };
     }
+
+    protected async auth(request, response){}
     
 }

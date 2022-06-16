@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../BaseController";
+import { BaseController } from "../../baseController";
 import { CriarChamadaUseCase } from "../../../domain/useCases/chamada/criarChamada/criarChamadaUseCase";
 
 export class CriarChamadaController extends BaseController {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../BaseController";
+import { BaseController } from "../../baseController";
 import { AtualizarChamadaUseCase } from "../../../domain/useCases/chamada/atualizarChamada/atualizarChamadaUseCase";
 
 export class AtualizarChamadaController extends BaseController {

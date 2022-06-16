@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../BaseController";
+import { BaseController } from "../../baseController";
 import { DeletarUsuarioUseCase } from "../../../domain/useCases/usuario/deletarUsuario/deletarUsuarioUseCase";
 
 export class DeletarUsuarioController extends BaseController {

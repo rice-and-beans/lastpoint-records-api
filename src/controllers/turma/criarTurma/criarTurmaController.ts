@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../BaseController";
+import { BaseController } from "../../baseController";
 import { CriarTurmaUseCase } from "../../../domain/useCases/turma/criarTurma/criarTurmaUseCase";
 
 export class CriarTurmaController extends BaseController {

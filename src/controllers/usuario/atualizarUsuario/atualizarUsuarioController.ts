@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../BaseController";
+import { BaseController } from "../../baseController";
 import { AtualizarUsuarioUseCase } from "../../../domain/useCases/usuario/atualizarUsuario/atualizarUsuarioUseCase";
 
 export class AtualizarUsuarioController extends BaseController {

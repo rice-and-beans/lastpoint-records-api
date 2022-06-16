@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../BaseController";
+import { BaseController } from "../../baseController";
 import { DeletarTurmaUseCase } from "../../../domain/useCases/turma/deletarTurma/deletarTurmaUseCase";
 
 export class DeletarTurmaController extends BaseController {

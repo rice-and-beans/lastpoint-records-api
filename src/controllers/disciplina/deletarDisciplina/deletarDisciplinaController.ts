@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../BaseController";
+import { BaseController } from "../../baseController";
 import { DeletarDisciplinaUseCase } from "../../../domain/useCases/disciplina/deletarDisciplina/deletarDisciplinaUseCase";
 
 export class DeletarDisciplinaController extends BaseController {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../BaseController";
+import { BaseController } from "../../baseController";
 import { PesquisarChamadaUseCase } from "../../../domain/useCases/chamada/pesquisarChamada/pesquisarChamadaUseCase";
 
 export class PesquisarChamadaController extends BaseController {

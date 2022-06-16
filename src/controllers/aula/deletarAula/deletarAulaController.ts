@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../BaseController";
+import { BaseController } from "../../baseController";
 import { DeletarAulaUseCase } from "../../../domain/useCases/aula/deletarAula/deletarAulaUseCase";
 
 export class DeletarAulaController extends BaseController {

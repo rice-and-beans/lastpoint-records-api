@@ -18,7 +18,7 @@ export class AtualizarUsuarioUseCase {
         await this.validaParamObrigatorio.valida(dadosValidacao);
         await this.validaUsuarioNaoEncontrado.valida(data);
         const usuario = new Usuario(data);
-        console.log(usuario.codigo)
+        
         await this.usuarioRepository.atualizar(usuario);
     }
 

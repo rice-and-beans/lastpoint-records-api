@@ -14,7 +14,6 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
     }
 
     async salvar(chamada: Chamada){
-        console.log(chamada)
         const chamadaSalvo = await prismaClient.chamada.create({
             data: {
               codigo: chamada.codigo,

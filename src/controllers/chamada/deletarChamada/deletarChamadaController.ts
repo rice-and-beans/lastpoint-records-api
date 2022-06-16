@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../BaseController";
+import { BaseController } from "../../baseController";
 import { DeletarChamadaUseCase } from "../../../domain/useCases/chamada/deletarChamada/deletarChamadaUseCase";
 
 export class DeletarChamadaController extends BaseController {
