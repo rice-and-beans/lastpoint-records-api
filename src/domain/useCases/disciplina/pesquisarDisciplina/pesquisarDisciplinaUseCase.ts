@@ -7,9 +7,9 @@ export class PesquisarDisciplinaUseCase {
         private disciplinaRepository: IDisciplinaRepository
     ){}
 
-    async execute(data: IPesquisarDisciplinaRequestDTO){
+    async execute(data: string){
         return await this.disciplinaRepository.pesquisar(
-            data ? data.campo : null
+            data ? data : null
         );
     }
 

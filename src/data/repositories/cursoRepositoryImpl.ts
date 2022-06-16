@@ -23,15 +23,15 @@ export class CursoRepositoryImpl implements ICursoRepository {
         return cursoSalvo
     }
 
-    async pesquisar(data){
+    async pesquisar(campo?: string){
         const cursos = await prismaClient.curso.findMany({
             where: {
                 AND:[
                     {
                         OR:[
-                            {nome:{contains: data.campo}},
-                            {codigo:{contains: data.campo}},
-                            {descricao:{contains: data.campo}}
+                            {nome: campo != null ? {contains: campo} : undefined},
+                            {codigo: campo != null ? {contains: campo} : undefined},
+                            {descricao: campo != null ? {contains: campo} : undefined}
                         ]
                     }
                 ],

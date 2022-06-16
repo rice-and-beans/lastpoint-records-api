@@ -1,5 +1,5 @@
 import { IUsuarioRepository } from "../../repositories/usuarioRepository";
-import { ICriarUsuarioRequestDTO } from "../../model/usuarioDTO";
+import { IAtualizarUsuarioRequestDTO } from "../../model/usuarioDTO";
 import { ValidacaoBase } from "../ValidacaoBase";
 import { RegistroNaoEncontradoException } from "../../exceptions/registroNaoEncontradoException";
 
@@ -13,10 +13,10 @@ export class ValidaUsuarioNaoEncontrado extends ValidacaoBase {
     }
 
     public async verifica(dadosValidacao: Object){
-        const dadosValidUsuario = dadosValidacao as ICriarUsuarioRequestDTO;
-        const usuarioRecuperado = await this.usuarioRepository.buscarPorEmail(dadosValidUsuario.email);
+        const dadosValidUsuario = dadosValidacao as IAtualizarUsuarioRequestDTO;
+        const usuarioRecuperado = await this.usuarioRepository.buscarPorCodigo(dadosValidUsuario.codigo);
         if(!usuarioRecuperado){
-            throw new RegistroNaoEncontradoException('Usuario não encontrado');
+            throw new RegistroNaoEncontradoException('');
         }
     }
     

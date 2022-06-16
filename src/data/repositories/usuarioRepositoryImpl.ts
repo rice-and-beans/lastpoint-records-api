@@ -11,6 +11,16 @@ export class UsuarioRepositoryImpl implements IUsuarioRepository {
         })
         return usuario != null ? new Usuario(usuario) : usuario;
     }
+
+    async buscarPorCodigo(codigo: string): Promise<Usuario>{
+        const usuario = await prismaClient.usuario.findUnique({
+            where:{
+                codigo: codigo
+            }
+        })
+        return usuario ;
+    }
+
     async salvar(usuario: Usuario){
         const usuarioSalvo = await prismaClient.usuario.create({
             data: {
@@ -30,8 +40,8 @@ export class UsuarioRepositoryImpl implements IUsuarioRepository {
                 AND:[
                         {
                             OR:[
-                                {nome:{contains: campo}},
-                                {codigo:{contains: campo}}
+                                {nome: campo != null ? {contains: campo} : undefined},
+                                {codigo: campo != null ? {contains: campo} : undefined}
                             ]
                         }
                     ],

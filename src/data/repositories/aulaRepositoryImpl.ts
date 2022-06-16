@@ -55,8 +55,9 @@ export class AulaRepositoryImpl implements IAulaRepository {
                     },
                     {
                         OR:[
-                            {nome:{contains: data.campo}},
-                            {codigo:{contains: data.campo}}
+                            {nome: data.campo != null ? {contains: data.campo} : undefined},
+                            {codigo: data.campo != null ? {contains: data.campo} : undefined},
+                            {descricao: data.campo != null ? {contains: data.campo} : undefined}
                         ]
                     }
                 ],
@@ -146,7 +147,7 @@ export class AulaRepositoryImpl implements IAulaRepository {
                 codigo: aula.codigo,
             },
             data:{
-                    token: aula.token
+                token: aula.token
             }
         })
         return aulaAtualizado

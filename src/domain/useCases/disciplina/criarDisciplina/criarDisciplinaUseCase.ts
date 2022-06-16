@@ -15,8 +15,7 @@ export class CriarDisciplinaUseCase {
     async execute(data: ICriarDisciplinaRequestDTO){
         const dadosValidacao = new Map<Object, string>([
             [data.codigo, "codigo"],
-            [data.nome, "nome"],
-            [data.descricao, "descricao"],
+            [data.nome, "nome"]
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
         const disciplina = new Disciplina(data);

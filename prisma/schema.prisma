@@ -21,7 +21,7 @@ model Usuario {
 model Turma {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
   codigo String @unique
-  descricao  String 
+  descricao  String?
   nome   String
   aula Aula[]
 }
@@ -29,7 +29,7 @@ model Turma {
 model Disciplina {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
   codigo String @unique
-  descricao  String 
+  descricao  String? 
   nome   String
   aula Aula[]
 }
@@ -40,7 +40,7 @@ model Aula {
   datahorainicio  DateTime 
   datahorafim   DateTime
   nome  String
-  descricao   String
+  descricao   String?
   token String? 
   chamada Chamada[]
   usuario Usuario   @relation(fields: [usuarioCodigo], references: [codigo])
@@ -64,6 +64,7 @@ model Curso {
 model Chamada {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   codigo String @unique
+  justificativa String?
   usuario Usuario   @relation(fields: [usuarioCodigo], references: [codigo])
   usuarioCodigo String 
   aula Aula   @relation(fields: [aulaCodigo], references: [codigo])

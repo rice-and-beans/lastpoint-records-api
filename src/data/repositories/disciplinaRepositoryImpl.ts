@@ -1,5 +1,6 @@
 import { prismaClient } from "../database/prismaClient";
 import { IDisciplinaRepository } from "../../domain/repositories/disciplinaRepository.ts";
+import {IPesquisarDisciplinaRequestDTO} from "../../domain/model/disciplinaDTO"
 import { Disciplina } from "../entities/disciplina";
 
 export class DisciplinaRepositoryImpl implements IDisciplinaRepository {
@@ -23,30 +24,18 @@ export class DisciplinaRepositoryImpl implements IDisciplinaRepository {
     }
 
     async pesquisar(campo: string){
-        if(campo){
             const disciplinas = await prismaClient.disciplina.findMany({
                 where: {
-                    OR:[
+                    AND:[
                         {
-                            nome:{
-                                contains: campo
-                            }
-                        },
-                        {
-                            codigo:{
-                                contains: campo
-                            }
+                            OR:[
+                                {nome: campo != null ? {contains: campo} : undefined},
+                                {codigo: campo != null ? {contains: campo} : undefined},
+                                {descricao: campo != null ? {contains: campo} : undefined}
+                            ]
                         }
-                    ]},
-                select: {
-                    codigo: true,
-                    nome: true,
-                    descricao: true
-                }
-            })
-            return disciplinas
-        }else{
-            const disciplinas = await prismaClient.disciplina.findMany({
+                    ],
+                },
                 select: {
                     codigo: true,
                     nome: true,
@@ -55,7 +44,6 @@ export class DisciplinaRepositoryImpl implements IDisciplinaRepository {
             })
             return disciplinas
         }
-    }
 
    async atualizar(disciplina:Disciplina){  
        const disciplinaAtualizada = await prismaClient.disciplina.update({

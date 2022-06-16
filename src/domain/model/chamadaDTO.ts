@@ -1,11 +1,13 @@
 export interface ICriarChamadaRequestDTO {
     codigo: string;
+    justificativa?: string;
     usuarioCodigo: string;
     aulaCodigo: string;
 }
 
 export interface IAtualizarChamadaRequestDTO {
     codigo: string;
+    justificativa: string;
     usuarioCodigo: string;
     aulaCodigo: string;
 }

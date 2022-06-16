@@ -1,13 +1,21 @@
 import { IAulaRepository } from "../../../repositories/aulaRepository";
 import { IDeletarAulaRequestDTO } from "../../../model/aulaDTO";
+import { ValidacaoBase } from "../../../validations/ValidacaoBase";
 
 export class DeletarAulaUseCase {
 
     constructor(
-        private aulaRepository: IAulaRepository
+        private aulaRepository: IAulaRepository,
+        private validaParamObrigatorio: ValidacaoBase,
+        private validaAulaNaoEncontrado: ValidacaoBase
     ){}
 
     async execute(data: IDeletarAulaRequestDTO){
+        const dadosValidacao = new Map<Object, string>([
+            [data.codigo, "codigo"]
+        ]);
+        await this.validaParamObrigatorio.valida(dadosValidacao);
+        await this.validaAulaNaoEncontrado.valida(data);
         const codigo = data.codigo;
         await this.aulaRepository.deletar(codigo);
     }

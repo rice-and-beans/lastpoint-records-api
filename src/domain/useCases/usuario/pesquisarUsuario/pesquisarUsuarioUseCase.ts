@@ -7,9 +7,9 @@ export class PesquisarUsuarioUseCase {
         private usuarioRepository: IUsuarioRepository
     ){}
 
-    async execute(data: IPesquisarUsuarioRequestDTO){
+    async execute(data: string){
         return await this.usuarioRepository.pesquisar(
-            data ? data.campo : null
+            data ? data : null
         );
     }
 

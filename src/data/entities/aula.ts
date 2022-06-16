@@ -4,7 +4,7 @@ export class Aula {
     public datahorainicio: Date;
     public datahorafim: Date;
     public nome: string;
-    public descricao: string;
+    public descricao?: string;
     public usuarioCodigo: string;
     public turmaCodigo: string;
     public cursoCodigo: string;

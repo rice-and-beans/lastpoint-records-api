@@ -14,8 +14,7 @@ export class CriarTurmaUseCase {
     async execute(data: ICriarTurmaRequestDTO){
         const dadosValidacao = new Map<Object, string>([
             [data.codigo, "codigo"],
-            [data.nome, "nome"],
-            [data.descricao, "descricao"],
+            [data.nome, "nome"]
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
         const turma = new Turma(data);

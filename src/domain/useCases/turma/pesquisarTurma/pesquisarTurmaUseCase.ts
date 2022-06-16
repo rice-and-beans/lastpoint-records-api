@@ -7,9 +7,9 @@ export class PesquisarTurmaUseCase {
         private turmaRepository: ITurmaRepository
     ){}
 
-    async execute(data: IPesquisarTurmaRequestDTO){
+    async execute(data: string){
         return await this.turmaRepository.pesquisar(
-            data ? data.campo : null
+            data ? data : null
         );
     }
 

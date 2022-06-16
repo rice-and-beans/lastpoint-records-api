@@ -11,9 +11,10 @@ export class CriarChamadaController extends BaseController {
     }
 
     async execute(request: Request, response: Response): Promise<Response>{
-        const { codigo, usuarioCodigo, aulaCodigo } = request.body;
+        const { codigo, justificativa,  usuarioCodigo, aulaCodigo } = request.body;
         await this.criarChamadaUseCase.execute({
             codigo,
+            justificativa,
             usuarioCodigo,
             aulaCodigo
         });

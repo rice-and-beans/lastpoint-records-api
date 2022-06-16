@@ -14,9 +14,11 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
     }
 
     async salvar(chamada: Chamada){
+        console.log(chamada)
         const chamadaSalvo = await prismaClient.chamada.create({
             data: {
               codigo: chamada.codigo,
+              justificativa: chamada.justificativa,
               usuarioCodigo: chamada.usuarioCodigo,
               aulaCodigo: chamada.aulaCodigo
             },
@@ -33,30 +35,23 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
         if(data.datahorafim){
             datafim = new Date(data.datahorafim);
         }
-        const aulasLista = await prismaClient.aula.findMany({
-            where: {
-                AND:[
-                    {
-                        OR:[
-                            {datahorainicio: datainicio != null ? {gte: datainicio} : undefined}
-                        ]
-                    },
-                    {
-                        OR:[
-                            {datahorafim: datafim != null ? {gte: datafim} : undefined}
-                        ]
-                    },
-                    {
-                        OR:[
-                            {nome:{contains: data.campo}},
-                            {codigo:{contains: data.campo}}
-                        ]
-                    }
-                ],
-            },
+        const aulasLista = await prismaClient.chamada.findMany({
+            
             select: {
                 codigo: true,
-                nome: true
+                usuarioCodigo: true,
+                usuario: {
+                    select:{
+                        nome:true
+                    }
+                },
+                aulaCodigo:true,
+                aula: {
+                    select:{
+                        datahorainicio:true
+                    }
+                },
+                justificativa: true
             }
         })
         return aulasLista
@@ -69,6 +64,7 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
            },
            data:{
                 codigo: chamada.codigo,
+                justificativa: chamada.justificativa,
                 usuarioCodigo: chamada.usuarioCodigo,
                 aulaCodigo: chamada.aulaCodigo
             }

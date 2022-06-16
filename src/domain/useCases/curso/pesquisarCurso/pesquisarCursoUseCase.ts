@@ -7,9 +7,9 @@ export class PesquisarCursoUseCase {
         private cursoRepository: ICursoRepository
     ){}
 
-    async execute(data: IPesquisarCursoRequestDTO){
+    async execute(data: string){
         return await this.cursoRepository.pesquisar(
-            data ? data.campo : null
+            data ? data : null
         );
     }
 

@@ -11,9 +11,10 @@ export class AtualizarChamadaController extends BaseController {
     }
 
     async execute(request: Request, response: Response): Promise<Response>{
-        const { codigo, usuarioCodigo, aulaCodigo } = request.body;
+        const { codigo, justificativa, usuarioCodigo, aulaCodigo } = request.body;
         await this.atualizarChamadaUseCase.execute({
             codigo,
+            justificativa,
             usuarioCodigo,
             aulaCodigo
         });

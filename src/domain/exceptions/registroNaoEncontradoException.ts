@@ -5,7 +5,7 @@ export class RegistroNaoEncontradoException extends Error {
         Object.setPrototypeOf(this, RegistroNaoEncontradoException.prototype);
     }
 
-    getMenssage() {
+    getMessage() {
         return this.message;
     }
 
