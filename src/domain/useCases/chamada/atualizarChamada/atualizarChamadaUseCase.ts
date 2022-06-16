@@ -1,6 +1,6 @@
 import { Chamada } from "../../../../data/entities/chamada";
 import { IChamadaRepository } from "../../../repositories/chamadaRepository";
-import { IAtualizarChamadaRequestDTO } from "../../../model/chamada/atualizarChamadaDTO";
+import { IAtualizarChamadaRequestDTO } from "../../../model/chamadaDTO";
 
 export class AtualizarChamadaUseCase {
 

@@ -1,6 +1,5 @@
 import { IAulaRepository } from "../../../repositories/aulaRepository";
-import { IPesquisarAulaRequestDTO } from "../../../model/aula/pesquisarAulaDTO";
-import { Aula } from "../../../../data/entities/aula";
+import { IPesquisarAulaRequestDTO } from "../../../model/aulaDTO";
 
 export class PesquisarAulaUseCase {
 
@@ -8,7 +7,7 @@ export class PesquisarAulaUseCase {
         private aulaRepository: IAulaRepository
     ){}
 
-    async execute(data?: IPesquisarAulaRequestDTO){
+    async execute(data: IPesquisarAulaRequestDTO){
         return await this.aulaRepository.pesquisar(data);
     }
 

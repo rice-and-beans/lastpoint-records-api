@@ -1,6 +1,6 @@
 import { Usuario } from "../../../../data/entities/usuario";
 import { IUsuarioRepository } from "../../../repositories/usuarioRepository";
-import { IdeletarUsuarioRequestDTO } from "../../../model/usuario/deletarUsuarioDTO";
+import { IDeletarUsuarioRequestDTO } from "../../../model/usuarioDTO";
 
 export class DeletarUsuarioUseCase {
 
@@ -8,7 +8,7 @@ export class DeletarUsuarioUseCase {
         private usuarioRepository: IUsuarioRepository
     ){}
 
-    async execute(data: IdeletarUsuarioRequestDTO){
+    async execute(data: IDeletarUsuarioRequestDTO){
         const codigo = data.codigo;
         await this.usuarioRepository.deletar(codigo);
     }

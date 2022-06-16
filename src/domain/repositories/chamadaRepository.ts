@@ -1,8 +1,9 @@
 import { Chamada } from "../../data/entities/chamada";
+import { IPesquisarChamadaRequestDTO } from "../../domain/model/chamadaDTO";
 
 export interface IChamadaRepository {
     buscarPorCodigo(codigo: string): Promise<Chamada>;
-    pesquisar();
+    pesquisar(data: IPesquisarChamadaRequestDTO);
     salvar(Chamada: Chamada);
     atualizar(codigo: Chamada);
     deletar(codigo:string)

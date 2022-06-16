@@ -11,7 +11,12 @@ export class PesquisarChamadaController extends BaseController {
     }
 
     async execute(request: Request, response: Response): Promise<Response>{
-        const listaChamada = await this.pesquisarChamadaUseCase.execute();
+        const {datahorainicio, datahorafim, campo} = request.body;
+        const listaChamada = await this.pesquisarChamadaUseCase.execute({
+            datahorainicio,
+            datahorafim,
+            campo
+        });
         return response.status(200).send(listaChamada);
     }
 

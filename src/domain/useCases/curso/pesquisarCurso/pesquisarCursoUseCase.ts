@@ -1,4 +1,5 @@
 import { ICursoRepository } from "../../../repositories/cursoRepository";
+import { IPesquisarCursoRequestDTO } from "../../../model/cursoDTO";
 
 export class PesquisarCursoUseCase {
 
@@ -6,12 +7,10 @@ export class PesquisarCursoUseCase {
         private cursoRepository: ICursoRepository
     ){}
 
-    async execute(nome?: string){
-        if(nome){
-            return await this.cursoRepository.pesquisar(nome);
-        }else{
-            return await this.cursoRepository.pesquisar();
-        }
+    async execute(data: IPesquisarCursoRequestDTO){
+        return await this.cursoRepository.pesquisar(
+            data ? data.campo : null
+        );
     }
 
 }

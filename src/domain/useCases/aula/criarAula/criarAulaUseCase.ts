@@ -1,6 +1,6 @@
 import { Aula } from "../../../../data/entities/aula";
 import { IAulaRepository } from "../../../repositories/aulaRepository";
-import { ICriarAulaRequestDTO } from "../../../model/aula/criarAulaDTO";
+import { ICriarAulaRequestDTO } from "../../../model/aulaDTO";
 import { ValidacaoBase } from "../../../validations/ValidacaoBase";
 
 export class CriarAulaUseCase {

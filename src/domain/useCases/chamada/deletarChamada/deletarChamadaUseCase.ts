@@ -1,5 +1,5 @@
 import { IChamadaRepository } from "../../../repositories/chamadaRepository";
-import { IDeletarChamadaRequestDTO } from "../../../model/chamada/deletarChamadaDTO";
+import { IDeletarChamadaRequestDTO } from "../../../model/chamadaDTO";
 
 export class DeletarChamadaUseCase {
 

@@ -1,6 +1,7 @@
 import { prismaClient } from "../database/prismaClient";
 import { IChamadaRepository } from "../../domain/repositories/chamadaRepository";
 import { Chamada } from "../entities/chamada";
+import { IPesquisarChamadaRequestDTO } from "../../domain/model/chamadaDTO";
 
 export class ChamadaRepositoryImpl implements IChamadaRepository {
     async buscarPorCodigo(codigo: string): Promise<Chamada>{
@@ -23,25 +24,42 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
         return chamadaSalvo
     }
 
-    async pesquisar(){
-        const chamadas = await prismaClient.chamada.findMany({
+    async pesquisar(data: IPesquisarChamadaRequestDTO){
+        var datainicio = null
+        var datafim = null
+        if(data.datahorainicio){
+            datainicio = new Date(data.datahorainicio);
+        }
+        if(data.datahorafim){
+            datafim = new Date(data.datahorafim);
+        }
+        const aulasLista = await prismaClient.aula.findMany({
+            where: {
+                AND:[
+                    {
+                        OR:[
+                            {datahorainicio: datainicio != null ? {gte: datainicio} : undefined}
+                        ]
+                    },
+                    {
+                        OR:[
+                            {datahorafim: datafim != null ? {gte: datafim} : undefined}
+                        ]
+                    },
+                    {
+                        OR:[
+                            {nome:{contains: data.campo}},
+                            {codigo:{contains: data.campo}}
+                        ]
+                    }
+                ],
+            },
             select: {
-                usuario:{
-                    select:{
-                        codigo: true,
-                        nome: true
-                    }
-                },
-                aula:{
-                    select:{
-                        datahorainicio: true,
-                        datahorafim: true
-
-                    }
-                },
+                codigo: true,
+                nome: true
             }
         })
-        return chamadas
+        return aulasLista
     }
 
    async atualizar(chamada:Chamada){  

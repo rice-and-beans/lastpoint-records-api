@@ -1,4 +1,5 @@
 import { IChamadaRepository } from "../../../repositories/chamadaRepository";
+import { IPesquisarChamadaRequestDTO } from "../../../model/chamadaDTO";
 
 export class PesquisarChamadaUseCase {
 
@@ -6,8 +7,10 @@ export class PesquisarChamadaUseCase {
         private chamadaRepository: IChamadaRepository
     ){}
 
-    async execute(){
-        return await this.chamadaRepository.pesquisar();
+    async execute(data: IPesquisarChamadaRequestDTO){
+        return await this.chamadaRepository.pesquisar(
+            data ? data : null
+        );
     }
 
 }

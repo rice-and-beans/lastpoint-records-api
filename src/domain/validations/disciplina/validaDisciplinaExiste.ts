@@ -1,6 +1,6 @@
 import { RegistroExistenteException } from "../../exceptions/registroExistenteException";
 import { IDisciplinaRepository } from "../../repositories/disciplinaRepository.ts";
-import { ICriarDisciplinaRequestDTO } from "../../model/disciplina/criarDisciplinaDTO";
+import { ICriarDisciplinaRequestDTO } from "../../model/disciplinaDTO";
 import { ValidacaoBase } from "../ValidacaoBase";
 
 export class ValidaDisciplinaExiste extends ValidacaoBase {

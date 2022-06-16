@@ -1,6 +1,6 @@
 import { UsuarioRepositoryImpl } from "../../../../data/repositories/usuarioRepositoryImpl";
 import { ValidaUsuarioExiste } from "../../../validations/usuario/validaUsuarioExiste";
-import { ValidaParamObrigatorios } from "../../../validations/usuario/validaParamObrigatorio";
+import { ValidaParamObrigatorios } from "../../../validations/validaParamObrigatorio";
 
 import { CriarUsuarioUseCase } from "./criarUsuarioUseCase";
 

@@ -1,15 +1,24 @@
 import { Disciplina } from "../../../../data/entities/disciplina";
 import { IDisciplinaRepository } from "../../../repositories/disciplinaRepository.ts";
-import { ICriarDisciplinaRequestDTO } from "../../../model/disciplina/criarDisciplinaDTO";
+import { ICriarDisciplinaRequestDTO } from "../../../model/disciplinaDTO";
 import { ValidacaoBase } from "../../../validations/ValidacaoBase";
+
 
 export class CriarDisciplinaUseCase {
 
     constructor(
-        private disciplinaRepository: IDisciplinaRepository
+        private disciplinaRepository: IDisciplinaRepository,
+        private validaParamObrigatorio: ValidacaoBase,
+        private validaUsuarioExiste: ValidacaoBase
     ){}
 
     async execute(data: ICriarDisciplinaRequestDTO){
+        const dadosValidacao = new Map<Object, string>([
+            [data.codigo, "codigo"],
+            [data.nome, "nome"],
+            [data.descricao, "descricao"],
+        ]);
+        await this.validaParamObrigatorio.valida(dadosValidacao);
         const disciplina = new Disciplina(data);
         await this.disciplinaRepository.salvar(disciplina);
     }

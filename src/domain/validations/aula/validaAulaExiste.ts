@@ -1,6 +1,6 @@
 import { RegistroExistenteException } from "../../exceptions/registroExistenteException";
 import { IAulaRepository } from "../../repositories/aulaRepository";
-import { ICriarAulaRequestDTO } from "../../model/aula/criarAulaDTO";
+import { ICriarAulaRequestDTO } from "../../model/aulaDTO";
 import { ValidacaoBase } from "../ValidacaoBase";
 
 export class ValidaAulaExiste extends ValidacaoBase {

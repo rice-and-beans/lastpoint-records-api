@@ -1,5 +1,5 @@
 import { IDisciplinaRepository } from "../../../repositories/disciplinaRepository.ts";
-import { IDeletarDisciplinaRequestDTO } from "../../../model/disciplina/deletarDisciplinaDTO";
+import { IDeletarDisciplinaRequestDTO } from "../../../model/disciplinaDTO";
 
 export class DeletarDisciplinaUseCase {
 

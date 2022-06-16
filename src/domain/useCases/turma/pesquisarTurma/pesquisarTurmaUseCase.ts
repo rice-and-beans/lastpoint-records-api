@@ -1,4 +1,5 @@
 import { ITurmaRepository } from "../../../repositories/turmaRepository";
+import { IPesquisarTurmaRequestDTO } from "../../../model/turmaDTO";
 
 export class PesquisarTurmaUseCase {
 
@@ -6,12 +7,10 @@ export class PesquisarTurmaUseCase {
         private turmaRepository: ITurmaRepository
     ){}
 
-    async execute(campo?:string){
-        if(campo){
-            return await this.turmaRepository.pesquisar(campo);
-        }else{
-            return await this.turmaRepository.pesquisar();
-        }
+    async execute(data: IPesquisarTurmaRequestDTO){
+        return await this.turmaRepository.pesquisar(
+            data ? data.campo : null
+        );
     }
 
 }

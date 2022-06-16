@@ -1,6 +1,6 @@
 import { Aula } from "../../../../data/entities/aula";
 import { IAulaRepository } from "../../../repositories/aulaRepository";
-import { IAtualizarAulaRequestDTO } from "../../../model/aula/atualizarAulaDTO";
+import { IAtualizarAulaRequestDTO } from "../../../model/aulaDTO";
 
 export class AtualizarAulaUseCase {
 

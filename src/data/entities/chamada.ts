@@ -4,7 +4,6 @@ export class Chamada {
     public usuarioCodigo: string;
     public aulaCodigo: string;
     
-
     constructor(props: Omit<Chamada, 'id'>, id?: string){
         Object.assign(this, props);
     }

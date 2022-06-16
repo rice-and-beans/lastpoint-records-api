@@ -1,6 +1,6 @@
 import { Turma } from "../../../../data/entities/turma";
 import { ITurmaRepository } from "../../../repositories/turmaRepository";
-import { IAtualizarTurmaRequestDTO } from "../../../model/turma/atualizarTurmaDTO";
+import { IAtualizarTurmaRequestDTO } from "../../../model/turmaDTO";
 
 export class AtualizarTurmaUseCase {
 

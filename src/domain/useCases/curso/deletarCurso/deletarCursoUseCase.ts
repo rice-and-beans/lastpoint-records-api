@@ -1,5 +1,5 @@
 import { ICursoRepository } from "../../../repositories/cursoRepository";
-import { IdeletarcursoRequestDTO } from "../../../model/curso/deletarCursoDTO";
+import { IDeletarCursoRequestDTO } from "../../../model/cursoDTO";
 
 export class DeletarCursoUseCase {
 
@@ -7,7 +7,7 @@ export class DeletarCursoUseCase {
         private cursoRepository: ICursoRepository
     ){}
 
-    async execute(data: IdeletarcursoRequestDTO){
+    async execute(data: IDeletarCursoRequestDTO){
         const codigo = data.codigo;
         await this.cursoRepository.deletar(codigo);
     }

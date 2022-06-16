@@ -1,6 +1,6 @@
 import { Curso } from "../../../../data/entities/curso";
 import { ICursoRepository } from "../../../repositories/cursoRepository";
-import { ICriarCursoRequestDTO } from "../../../model/curso/criarCursoDTO";
+import { ICriarCursoRequestDTO } from "../../../model/cursoDTO";
 import { ValidacaoBase } from "../../../validations/ValidacaoBase";
 
 export class CriarCursoUseCase {

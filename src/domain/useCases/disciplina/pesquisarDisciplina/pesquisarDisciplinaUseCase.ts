@@ -1,4 +1,5 @@
 import { IDisciplinaRepository } from "../../../repositories/disciplinaRepository.ts";
+import { IPesquisarDisciplinaRequestDTO } from "../../../model/disciplinaDTO";
 
 export class PesquisarDisciplinaUseCase {
 
@@ -6,12 +7,10 @@ export class PesquisarDisciplinaUseCase {
         private disciplinaRepository: IDisciplinaRepository
     ){}
 
-    async execute(nome?: string){
-        if(nome){
-            return await this.disciplinaRepository.pesquisar(nome);
-        }else{
-            return await this.disciplinaRepository.pesquisar();
-        }
+    async execute(data: IPesquisarDisciplinaRequestDTO){
+        return await this.disciplinaRepository.pesquisar(
+            data ? data.campo : null
+        );
     }
 
 }

@@ -1,6 +1,7 @@
 import { prismaClient } from "../database/prismaClient";
 import { IAulaRepository } from "../../domain/repositories/aulaRepository";
 import { Aula } from "../entities/aula";
+import { aulaConstants } from "../../constants/aulaConstants";
 
 export class AulaRepositoryImpl implements IAulaRepository {
     async buscarPorCodigo(codigo: string): Promise<Aula>{
@@ -69,13 +70,13 @@ export class AulaRepositoryImpl implements IAulaRepository {
     }
 
     async historicoAulasFuturas(){
-        var dataatual = new Date();
-        var datafim = new Date(Date.now()+7*24*60*60*1000);
+        var dataAtual = new Date();
+        var dataFim = new Date(Date.now()+aulaConstants.TEMPO_HISTORICO);
         const aulasLista = await prismaClient.aula.findMany({
             where: {
                 AND:[
-                    {datahorainicio:{gte: dataatual}},
-                    {datahorafim: {lte: datafim}}
+                    {datahorainicio:{gte: dataAtual}},
+                    {datahorafim: {lte: dataFim}}
                 ]
             },
             select:{
@@ -123,11 +124,11 @@ export class AulaRepositoryImpl implements IAulaRepository {
     async atualizar(aula:Aula){  
         const datahorainicio = new Date(aula.datahorainicio);
         const datahorafim = new Date(aula.datahorafim);
-       const aulaAtualizado = await prismaClient.aula.update({
-           where:{
-               codigo: aula.codigo,
-           },
-           data:{
+        const aulaAtualizado = await prismaClient.aula.update({
+            where:{
+                codigo: aula.codigo,
+            },
+            data:{
                 codigo: aula.codigo,
                 datahorainicio: datahorainicio,
                 datahorafim: datahorafim,
@@ -135,21 +136,21 @@ export class AulaRepositoryImpl implements IAulaRepository {
                 descricao: aula.descricao,
                 token: aula.token
             }
-       })
-       return aulaAtualizado
+        })
+        return aulaAtualizado
    }
 
    async adicionarToken(aula:Aula){ 
-   const aulaAtualizado = await prismaClient.aula.update({
-       where:{
-           codigo: aula.codigo,
-       },
-       data:{
-            token: aula.token
-        }
-   })
-   return aulaAtualizado
-}
+        const aulaAtualizado = await prismaClient.aula.update({
+            where:{
+                codigo: aula.codigo,
+            },
+            data:{
+                    token: aula.token
+            }
+        })
+        return aulaAtualizado
+    }
 
    async deletar(codigo:string){
        const aulaDeletado = await prismaClient.aula.delete({

@@ -1,6 +1,6 @@
 import { Aula } from "../../../../data/entities/aula";
 import { IAulaRepository } from "../../../repositories/aulaRepository";
-import { IAtualizarAulaTokenRequestDTO } from "../../../model/aula/atualizarAulaTokenDTO";
+import { IAtualizarAulaTokenRequestDTO } from "../../../model/aulaDTO";
 
 export class AtualizarAulaTokenUseCase {
 
@@ -9,8 +9,7 @@ export class AtualizarAulaTokenUseCase {
     ){}
 
     async execute(data: IAtualizarAulaTokenRequestDTO){
-        const aula = data
-        await this.aulaRepository.adicionarToken(aula);
+        await this.aulaRepository.adicionarToken(data);
     }
 
 }

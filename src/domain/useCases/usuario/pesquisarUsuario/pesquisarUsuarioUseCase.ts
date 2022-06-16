@@ -1,4 +1,5 @@
 import { IUsuarioRepository } from "../../../repositories/usuarioRepository";
+import { IPesquisarUsuarioRequestDTO } from "../../../model/usuarioDTO";
 
 export class PesquisarUsuarioUseCase {
 
@@ -6,12 +7,10 @@ export class PesquisarUsuarioUseCase {
         private usuarioRepository: IUsuarioRepository
     ){}
 
-    async execute(campo?: string){
-        if(campo){
-            return await this.usuarioRepository.pesquisar(campo);
-        }else{
-            return await this.usuarioRepository.pesquisar();
-        }
+    async execute(data: IPesquisarUsuarioRequestDTO){
+        return await this.usuarioRepository.pesquisar(
+            data ? data.campo : null
+        );
     }
 
 }

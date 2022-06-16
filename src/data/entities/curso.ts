@@ -4,7 +4,6 @@ export class Curso {
     public descricao: string;
     public nome: string;
     
-
     constructor(props: Omit<Curso, 'id'>, id?: string){
         Object.assign(this, props);
     }

@@ -1,6 +1,6 @@
 import { prismaClient } from "../database/prismaClient";
 import { ICursoRepository } from "../../domain/repositories/cursoRepository";
-import {IPesquisarCursoRequestDTO} from "../../domain/model/curso/pesquisarCursoDTO"
+import {IPesquisarCursoRequestDTO} from "../../domain/model/cursoDTO"
 import { Curso } from "../entities/curso";
 
 export class CursoRepositoryImpl implements ICursoRepository {
@@ -23,39 +23,25 @@ export class CursoRepositoryImpl implements ICursoRepository {
         return cursoSalvo
     }
 
-    async pesquisar(data: string){
-        if(data){
-            const cursos = await prismaClient.curso.findMany({
-                where: {
-                    OR:[
-                        {
-                            nome:{
-                                contains: data
-                            }
-                        },
-                        {
-                            codigo:{
-                                contains: data
-                            }
-                        }
-                    ]},
-                select: {
-                    codigo: true,
-                    nome: true,
-                    descricao: true
-                }
-            })
-            return cursos
-        }else{
-            const cursos = await prismaClient.curso.findMany({
-                select: {
-                    codigo: true,
-                    nome: true,
-                    descricao: true
-                }
-            })
-            return cursos
-        }
+    async pesquisar(data){
+        const cursos = await prismaClient.curso.findMany({
+            where: {
+                AND:[
+                    {
+                        OR:[
+                            {nome:{contains: data.campo}},
+                            {codigo:{contains: data.campo}},
+                            {descricao:{contains: data.campo}}
+                        ]
+                    }
+                ],
+            },
+            select: {
+                codigo: true,
+                nome: true
+            }
+        })
+        return cursos
     }
 
    async atualizar(curso:Curso){  

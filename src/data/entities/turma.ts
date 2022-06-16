@@ -4,7 +4,6 @@ export class Turma {
     public descricao: string;
     public nome: string;
     
-
     constructor(props: Omit<Turma, 'id'>, id?: string){
         Object.assign(this, props);
     }

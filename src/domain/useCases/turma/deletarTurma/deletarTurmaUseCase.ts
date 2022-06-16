@@ -1,5 +1,5 @@
 import { ITurmaRepository } from "../../../repositories/turmaRepository";
-import { IdeletarTurmaRequestDTO } from "../../../model/turma/deletarTurmaDTO";
+import { IDeletarTurmaRequestDTO } from "../../../model/turmaDTO";
 
 export class DeletarTurmaUseCase {
 
@@ -7,7 +7,7 @@ export class DeletarTurmaUseCase {
         private turmaRepository: ITurmaRepository
     ){}
 
-    async execute(data: IdeletarTurmaRequestDTO){
+    async execute(data: IDeletarTurmaRequestDTO){
         const codigo = data.codigo;
         await this.turmaRepository.deletar(codigo);
     }

@@ -1,6 +1,6 @@
 import { Curso } from "../../../../data/entities/curso";
 import { ICursoRepository } from "../../../repositories/cursoRepository";
-import { IAtualizarCursoRequestDTO } from "../../../model/curso/atualizarCursoDTO";
+import { IAtualizarCursoRequestDTO } from "../../../model/cursoDTO";
 
 export class AtualizarCursoUseCase {
 

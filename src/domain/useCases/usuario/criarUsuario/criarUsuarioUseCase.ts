@@ -1,6 +1,6 @@
 import { Usuario } from "../../../../data/entities/usuario";
 import { IUsuarioRepository } from "../../../repositories/usuarioRepository";
-import { ICriarUsuarioRequestDTO } from "../../../model/usuario/criarUsuarioDTO";
+import { ICriarUsuarioRequestDTO } from "../../../model/usuarioDTO";
 import { ValidacaoBase } from "../../../validations/ValidacaoBase";
 
 export class CriarUsuarioUseCase {
@@ -22,7 +22,6 @@ export class CriarUsuarioUseCase {
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
         await this.validaUsuarioExiste.valida(data);
-        console.log(data)
         const usuario = new Usuario(data);
         await this.usuarioRepository.salvar(usuario);
     }
