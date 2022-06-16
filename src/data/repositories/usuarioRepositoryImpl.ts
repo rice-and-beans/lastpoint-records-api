@@ -24,14 +24,19 @@ export class UsuarioRepositoryImpl implements IUsuarioRepository {
         return usuarioSalvo
     }
 
-    async pesquisar(nome?: string){
-        if(nome){
+    async pesquisar(campo?: string){
+        if(campo){
             const usuarios = await prismaClient.usuario.findMany({
                 where: {
                     OR:[
                         {
                             nome:{
-                                contains: nome
+                                contains: campo
+                            }
+                        },
+                        {
+                            codigo:{
+                                contains: campo
                             }
                         }
                     ]},

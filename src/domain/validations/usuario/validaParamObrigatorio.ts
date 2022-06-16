@@ -17,7 +17,9 @@ export class ValidaParamObrigatorios extends ValidacaoBase {
             if(!value){
                 throw new ParamObrigatorioException('Parâmetro '+key+ ' obrigatório não informado');
             }
+            
         });
+        
     }
     
 }

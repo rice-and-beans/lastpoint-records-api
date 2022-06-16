@@ -22,14 +22,19 @@ export class TurmaRepositoryImpl implements ITurmaRepository {
         return turmaSalvo
     }
 
-    async pesquisar(nome: string){
-        if(nome){
+    async pesquisar(campo: string){
+        if(campo){
             const turmas = await prismaClient.turma.findMany({
                 where: {
                     OR:[
                         {
                             nome:{
-                                startsWith: nome
+                                contains: campo
+                            }
+                        },
+                        {
+                            codigo:{
+                                contains: campo
                             }
                         }
                     ]},

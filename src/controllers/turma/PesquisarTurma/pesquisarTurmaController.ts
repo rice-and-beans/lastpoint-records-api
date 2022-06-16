@@ -11,8 +11,8 @@ export class PesquisarTurmaController extends BaseController {
     }
 
     async execute(request: Request, response: Response): Promise<Response>{
-        const nome = request.body.nome;
-        const listaTurma = await this.pesquisarTurmaUseCase.execute(nome);
+        const campo = request.body.campo;
+        const listaTurma = await this.pesquisarTurmaUseCase.execute(campo);
         return response.status(200).send(listaTurma);
     }
 

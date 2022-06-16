@@ -9,11 +9,7 @@ export class PesquisarAulaUseCase {
     ){}
 
     async execute(data?: IPesquisarAulaRequestDTO){
-        if(data){
-            return await this.aulaRepository.pesquisar(data);
-        }else{
-            return await this.aulaRepository.pesquisar();
-        }
+        return await this.aulaRepository.pesquisar(data);
     }
 
 }

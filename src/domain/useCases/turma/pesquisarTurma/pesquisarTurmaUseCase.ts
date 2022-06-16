@@ -6,11 +6,11 @@ export class PesquisarTurmaUseCase {
         private turmaRepository: ITurmaRepository
     ){}
 
-    async execute(nome?:string){
-        if(nome){
-            return await this.turmaRepository.pesquisar(nome);
+    async execute(campo?:string){
+        if(campo){
+            return await this.turmaRepository.pesquisar(campo);
         }else{
-        return await this.turmaRepository.pesquisar();
+            return await this.turmaRepository.pesquisar();
         }
     }
 

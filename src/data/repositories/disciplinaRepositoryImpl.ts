@@ -22,14 +22,19 @@ export class DisciplinaRepositoryImpl implements IDisciplinaRepository {
         return disciplinaSalva
     }
 
-    async pesquisar(nome: string){
-        if(nome){
+    async pesquisar(campo: string){
+        if(campo){
             const disciplinas = await prismaClient.disciplina.findMany({
                 where: {
                     OR:[
                         {
                             nome:{
-                                startsWith: nome
+                                contains: campo
+                            }
+                        },
+                        {
+                            codigo:{
+                                contains: campo
                             }
                         }
                     ]},

@@ -1,5 +1,6 @@
 import { prismaClient } from "../database/prismaClient";
 import { ICursoRepository } from "../../domain/repositories/cursoRepository";
+import {IPesquisarCursoRequestDTO} from "../../domain/model/curso/pesquisarCursoDTO"
 import { Curso } from "../entities/curso";
 
 export class CursoRepositoryImpl implements ICursoRepository {
@@ -22,14 +23,19 @@ export class CursoRepositoryImpl implements ICursoRepository {
         return cursoSalvo
     }
 
-    async pesquisar(nome: string){
-        if(nome){
+    async pesquisar(data: string){
+        if(data){
             const cursos = await prismaClient.curso.findMany({
                 where: {
                     OR:[
                         {
                             nome:{
-                                startsWith: nome
+                                contains: data
+                            }
+                        },
+                        {
+                            codigo:{
+                                contains: data
                             }
                         }
                     ]},

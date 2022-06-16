@@ -11,8 +11,8 @@ export class PesquisarCursoController extends BaseController {
     }
 
     async execute(request: Request, response: Response): Promise<Response>{
-        const nome = request.body.nome;
-        const listaCurso = await this.pesquisarCursoUseCase.execute(nome);
+        const campo = request.body.campo;
+        const listaCurso = await this.pesquisarCursoUseCase.execute(campo);
         return response.status(200).send(listaCurso);
     }
 

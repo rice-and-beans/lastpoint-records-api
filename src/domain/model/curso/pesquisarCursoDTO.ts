@@ -1,3 +1,4 @@
 export interface IPesquisarCursoRequestDTO {
-    codigo: string;
+    codigo?: string;
+    nome?: string;
 }

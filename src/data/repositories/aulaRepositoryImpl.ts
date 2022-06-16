@@ -1,7 +1,6 @@
 import { prismaClient } from "../database/prismaClient";
 import { IAulaRepository } from "../../domain/repositories/aulaRepository";
 import { Aula } from "../entities/aula";
-import { usuario } from "../../routes/usuarioRoutes";
 
 export class AulaRepositoryImpl implements IAulaRepository {
     async buscarPorCodigo(codigo: string): Promise<Aula>{
@@ -15,8 +14,6 @@ export class AulaRepositoryImpl implements IAulaRepository {
     async salvar(aula: Aula){
         const datahorainicio = new Date(aula.datahorainicio);
         const datahorafim = new Date(aula.datahorafim);
-        console.log(datahorainicio)
-        console.log(datahorafim)
         const aulaSalvo = await prismaClient.aula.create({
             data:{
               codigo: aula.codigo,
@@ -34,90 +31,93 @@ export class AulaRepositoryImpl implements IAulaRepository {
     }
 
     async pesquisar(data?){
-        const datainicio = new Date(data.datahorainicio);
-        const datafim = new Date(data.datahorafim);
-        console.log(datainicio)
-        console.log(datafim)
-        if(datainicio && datafim){
-            const aulasLista = await prismaClient.aula.findMany({
-                where: {
-                    OR:[
-                        {
-                            datahorainicio:{
-                                gte: datainicio
-                            },
-                            datahorafim: {
-                                lte: datafim
-                            },
-                            nome:{
-                                contains: data.nome
-                            }
-                        },
-                        {
-                            datahorainicio:{
-                                gte: datainicio
-                            },
-                            datahorafim: {
-                                lte: datafim
-                            },
-                            codigo:{
-                                contains: data.nome
-                            }
-                        }
-                    ]
-                },
-                select: {
-                    codigo: true,
-                    nome: true
-                }
-            })
-            return aulasLista
-        } else if(datainicio && !datafim){
-            const aulasLista = await prismaClient.aula.findMany({
-                where: {
-                    datahorainicio:{
-                        gte: datainicio
-                    },
-                    nome:{
-                        startsWith: data.nome
-                    }
-                },
-                select: {
-                    codigo: true,
-                    nome: true
-                }
-            })
-            return aulasLista
-        } else if(!datainicio && datafim){
-            const aulasLista = await prismaClient.aula.findMany({
-                where: {
-                    datahorafim:{
-                        gte: datafim
-                    },
-                    nome:{
-                        startsWith: data.nome
-                    }
-                },
-                select: {
-                    codigo: true,
-                    nome: true
-                }
-            })
-            return aulasLista
-        } else if(!datainicio && !datafim){
-            const aulasLista = await prismaClient.aula.findMany({
-                where: {
-                    nome:{
-                        startsWith: data.nome
-                    }
-                },
-                select: {
-                    codigo: true,
-                    nome: true
-                }
-            })
-            return aulasLista
+        var datainicio = null
+        var datafim = null
+        if(data.datahorainicio){
+            datainicio = new Date(data.datahorainicio);
         }
+        if(data.datahorafim){
+            datafim = new Date(data.datahorafim);
+        }
+        const aulasLista = await prismaClient.aula.findMany({
+            where: {
+                AND:[
+                    {
+                        OR:[
+                            {datahorainicio: datainicio != null ? {gte: datainicio} : undefined}
+                        ]
+                    },
+                    {
+                        OR:[
+                            {datahorafim: datafim != null ? {gte: datafim} : undefined}
+                        ]
+                    },
+                    {
+                        OR:[
+                            {nome:{contains: data.campo}},
+                            {codigo:{contains: data.campo}}
+                        ]
+                    }
+                ],
+            },
+            select: {
+                codigo: true,
+                nome: true
+            }
+        })
+        return aulasLista
+    }
+
+    async historicoAulasFuturas(){
+        var dataatual = new Date();
+        var datafim = new Date(Date.now()+7*24*60*60*1000);
+        const aulasLista = await prismaClient.aula.findMany({
+            where: {
+                AND:[
+                    {datahorainicio:{gte: dataatual}},
+                    {datahorafim: {lte: datafim}}
+                ]
+            },
+            select:{
+                codigo: true,
+                nome: true
+            }
+        })
+        return aulasLista
+    }
+
+    async historicoAulasPassadasProfessor(){
+        var datafim = new Date();
+        const aulasLista = await prismaClient.aula.findMany({
+            where: {
+                datahorafim: {lte: datafim}
+            },
+            select:{
+                codigo: true,
+                nome: true
+            }
+        })
+        return aulasLista
+    }
+
+    async historicoAulasPassadasAluno(){
+        var datafim = new Date();
+        const aulasLista = await prismaClient.aula.findMany({
+            where: {
+                datahorafim: {lte: datafim}
+            },
+            select:{
+                chamada:{
+                    select:{
+                        usuarioCodigo: true,
+                        aulaCodigo:true
+                    }
+                },
+                codigo: true,
+                nome: true
+            }
+        })
+        return aulasLista
     }
 
     async atualizar(aula:Aula){  
