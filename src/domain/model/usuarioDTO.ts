@@ -21,3 +21,11 @@ export interface IDeletarUsuarioRequestDTO {
 export interface IPesquisarUsuarioRequestDTO {
     campo: string;
 }
+
+export interface IPesquisarUsuarioPorEmailRequestDTO {
+    email: string;
+}
+
+export interface IPesquisarUsuarioPorCodigoRequestDTO {
+    codigo: string;
+}

@@ -53,6 +53,7 @@ export class UsuarioRepositoryImpl implements IUsuarioRepository {
         })
         return usuarios
     }
+    
 
    async atualizar(usuario:Usuario){  
        const usuarioAtualizado = await prismaClient.usuario.update({

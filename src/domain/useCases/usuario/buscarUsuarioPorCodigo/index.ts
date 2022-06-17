@@ -1,15 +1,15 @@
 import { UsuarioRepositoryImpl } from "../../../../data/repositories/usuarioRepositoryImpl";
 import { ValidaParamObrigatorios } from "../../../validations/validaParamObrigatorio";
-import { BuscarUsuarioPorEmailUseCase } from "./buscarUsuarioPorEmailUseCase";
+import { BuscarUsuarioPorCodigoUseCase } from "./buscarUsuarioPorCodigoUseCase";
 
 const usuarioRepositoryImpl = new UsuarioRepositoryImpl();
 
 const validaParamObrigatorios = new ValidaParamObrigatorios(
 );
 
-const buscarUsuarioPorEmail = new BuscarUsuarioPorEmailUseCase(
+const buscarUsuarioPorCodigoUseCase = new BuscarUsuarioPorCodigoUseCase(
     usuarioRepositoryImpl,
     validaParamObrigatorios
 );
 
-export { buscarUsuarioPorEmail }
+export { buscarUsuarioPorCodigoUseCase }

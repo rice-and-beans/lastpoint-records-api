@@ -1,14 +1,14 @@
 import { IAulaRepository } from "../../../repositories/aulaRepository";
 import { IPesquisarAulaRequestDTO } from "../../../model/aulaDTO";
 
-export class PesquisarAulaUseCase{
+export class HistoricoAulasFuturasUseCase{
 
     constructor(
         private aulaRepository: IAulaRepository
     ){}
 
-    async execute(data: IPesquisarAulaRequestDTO){
-        return await this.aulaRepository.pesquisar(data);
+    async execute(){
+        return await this.aulaRepository.historicoAulasFuturas();
     }
 
 }

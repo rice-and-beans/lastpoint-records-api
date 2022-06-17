@@ -3,6 +3,8 @@ import { criarUsuarioController } from "../controllers/usuario/criarUsuario";
 import { atualizarUsuarioController } from "../controllers/usuario/atualizarUsuario";
 import { deletarUsuarioController } from "../controllers/usuario/deletarUsuario";
 import { pesquisarUsuarioController } from "../controllers/usuario/PesquisarUsuario";
+import { buscarUsuarioPorEmailController } from "../controllers/usuario/buscarUsuarioPorEmail";
+import { buscarUsuarioPorCodigoController } from "../controllers/usuario/buscarUsuarioPorCodigo";
 
 const router = Router();
 
@@ -20,6 +22,14 @@ router.put('/', async (request, response) => {
 
 router.delete('/', async (request, response) => {
     return await deletarUsuarioController.handle(request, response);
+});
+
+router.get('/email', async (request, response) => {
+    return await buscarUsuarioPorEmailController.handle(request, response);
+});
+
+router.get('/', async (request, response) => {
+    return await buscarUsuarioPorCodigoController.handle(request, response);
 });
 
 export { router as usuario };

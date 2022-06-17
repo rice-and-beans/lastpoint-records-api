@@ -4,6 +4,9 @@ import { atualizarAulaController } from "../controllers/aula/atualizarAula";
 import { atualizarAulaTokenController } from "../controllers/aula/atualizarAulaToken";
 import { deletarAulaController } from "../controllers/aula/deletarAula";
 import { pesquisarAulaController } from "../controllers/aula/PesquisarAula";
+import { historicoAulasFuturasController } from "../controllers/aula/historicoAulasFuturas";
+import { historicoAulasPassadasAlunoController } from "../controllers/aula/historicoAulasPassadasAluno";
+import { historicoAulasPassadasProfessorController } from "../controllers/aula/historicoAulasPassadasProfessor";
 
 const router = Router();
 
@@ -25,6 +28,18 @@ router.put('/token', async (request, response) => {
 
 router.delete('/', async (request, response) => {
     return await deletarAulaController.handle(request, response);
+});
+
+router.get('/HistoricoAulasFuturas', async (request, response) => {
+    return await historicoAulasFuturasController.handle(request, response);
+});
+
+router.get('/HistoricoAulasPassadas', async (request, response) => {
+    return await historicoAulasPassadasAlunoController.handle(request, response);
+});
+
+router.get('/HistoricoAulasPassadas', async (request, response) => {
+    return await historicoAulasPassadasProfessorController.handle(request, response);
 });
 
 export { router as aula };
