@@ -34,11 +34,11 @@ router.get('/HistoricoAulasFuturas', async (request, response) => {
     return await historicoAulasFuturasController.handle(request, response);
 });
 
-router.get('/HistoricoAulasPassadas', async (request, response) => {
+router.get('/HistoricoAulasPassadasAluno', async (request, response) => {
     return await historicoAulasPassadasAlunoController.handle(request, response);
 });
 
-router.get('/HistoricoAulasPassadas', async (request, response) => {
+router.get('/HistoricoAulasPassadasProfessor', async (request, response) => {
     return await historicoAulasPassadasProfessorController.handle(request, response);
 });
 

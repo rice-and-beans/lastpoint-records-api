@@ -14,6 +14,7 @@ export class BuscarUsuarioPorEmailUseCase {
         const dadosValidacao = new Map<Object, string>([
             [data.email, "email"]
         ]);
+        console.log("email retornou????? "+data)
         await this.validaParamObrigatorio.valida(dadosValidacao);
         return await this.usuarioRepository.buscarPorEmail(data.email);
     }

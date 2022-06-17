@@ -28,7 +28,7 @@ router.get('/email', async (request, response) => {
     return await buscarUsuarioPorEmailController.handle(request, response);
 });
 
-router.get('/', async (request, response) => {
+router.get('/codigo', async (request, response) => {
     return await buscarUsuarioPorCodigoController.handle(request, response);
 });
 
