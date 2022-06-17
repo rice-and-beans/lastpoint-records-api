@@ -22,4 +22,8 @@ router.delete('/', async (request, response) => {
     return await deletarUsuarioController.handle(request, response);
 });
 
+router.get('/email', async (request, response) => {
+    return await deletarUsuarioController.handle(request, response);
+});
+
 export { router as usuario };
