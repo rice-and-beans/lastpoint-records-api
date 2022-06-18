@@ -55,7 +55,7 @@ export class UsuarioRepositoryImpl implements IUsuarioRepository {
     }
     
 
-   async atualizar(usuario:Usuario){  
+   async atualizar(usuario: Usuario){  
        const usuarioAtualizado = await prismaClient.usuario.update({
            where:{
                codigo: usuario.codigo,
@@ -71,7 +71,7 @@ export class UsuarioRepositoryImpl implements IUsuarioRepository {
        return usuarioAtualizado
    }
 
-   async deletar(codigo:string){
+   async deletar(codigo: string){
        const usuarioDeletado = await prismaClient.usuario.delete({
            where:{
                codigo: codigo,

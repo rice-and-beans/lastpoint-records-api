@@ -1,6 +1,5 @@
 import { prismaClient } from "../database/prismaClient";
 import { ICursoRepository } from "../../domain/repositories/cursoRepository";
-import {IPesquisarCursoRequestDTO} from "../../domain/model/cursoDTO"
 import { Curso } from "../entities/curso";
 
 export class CursoRepositoryImpl implements ICursoRepository {
@@ -16,7 +15,7 @@ export class CursoRepositoryImpl implements ICursoRepository {
         return cursoSalvo
     }
 
-    async atualizar(curso:Curso){  
+    async atualizar(curso: Curso){  
         const cursoAtualizado = await prismaClient.curso.update({
             where:{
                 codigo: curso.codigo,
@@ -30,7 +29,7 @@ export class CursoRepositoryImpl implements ICursoRepository {
         return cursoAtualizado
     }
  
-    async deletar(codigo:string){
+    async deletar(codigo: string){
         const cursoDeletado = await prismaClient.curso.delete({
             where:{
                 codigo: codigo,

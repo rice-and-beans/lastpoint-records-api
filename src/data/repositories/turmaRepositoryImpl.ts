@@ -15,7 +15,7 @@ export class TurmaRepositoryImpl implements ITurmaRepository {
         return turmaSalva
     }
 
-    async atualizar(turma:Turma){  
+    async atualizar(turma: Turma){  
         const turmaAtualizado = await prismaClient.turma.update({
             where:{
                 codigo: turma.codigo,
@@ -29,7 +29,7 @@ export class TurmaRepositoryImpl implements ITurmaRepository {
         return turmaAtualizado
     }
  
-    async deletar(codigo:string){
+    async deletar(codigo: string){
         const turmaDeletada = await prismaClient.turma.delete({
             where:{
                 codigo: codigo,

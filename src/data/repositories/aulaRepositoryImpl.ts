@@ -25,7 +25,7 @@ export class AulaRepositoryImpl implements IAulaRepository {
         return aulaSalvo
     }
 
-    async atualizar(aula:Aula){  
+    async atualizar(aula: Aula){  
         const dataHoraInicio = new Date(aula.dataHoraInicio);
         const dataHoraFim = new Date(aula.dataHoraFim);
         const aulaAtualizado = await prismaClient.aula.update({
@@ -44,7 +44,7 @@ export class AulaRepositoryImpl implements IAulaRepository {
         return aulaAtualizado
    }
 
-   async deletar(codigo:string){
+   async deletar(codigo: string){
         const aulaDeletado = await prismaClient.aula.delete({
             where:{
                 codigo: codigo,
@@ -192,7 +192,7 @@ export class AulaRepositoryImpl implements IAulaRepository {
         return aulasLista
     }
 
-   async adicionarToken(aula:Aula){ 
+   async adicionarToken(aula: Aula){ 
         const aulaAtualizado = await prismaClient.aula.update({
             where:{
                 codigo: aula.codigo,
@@ -204,7 +204,7 @@ export class AulaRepositoryImpl implements IAulaRepository {
         return aulaAtualizado
     }
 
-    async recuperaAulaAtual(codigo:string){
+    async recuperaAulaAtual(codigo: string){
         const dataatual = new Date() 
         const naAulaAtual = await prismaClient.aula.findFirst({
             where:{

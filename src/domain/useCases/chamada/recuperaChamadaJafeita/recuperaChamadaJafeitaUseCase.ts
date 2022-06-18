@@ -10,10 +10,10 @@ export class RecuperaChamadaJafeitaUseCase {
     ){}
 
     async execute(data){
-        const codusuario = {"codigo": data.codusuario}
-        const codaula = {"codigo": data.codaula}
-        await this.ValidaUsuarioNaoEncontrado.valida(codusuario);
-        await this.ValidaAulaNaoEncontrado.valida(codaula);
+        const codUsuario = {"codigo": data.codusuario}
+        const codAula = {"codigo": data.codaula}
+        await this.ValidaUsuarioNaoEncontrado.valida(codUsuario);
+        await this.ValidaAulaNaoEncontrado.valida(codAula);
         return await this.chamadaRepository.recuperaChamadaJafeita(data);
     }
 

@@ -16,7 +16,7 @@ export class DisciplinaRepositoryImpl implements IDisciplinaRepository {
         return disciplinaSalva
     }
 
-    async atualizar(disciplina:Disciplina){  
+    async atualizar(disciplina: Disciplina){  
         const disciplinaAtualizada = await prismaClient.disciplina.update({
             where:{
                 codigo: disciplina.codigo,
@@ -30,7 +30,7 @@ export class DisciplinaRepositoryImpl implements IDisciplinaRepository {
         return disciplinaAtualizada
     }
  
-    async deletar(codigo:string){
+    async deletar(codigo: string){
         const disciplinaDeletada = await prismaClient.disciplina.delete({
             where:{
                 codigo: codigo,

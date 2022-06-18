@@ -11,12 +11,12 @@ export class RecuperaChamadaJafeitaController extends BaseController {
     }
 
     async execute(request: Request, response: Response): Promise<Response>{
-        const {codusuario, codaula} = request.body;
-        const listaChamada = await this.recuperaChamadaJafeitaUseCase.execute({
-            codusuario,
-            codaula
+        const {codUsuario, codAula} = request.body;
+        const chamada = await this.recuperaChamadaJafeitaUseCase.execute({
+            codUsuario,
+            codAula
         });
-        return response.status(200).send(listaChamada);
+        return response.status(200).send(chamada);
     }
 
 }
