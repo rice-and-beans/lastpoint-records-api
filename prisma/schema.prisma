@@ -43,13 +43,13 @@ model Aula {
   descricao   String?
   token String? 
   chamada Chamada[]
-  usuario Usuario   @relation(fields: [usuarioCodigo], references: [codigo])
+  usuario Usuario   @relation(fields: [usuarioCodigo], references: [codigo], onDelete: Cascade)
   usuarioCodigo String 
   turma Turma   @relation(fields: [turmaCodigo], references: [codigo], onDelete: Cascade)
   turmaCodigo String 
-  curso Curso   @relation(fields: [cursoCodigo], references: [codigo])
+  curso Curso   @relation(fields: [cursoCodigo], references: [codigo], onDelete: Cascade)
   cursoCodigo String 
-  disciplina Disciplina   @relation(fields: [disciplinaCodigo], references: [codigo])
+  disciplina Disciplina   @relation(fields: [disciplinaCodigo], references: [codigo], onDelete: Cascade)
   disciplinaCodigo String 
 }
 
@@ -65,8 +65,8 @@ model Chamada {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   codigo String @unique
   justificativa String?
-  usuario Usuario   @relation(fields: [usuarioCodigo], references: [codigo])
+  usuario Usuario   @relation(fields: [usuarioCodigo], references: [codigo], onDelete: Cascade)
   usuarioCodigo String 
-  aula Aula   @relation(fields: [aulaCodigo], references: [codigo])
+  aula Aula   @relation(fields: [aulaCodigo], references: [codigo], onDelete: Cascade)
   aulaCodigo String 
 }

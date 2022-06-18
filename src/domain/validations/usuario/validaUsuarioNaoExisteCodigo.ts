@@ -3,7 +3,7 @@ import { IUsuarioRepository } from "../../repositories/usuarioRepository";
 import { ICriarUsuarioRequestDTO } from "../../model/usuarioDTO";
 import { ValidacaoBase } from "../ValidacaoBase";
 
-export class validaUsuarioExisteCodigo extends ValidacaoBase {
+export class ValidaUsuarioNaoExisteCodigo extends ValidacaoBase {
 
     constructor(
         private usuarioRepository: IUsuarioRepository,
@@ -16,7 +16,7 @@ export class validaUsuarioExisteCodigo extends ValidacaoBase {
         const dadosValidUsuario = dadosValidacao as ICriarUsuarioRequestDTO;
         const usuarioRecuperado = await this.usuarioRepository.buscarPorCodigo(dadosValidUsuario.codigo);
         if(!usuarioRecuperado){
-            throw new RegistroExistenteException('Usuario já existe');
+            throw new RegistroExistenteException('Usuario não existe');
         }
     }
     

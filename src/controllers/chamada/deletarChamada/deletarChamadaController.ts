@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../baseController";
 import { DeletarChamadaUseCase } from "../../../domain/useCases/chamada/deletarChamada/deletarChamadaUseCase";
+import { BaseControllerAuth } from "../../baseControllerAuth";
 
-export class DeletarChamadaController extends BaseController {
+export class DeletarChamadaController extends BaseControllerAuth {
 
     constructor(
         private deletarChamadaUseCase: DeletarChamadaUseCase,

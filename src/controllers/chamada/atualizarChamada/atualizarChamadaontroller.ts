@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../baseController";
 import { AtualizarChamadaUseCase } from "../../../domain/useCases/chamada/atualizarChamada/atualizarChamadaUseCase";
+import { BaseControllerAuth } from "../../baseControllerAuth";
 
-export class AtualizarChamadaController extends BaseController {
+export class AtualizarChamadaController extends BaseControllerAuth {
 
     constructor(
         private atualizarChamadaUseCase: AtualizarChamadaUseCase,
     ){
         super()
     }
-
+    
     async execute(request: Request, response: Response): Promise<Response>{
         const { codigo, justificativa, usuarioCodigo, aulaCodigo } = request.body;
         await this.atualizarChamadaUseCase.execute({

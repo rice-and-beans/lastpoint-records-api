@@ -12,8 +12,8 @@ export class BuscarChamadaPorCodigoController extends BaseController {
 
     async execute(request: Request, response: Response): Promise<Response>{
         const codigo = request.query.codigo as string;
-        const listaChamadas = await this.buscarChamadaPorCodigoUseCase.execute({codigo});
-        return response.status(200).send(listaChamadas);
+        const chamada = await this.buscarChamadaPorCodigoUseCase.execute({codigo});
+        return response.status(200).send(chamada);
     }
 
 }

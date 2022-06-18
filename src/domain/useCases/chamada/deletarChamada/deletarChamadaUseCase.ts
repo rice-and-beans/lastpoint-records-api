@@ -16,8 +16,7 @@ export class DeletarChamadaUseCase {
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
         await this.validaChamadaNaoEncontrado.valida(data);
-        const codigo = data.codigo;
-        await this.chamadaRepository.deletar(codigo);
+        await this.chamadaRepository.deletar(data.codigo);
     }
 
 }
