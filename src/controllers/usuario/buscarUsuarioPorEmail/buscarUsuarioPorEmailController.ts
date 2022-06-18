@@ -12,9 +12,8 @@ export class BuscarUsuarioPorEmailController extends BaseController {
 
     async execute(request: Request, response: Response): Promise<Response>{
         const email = request.query.email as string;
-        console.log("email retornou???"+email)
-        const listaUsuarios = await this.buscarUsuarioPorEmailUseCase.execute({email});
-        return response.status(200).send(listaUsuarios);
+        const usuario = await this.buscarUsuarioPorEmailUseCase.execute({email});
+        return response.status(200).send(usuario);
     }
 
 }

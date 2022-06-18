@@ -3,9 +3,7 @@ import { ValidaParamObrigatorios } from "../../../validations/validaParamObrigat
 import { BuscarUsuarioPorEmailUseCase } from "./buscarUsuarioPorEmailUseCase";
 
 const usuarioRepositoryImpl = new UsuarioRepositoryImpl();
-
-const validaParamObrigatorios = new ValidaParamObrigatorios(
-);
+const validaParamObrigatorios = new ValidaParamObrigatorios();
 
 const buscarUsuarioPorEmail = new BuscarUsuarioPorEmailUseCase(
     usuarioRepositoryImpl,
