@@ -4,7 +4,8 @@ import { atualizarAulaController } from "../controllers/aula/atualizarAula";
 import { atualizarAulaTokenController } from "../controllers/aula/atualizarAulaToken";
 import { deletarAulaController } from "../controllers/aula/deletarAula";
 import { pesquisarAulaController } from "../controllers/aula/PesquisarAula";
-import { historicoAulasFuturasController } from "../controllers/aula/historicoAulasFuturas";
+import { historicoAulasFuturasProfessorController } from "../controllers/aula/historicoAulasFuturasProfessor";
+import { historicoAulasFuturasAlunoController } from "../controllers/aula/historicoAulasFuturasAluno";
 import { historicoAulasPassadasAlunoController } from "../controllers/aula/historicoAulasPassadasAluno";
 import { historicoAulasPassadasProfessorController } from "../controllers/aula/historicoAulasPassadasProfessor";
 import { buscarAulaPorCodigoController } from "../controllers/aula/buscarAulaPorCodigo";
@@ -32,8 +33,12 @@ router.delete('/', async (request, response) => {
     return await deletarAulaController.handle(request, response);
 });
 
-router.get('/HistoricoAulasFuturas', async (request, response) => {
-    return await historicoAulasFuturasController.handle(request, response);
+router.get('/HistoricoAulasFuturasProfessor', async (request, response) => {
+    return await historicoAulasFuturasProfessorController.handle(request, response);
+});
+
+router.get('/HistoricoAulasFuturasAluno', async (request, response) => {
+    return await historicoAulasFuturasAlunoController.handle(request, response);
 });
 
 router.get('/HistoricoAulasPassadasAluno', async (request, response) => {

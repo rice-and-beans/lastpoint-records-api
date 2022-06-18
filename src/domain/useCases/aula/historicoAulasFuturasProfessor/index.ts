@@ -1,6 +1,6 @@
 import { AulaRepositoryImpl } from "../../../../data/repositories/aulaRepositoryImpl";
 import { UsuarioRepositoryImpl } from "../../../../data/repositories/usuarioRepositoryImpl";
-import { HistoricoAulasFuturasUseCase } from "./historicoAulaFuturaUseCase";
+import { HistoricoAulasFuturasProfessorUseCase } from "./historicoAulasFuturasProfessorUseCase";
 import { ValidaUsuarioNaoEncontrado } from "../../../validations/usuario/validaUsuarioNaoEncontrado";
 
 const aulaRepositoryImpl = new AulaRepositoryImpl();
@@ -11,9 +11,9 @@ const validaUsuarioNaoEncontrado = new ValidaUsuarioNaoEncontrado(
     usuarioRepositoryImpl
 );
 
-const historicoAulasFuturasUseCase = new HistoricoAulasFuturasUseCase(
+const historicoAulasFuturasProfessorUseCase = new HistoricoAulasFuturasProfessorUseCase(
     aulaRepositoryImpl,
     validaUsuarioNaoEncontrado
 );
 
-export { historicoAulasFuturasUseCase }
+export { historicoAulasFuturasProfessorUseCase }

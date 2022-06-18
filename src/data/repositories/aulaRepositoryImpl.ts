@@ -3,6 +3,7 @@ import { IAulaRepository } from "../../domain/repositories/aulaRepository";
 import { Aula } from "../entities/aula";
 import { aulaConstants } from "../../constants/aulaConstants";
 import { usuario } from "../../routes/usuarioRoutes";
+import { IPesquisarAulaRequestDTO } from "../../domain/model/aulaDTO";
 
 export class AulaRepositoryImpl implements IAulaRepository {
     
@@ -62,14 +63,14 @@ export class AulaRepositoryImpl implements IAulaRepository {
         return aula != null ? new Aula(aula) : aula;
     }
 
-    async pesquisar(data?){
+    async pesquisar(data: IPesquisarAulaRequestDTO){
         var datainicio = null
         var datafim = null
         if(data.dataHoraInicio){
             datainicio = new Date(data.dataHoraInicio);
         }
-        if(data.datahorafim){
-            datafim = new Date(data.datahorafim);
+        if(data.dataHoraFim){
+            datafim = new Date(data.dataHoraFim);
         }
         const aulasLista = await prismaClient.aula.findMany({
             where: {
@@ -101,7 +102,7 @@ export class AulaRepositoryImpl implements IAulaRepository {
         return aulasLista
     }
 
-    async historicoAulasFuturas(codigo: string){
+    async historicoAulasFuturasProfessor(codigo: string){
         var dataAtual = new Date();
         var dataFim = new Date(Date.now()+aulaConstants.TEMPO_HISTORICO);
         const aulasLista = await prismaClient.aula.findMany({
@@ -115,6 +116,31 @@ export class AulaRepositoryImpl implements IAulaRepository {
             select:{
                 codigo: true,
                 nome: true
+            }
+        })
+        return aulasLista
+    }
+
+    async historicoAulasFuturasAluno(codigo: string){
+        var dataAtual = new Date();
+        var dataFim = new Date(Date.now()+aulaConstants.TEMPO_HISTORICO);
+        const aulasLista = await prismaClient.chamada.findMany({
+            where: {
+                aula:{
+                    AND:[
+                        {dataHoraInicio:{gte: dataAtual}},
+                        {dataHoraFim: {lte: dataFim}}
+                    ] 
+                },
+                usuarioCodigo: codigo
+            },
+            select:{
+                aula:{
+                    select:{
+                        codigo: true,
+                        nome: true
+                    }
+                }
             }
         })
         return aulasLista

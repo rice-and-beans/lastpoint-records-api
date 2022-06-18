@@ -5,11 +5,16 @@ export class RecuperaAulaAtualUseCase{
 
     constructor(
         private aulaRepository: IAulaRepository,
-        private ValidaUsuarioNaoEncontrado: ValidacaoBase
+        private ValidaUsuarioNaoEncontrado: ValidacaoBase,
+        private validaParamsObrigatorios: ValidacaoBase
     ){}
 
     async execute(codigo: string){
+        const dadosValidacao = new Map<Object, string>([
+            [codigo, "codigo"]
+        ]);
         const data = {"codigo": codigo}
+        await this.validaParamsObrigatorios.valida(dadosValidacao);
         await this.ValidaUsuarioNaoEncontrado.valida(data);
         return await this.aulaRepository.recuperaAulaAtual(codigo);
     }

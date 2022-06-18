@@ -4,7 +4,8 @@ import { IPesquisarAulaRequestDTO } from "../model/aulaDTO";
 export interface IAulaRepository {
     buscarPorCodigo(codigo: string): Promise<Aula>;
     pesquisar(data: IPesquisarAulaRequestDTO);
-    historicoAulasFuturas(codigo: string);
+    historicoAulasFuturasProfessor(codigo: string);
+    historicoAulasFuturasAluno(codigo: string);
     historicoAulasPassadasProfessor(codigo: string);
     historicoAulasPassadasAluno(codigo: string);
     recuperaAulaAtual(codigo: string);

@@ -1,7 +1,7 @@
 import { IAulaRepository } from "../../../repositories/aulaRepository";
 import { ValidacaoBase } from "../../../validations/ValidacaoBase";
 
-export class HistoricoAulasFuturasUseCase{
+export class HistoricoAulasFuturasAlunoUseCase{
 
     constructor(
         private aulaRepository: IAulaRepository,
@@ -11,7 +11,7 @@ export class HistoricoAulasFuturasUseCase{
     async execute(codigo: string){
         const data = {"codigo": codigo}
         await this.ValidaUsuarioNaoEncontrado.valida(data);
-        return await this.aulaRepository.historicoAulasFuturas(codigo);
+        return await this.aulaRepository.historicoAulasFuturasAluno(codigo);
     }
 
 }
