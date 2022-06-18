@@ -45,20 +45,20 @@ export class AulaRepositoryImpl implements IAulaRepository {
             where: {
                 AND:[
                     {
-                        OR:[
-                            {datahorainicio: datainicio != null ? {gte: datainicio} : undefined}
-                        ]
+                        
+                        datahorainicio: datainicio != null ? {gte: datainicio} : undefined
+                        
+                    },
+                    {
+                        
+                        datahorafim: datafim != null ? {lte: datafim} : undefined
+                        
                     },
                     {
                         OR:[
-                            {datahorafim: datafim != null ? {gte: datafim} : undefined}
-                        ]
-                    },
-                    {
-                        OR:[
-                            {nome: data.campo != null ? {contains: data.campo} : undefined},
-                            {codigo: data.campo != null ? {contains: data.campo} : undefined},
-                            {descricao: data.campo != null ? {contains: data.campo} : undefined}
+                            {nome: data.campo ? {contains: data.campo} : undefined},
+                            {codigo: data.campo ? {contains: data.campo} : undefined},
+                            {descricao: data.campo ? {contains: data.campo} : undefined}
                         ]
                     }
                 ],

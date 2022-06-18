@@ -34,26 +34,41 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
         if(data.datahorafim){
             datafim = new Date(data.datahorafim);
         }
-        const aulasLista = await prismaClient.chamada.findMany({
-            
+        const chamadaLista = await prismaClient.chamada.findMany({
+            where: {
+                
+                usuario:{
+                    OR:[
+                        {nome: data.campo ? {contains: data.campo} : {contains:""}},
+                        {codigo: data.campo ? {contains: data.campo} : {contains:""}}
+                    ]
+                },
+                aula:{
+                    AND:[
+                        {datahorainicio: datainicio ? {gte: datainicio} : undefined},
+                        {datahorafim: datafim ? {lte: datafim} : undefined}
+                    ]
+                }
+            },
             select: {
                 codigo: true,
-                usuarioCodigo: true,
                 usuario: {
-                    select:{
-                        nome:true
+                    select: {
+                        codigo:true,
+                        nome: true,
                     }
                 },
-                aulaCodigo:true,
-                aula: {
+                aula:{
                     select:{
-                        datahorainicio:true
+                        nome:true,
+                        datahorainicio: true,
+                        datahorafim: true
                     }
-                },
-                justificativa: true
-            }
+                }
+
+        }
         })
-        return aulasLista
+        return chamadaLista
     }
 
    async atualizar(chamada:Chamada){  

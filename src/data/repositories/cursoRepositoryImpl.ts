@@ -29,9 +29,9 @@ export class CursoRepositoryImpl implements ICursoRepository {
                 AND:[
                     {
                         OR:[
-                            {nome: campo != null ? {contains: campo} : undefined},
-                            {codigo: campo != null ? {contains: campo} : undefined},
-                            {descricao: campo != null ? {contains: campo} : undefined}
+                            {nome: campo ? {contains: campo} : undefined},
+                            {codigo: campo ? {contains: campo} : undefined},
+                            {descricao: campo ? {contains: campo} : undefined}
                         ]
                     }
                 ],
