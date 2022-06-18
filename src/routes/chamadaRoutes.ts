@@ -4,7 +4,7 @@ import { atualizarChamadaController } from "../controllers/chamada/atualizarCham
 import { deletarChamadaController } from "../controllers/chamada/deletarChamada";
 import { pesquisarChamadaController } from "../controllers/chamada/PesquisarChamada";
 import { buscarChamadaPorCodigoController } from "../controllers/chamada/buscarChamadaPorCodigo";
-import { jaFeitaChamadaController } from "../controllers/chamada/jaFeitaChamada";
+import { recuperaChamadaJafeitaController } from "../controllers/chamada/recuperaChamadaJafeita";
 
 const router = Router();
 
@@ -28,8 +28,8 @@ router.get('/codigo', async (request, response) => {
     return await buscarChamadaPorCodigoController.handle(request, response);
 });
 
-router.get('/codigo', async (request, response) => {
-    return await jaFeitaChamadaController.handle(request, response);
+router.get('/recuperaChamadaJaFeita', async (request, response) => {
+    return await recuperaChamadaJafeitaController.handle(request, response);
 });
 
 export { router as chamada };

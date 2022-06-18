@@ -8,7 +8,7 @@ import { historicoAulasFuturasController } from "../controllers/aula/historicoAu
 import { historicoAulasPassadasAlunoController } from "../controllers/aula/historicoAulasPassadasAluno";
 import { historicoAulasPassadasProfessorController } from "../controllers/aula/historicoAulasPassadasProfessor";
 import { buscarAulaPorCodigoController } from "../controllers/aula/buscarAulaPorCodigo";
-import { naAulaAtualController } from "../controllers/aula/naAulaAtual";
+import { recuperaAulaAtualController } from "../controllers/aula/recuperaAulaAtual";
 
 const router = Router();
 
@@ -48,8 +48,8 @@ router.get('/codigo', async (request, response) => {
     return await buscarAulaPorCodigoController.handle(request, response);
 });
 
-router.get('/naAulaAtual', async (request, response) => {
-    return await naAulaAtualController.handle(request, response);
+router.get('/recuperaAulaAtual', async (request, response) => {
+    return await recuperaAulaAtualController.handle(request, response);
 });
 
 export { router as aula };

@@ -1,5 +1,5 @@
 import { ChamadaRepositoryImpl } from "../../../../data/repositories/chamadaRepositoryImpl";
-import { JaFeitaChamadaUseCase } from "./jaFeitaChamadaUseCase";
+import { RecuperaChamadaJafeitaUseCase } from "./recuperaChamadaJafeitaUseCase";
 import { UsuarioRepositoryImpl } from "../../../../data/repositories/usuarioRepositoryImpl";
 import { AulaRepositoryImpl } from "../../../../data/repositories/aulaRepositoryImpl";
 import { ValidaUsuarioNaoEncontrado } from "../../../validations/usuario/validaUsuarioNaoEncontrado";
@@ -19,11 +19,11 @@ const validaAulaNaoEncontrado = new ValidaAulaNaoEncontrado(
     aulaRepositoryImpl
 );
 
-const jaFeitaChamadaUseCase = new JaFeitaChamadaUseCase(
+const recuperaChamadaJafeitaUseCase = new RecuperaChamadaJafeitaUseCase(
     chamadaRepositoryImpl,
     validaAulaNaoEncontrado,
     validaUsuarioNaoEncontrado
     
 );
 
-export { jaFeitaChamadaUseCase }
+export { recuperaChamadaJafeitaUseCase }

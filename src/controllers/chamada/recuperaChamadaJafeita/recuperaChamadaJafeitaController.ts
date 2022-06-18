@@ -1,18 +1,18 @@
 import { Request, Response } from "express";
 import { BaseController } from "../../baseController";
-import { JaFeitaChamadaUseCase } from "../../../domain/useCases/chamada/jaFeitaChamada/jaFeitaChamadaUseCase";
+import { RecuperaChamadaJafeitaUseCase } from "../../../domain/useCases/chamada/recuperaChamadaJafeita/recuperaChamadaJafeitaUseCase";
 
-export class JaFeitaChamadaController extends BaseController {
+export class RecuperaChamadaJafeitaController extends BaseController {
 
     constructor(
-        private jaFeitaChamadaUseCase: JaFeitaChamadaUseCase,
+        private recuperaChamadaJafeitaUseCase: RecuperaChamadaJafeitaUseCase,
     ){
         super()
     }
 
     async execute(request: Request, response: Response): Promise<Response>{
         const {codusuario, codaula} = request.body;
-        const listaChamada = await this.jaFeitaChamadaUseCase.execute({
+        const listaChamada = await this.recuperaChamadaJafeitaUseCase.execute({
             codusuario,
             codaula
         });

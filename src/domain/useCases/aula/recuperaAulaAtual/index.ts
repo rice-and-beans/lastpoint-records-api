@@ -1,6 +1,6 @@
 import { AulaRepositoryImpl } from "../../../../data/repositories/aulaRepositoryImpl";
 import { UsuarioRepositoryImpl } from "../../../../data/repositories/usuarioRepositoryImpl";
-import { NaAulaAtualUseCase } from "./naAulaAtualUseCase";
+import { RecuperaAulaAtualUseCase } from "./recuperaAulaAtualUseCase";
 import { ValidaUsuarioNaoEncontrado } from "../../../validations/usuario/validaUsuarioNaoEncontrado";
 
 const aulaRepositoryImpl = new AulaRepositoryImpl();
@@ -11,9 +11,9 @@ const validaUsuarioNaoEncontrado = new ValidaUsuarioNaoEncontrado(
     usuarioRepositoryImpl
 );
 
-const naAulaAtualUseCase = new NaAulaAtualUseCase(
+const recuperaAulaAtualUseCase = new RecuperaAulaAtualUseCase(
     aulaRepositoryImpl,
     validaUsuarioNaoEncontrado
 );
 
-export { naAulaAtualUseCase }
+export { recuperaAulaAtualUseCase }

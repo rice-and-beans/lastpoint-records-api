@@ -1,7 +1,7 @@
 import { IChamadaRepository } from "../../../repositories/chamadaRepository";
 import { ValidacaoBase } from "../../../validations/ValidacaoBase";
 
-export class JaFeitaChamadaUseCase {
+export class RecuperaChamadaJafeitaUseCase {
 
     constructor(
         private chamadaRepository: IChamadaRepository,
@@ -14,7 +14,7 @@ export class JaFeitaChamadaUseCase {
         const codaula = {"codigo": data.codaula}
         await this.ValidaUsuarioNaoEncontrado.valida(codusuario);
         await this.ValidaAulaNaoEncontrado.valida(codaula);
-        return await this.chamadaRepository.jaFeitaChamada(data);
+        return await this.chamadaRepository.recuperaChamadaJafeita(data);
     }
 
 }

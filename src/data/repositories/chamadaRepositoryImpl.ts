@@ -103,8 +103,8 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
         return chamadaLista
     }
    
-    async jaFeitaChamada(data){ 
-        const jaFeitaChamada = await prismaClient.chamada.findFirst({
+    async recuperaChamadaJafeita(data){ 
+        const chamada = await prismaClient.chamada.findFirst({
             where:{
                 AND:[
                     {usuarioCodigo: data.codusuario},
@@ -115,7 +115,7 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
                 codigo: true
             }
         })
-        return jaFeitaChamada
+        return chamada
     }
 
 }
