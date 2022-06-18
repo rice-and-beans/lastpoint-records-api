@@ -2,8 +2,9 @@ import { Router } from "express";
 import { criarChamadaController } from "../controllers/chamada/criarChamada";
 import { atualizarChamadaController } from "../controllers/chamada/atualizarChamada";
 import { deletarChamadaController } from "../controllers/chamada/deletarChamada";
-import { pesquisarChamadaController } from "../controllers/chamada/pesquisarChamada";
+import { pesquisarChamadaController } from "../controllers/chamada/PesquisarChamada";
 import { buscarChamadaPorCodigoController } from "../controllers/chamada/buscarChamadaPorCodigo";
+import { jaFeitaChamadaController } from "../controllers/chamada/jaFeitaChamada";
 
 const router = Router();
 
@@ -25,6 +26,10 @@ router.delete('/', async (request, response) => {
 
 router.get('/codigo', async (request, response) => {
     return await buscarChamadaPorCodigoController.handle(request, response);
+});
+
+router.get('/codigo', async (request, response) => {
+    return await jaFeitaChamadaController.handle(request, response);
 });
 
 export { router as chamada };

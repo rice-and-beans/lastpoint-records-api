@@ -7,6 +7,7 @@ export interface IAulaRepository {
     historicoAulasFuturas(codigo: string);
     historicoAulasPassadasProfessor(codigo: string);
     historicoAulasPassadasAluno(codigo: string);
+    naAulaAtual(codigo: string);
     salvar(Curso: Aula);
     atualizar(codigo: Aula);
     adicionarToken(aula: Object);

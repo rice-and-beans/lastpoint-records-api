@@ -203,5 +203,22 @@ export class AulaRepositoryImpl implements IAulaRepository {
         })
         return aulaAtualizado
     }
+
+    async naAulaAtual(codigo:string){
+        const dataatual = new Date() 
+        const naAulaAtual = await prismaClient.aula.findFirst({
+            where:{
+                AND:[
+                    {datahorainicio: {gt: dataatual}},
+                    {datahorafim: {lt: dataatual}},
+                    {usuarioCodigo: codigo}
+                ]
+            },
+            select:{
+                codigo: true
+            }
+        })
+        return naAulaAtual
+    }
        
 }

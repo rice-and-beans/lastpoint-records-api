@@ -25,3 +25,8 @@ export interface IPesquisarChamadaRequestDTO {
 export interface IPesquisarChamadaPorCodigoRequestDTO {
     codigo: string;
 }
+
+export interface IJaFeitaChamadaRequestDTO {
+    codigoaula: string;
+    codigousuario: string;
+}

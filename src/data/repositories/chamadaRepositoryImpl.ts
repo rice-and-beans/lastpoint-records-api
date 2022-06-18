@@ -102,5 +102,20 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
         })
         return chamadaLista
     }
-    
+   
+    async jaFeitaChamada(data){ 
+        const jaFeitaChamada = await prismaClient.chamada.findFirst({
+            where:{
+                AND:[
+                    {usuarioCodigo: data.codusuario},
+                    {aulaCodigo: data.codaula}
+                ]
+            },
+            select:{
+                codigo: true
+            }
+        })
+        return jaFeitaChamada
+    }
+
 }

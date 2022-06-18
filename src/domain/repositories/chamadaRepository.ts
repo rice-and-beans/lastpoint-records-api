@@ -5,6 +5,7 @@ export interface IChamadaRepository {
     buscarPorCodigo(codigo: string): Promise<Chamada>;
     pesquisar(data: IPesquisarChamadaRequestDTO);
     salvar(chamada: Chamada);
+    jaFeitaChamada(data)
     atualizar(codigo: Chamada);
     deletar(codigo:string)
 }
