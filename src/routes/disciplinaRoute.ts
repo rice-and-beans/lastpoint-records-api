@@ -2,7 +2,7 @@ import { Router } from "express";
 import { criarDisciplinaController } from "../controllers/disciplina/criarDisciplina";
 import { atualizarDisciplinaController } from "../controllers/disciplina/atualizarDisciplina";
 import { deletarDisciplinaController } from "../controllers/disciplina/deletarDisciplina";
-import { pesquisarDisciplinaController } from "../controllers/disciplina/PesquisarDisciplina";
+import { pesquisarDisciplinaController } from "../controllers/disciplina/pesquisarDisciplina";
 import { buscarDisciplinaPorCodigoController } from "../controllers/disciplina/buscarDisciplinaPorCodigo";
 
 const router = Router();

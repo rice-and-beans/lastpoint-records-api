@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../baseController";
 import { DeletarDisciplinaUseCase } from "../../../domain/useCases/disciplina/deletarDisciplina/deletarDisciplinaUseCase";
+import { BaseControllerAuth } from "../../baseControllerAuth";
 
-export class DeletarDisciplinaController extends BaseController {
+export class DeletarDisciplinaController extends BaseControllerAuth {
 
     constructor(
         private deletarDisciplinaUseCase: DeletarDisciplinaUseCase,

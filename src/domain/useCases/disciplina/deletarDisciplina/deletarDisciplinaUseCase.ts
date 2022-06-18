@@ -16,8 +16,7 @@ export class DeletarDisciplinaUseCase {
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
         await this.validaDisciplinaNaoEncontrado.valida(data);
-        const codigo = data.codigo;
-        await this.disciplinaRepository.deletar(codigo);
+        await this.disciplinaRepository.deletar(data.codigo);
     }
 
 }

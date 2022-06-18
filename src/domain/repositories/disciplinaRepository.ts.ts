@@ -2,9 +2,9 @@ import { Disciplina } from "../../data/entities/disciplina";
 import { IPesquisarDisciplinaRequestDTO } from "../model/disciplinaDTO";
 
 export interface IDisciplinaRepository {
-    buscarPorCodigo(email: string): Promise<Disciplina>;
+    buscarPorCodigo(codigo: string): Promise<Disciplina>;
     pesquisar(campo: string);
-    salvar(Disciplina: Disciplina);
+    salvar(disciplina: Disciplina);
     atualizar(codigo: Disciplina);
     deletar(codigo:string)
 }

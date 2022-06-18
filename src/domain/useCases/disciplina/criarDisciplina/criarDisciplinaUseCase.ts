@@ -9,7 +9,7 @@ export class CriarDisciplinaUseCase {
     constructor(
         private disciplinaRepository: IDisciplinaRepository,
         private validaParamObrigatorio: ValidacaoBase,
-        private validaUsuarioExiste: ValidacaoBase
+        private validaDisciplinaExiste: ValidacaoBase
     ){}
 
     async execute(data: ICriarDisciplinaRequestDTO){
@@ -18,6 +18,7 @@ export class CriarDisciplinaUseCase {
             [data.nome, "nome"]
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
+        await this.validaDisciplinaExiste.valida(data);
         const disciplina = new Disciplina(data);
         await this.disciplinaRepository.salvar(disciplina);
     }

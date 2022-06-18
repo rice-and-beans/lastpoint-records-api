@@ -5,7 +5,7 @@ import { ValidaParamObrigatorios } from "../../../validations/validaParamObrigat
 
 const disciplinaRepositoryImpl = new DisciplinaRepositoryImpl();
 
-const validaTurmaExiste = new ValidaDisciplinaExiste(
+const validaDisciplinaExiste = new ValidaDisciplinaExiste(
     disciplinaRepositoryImpl
 );
 
@@ -16,7 +16,7 @@ const validaParamObrigatorios = new ValidaParamObrigatorios(
 const criarDisciplinaUseCase = new CriarDisciplinaUseCase(
     disciplinaRepositoryImpl,
     validaParamObrigatorios,
-    validaTurmaExiste
+    validaDisciplinaExiste
 );
 
 export { criarDisciplinaUseCase }
