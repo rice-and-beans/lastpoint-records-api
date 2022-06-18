@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../baseController";
 import { CriarTurmaUseCase } from "../../../domain/useCases/turma/criarTurma/criarTurmaUseCase";
+import { BaseControllerAuth } from "../../baseControllerAuth";
 
-export class CriarTurmaController extends BaseController {
+export class CriarTurmaController extends BaseControllerAuth {
 
     constructor(
         private criarTurmaUseCase: CriarTurmaUseCase,

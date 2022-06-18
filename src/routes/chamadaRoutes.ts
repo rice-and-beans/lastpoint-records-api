@@ -2,7 +2,7 @@ import { Router } from "express";
 import { criarChamadaController } from "../controllers/chamada/criarChamada";
 import { atualizarChamadaController } from "../controllers/chamada/atualizarChamada";
 import { deletarChamadaController } from "../controllers/chamada/deletarChamada";
-import { pesquisarChamadaController } from "../controllers/chamada/PesquisarChamada";
+import { pesquisarChamadaController } from "../controllers/chamada/pesquisarChamada";
 import { buscarChamadaPorCodigoController } from "../controllers/chamada/buscarChamadaPorCodigo";
 
 const router = Router();

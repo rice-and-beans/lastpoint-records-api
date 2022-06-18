@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../baseController";
 import { DeletarTurmaUseCase } from "../../../domain/useCases/turma/deletarTurma/deletarTurmaUseCase";
+import { BaseControllerAuth } from "../../baseControllerAuth";
 
-export class DeletarTurmaController extends BaseController {
+export class DeletarTurmaController extends BaseControllerAuth {
 
     constructor(
         private deletarTurmaUseCase: DeletarTurmaUseCase,

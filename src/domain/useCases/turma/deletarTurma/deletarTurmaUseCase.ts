@@ -16,8 +16,7 @@ export class DeletarTurmaUseCase {
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
         await this.validaTurmaNaoEncontrado.valida(data);
-        const codigo = data.codigo;
-        await this.turmaRepository.deletar(codigo);
+        await this.turmaRepository.deletar(data.codigo);
     }
 
 }

@@ -2,7 +2,7 @@ import { Router } from "express";
 import { criarCursoController } from "../controllers/curso/criarCurso";
 import { atualizarCursoController } from "../controllers/curso/atualizarCurso";
 import { deletarCursoController } from "../controllers/curso/deletarCurso";
-import { pesquisarCursoController } from "../controllers/curso/PesquisarCurso";
+import { pesquisarCursoController } from "../controllers/curso/pesquisarCurso";
 import { buscarCursoPorCodigoController } from "../controllers/curso/buscarCursoPorCodigo";
 
 const router = Router();

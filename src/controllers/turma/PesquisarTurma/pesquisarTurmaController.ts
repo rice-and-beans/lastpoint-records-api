@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../baseController";
 import { PesquisarTurmaUseCase } from "../../../domain/useCases/turma/pesquisarTurma/pesquisarTurmaUseCase";
+import { BaseControllerAuth } from "../../baseControllerAuth";
 
-export class PesquisarTurmaController extends BaseController {
+export class PesquisarTurmaController extends BaseControllerAuth {
 
     constructor(
         private pesquisarTurmaUseCase: PesquisarTurmaUseCase,

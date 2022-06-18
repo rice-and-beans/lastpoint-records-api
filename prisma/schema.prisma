@@ -45,7 +45,7 @@ model Aula {
   chamada Chamada[]
   usuario Usuario   @relation(fields: [usuarioCodigo], references: [codigo])
   usuarioCodigo String 
-  turma Turma   @relation(fields: [turmaCodigo], references: [codigo])
+  turma Turma   @relation(fields: [turmaCodigo], references: [codigo], onDelete: Cascade)
   turmaCodigo String 
   curso Curso   @relation(fields: [cursoCodigo], references: [codigo])
   cursoCodigo String 

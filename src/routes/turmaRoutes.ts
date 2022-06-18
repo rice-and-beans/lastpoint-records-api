@@ -2,7 +2,7 @@ import { Router } from "express";
 import { criarTurmaController } from "../controllers/turma/criarTurma";
 import { atualizarTurmaController } from "../controllers/turma/atualizarTurma";
 import { deletarTurmaController } from "../controllers/turma/deletarTurma";
-import { pesquisarTurmaController } from "../controllers/turma/PesquisarTurma";
+import { pesquisarTurmaController } from "../controllers/turma/pesquisarTurma";
 import { buscarTurmaPorCodigoController } from "../controllers/turma/buscarTurmaPorCodigo";
 
 const router = Router();

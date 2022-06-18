@@ -17,6 +17,7 @@ export class CriarTurmaUseCase {
             [data.nome, "nome"]
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
+        await this.validaTurmaExiste.valida(data);
         const turma = new Turma(data);
         await this.turmaRepository.salvar(turma);
     }

@@ -2,7 +2,7 @@ import { Router } from "express";
 import { criarUsuarioController } from "../controllers/usuario/criarUsuario";
 import { atualizarUsuarioController } from "../controllers/usuario/atualizarUsuario";
 import { deletarUsuarioController } from "../controllers/usuario/deletarUsuario";
-import { pesquisarUsuarioController } from "../controllers/usuario/PesquisarUsuario";
+import { pesquisarUsuarioController } from "../controllers/usuario/pesquisarUsuario";
 import { buscarUsuarioPorEmailController } from "../controllers/usuario/buscarUsuarioPorEmail";
 import { buscarUsuarioPorCodigoController } from "../controllers/usuario/buscarUsuarioPorCodigo";
 

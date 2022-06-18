@@ -1,9 +1,9 @@
 import { Turma } from "../../data/entities/turma";
 
 export interface ITurmaRepository {
-    buscarPorCodigo(email: string): Promise<Turma>;
+    buscarPorCodigo(codigo: string): Promise<Turma>;
     pesquisar(campo: string);
-    salvar(Turma: Turma);
+    salvar(turma: Turma);
     atualizar(codigo: Turma);
     deletar(codigo:string)
 }

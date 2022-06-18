@@ -3,7 +3,7 @@ import { criarAulaController } from "../controllers/aula/criarAula";
 import { atualizarAulaController } from "../controllers/aula/atualizarAula";
 import { atualizarAulaTokenController } from "../controllers/aula/atualizarAulaToken";
 import { deletarAulaController } from "../controllers/aula/deletarAula";
-import { pesquisarAulaController } from "../controllers/aula/PesquisarAula";
+import { pesquisarAulaController } from "../controllers/aula/pesquisarAula";
 import { historicoAulasFuturasController } from "../controllers/aula/historicoAulasFuturas";
 import { historicoAulasPassadasAlunoController } from "../controllers/aula/historicoAulasPassadasAluno";
 import { historicoAulasPassadasProfessorController } from "../controllers/aula/historicoAulasPassadasProfessor";
