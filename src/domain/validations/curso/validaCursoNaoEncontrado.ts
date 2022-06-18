@@ -13,7 +13,7 @@ export class ValidaCursoNaoEncontrado extends ValidacaoBase {
     }
 
     public async verifica(dadosValidacao: Object){
-        const dadosValidcurso= dadosValidacao as ICriarCursoRequestDTO;
+        const dadosValidcurso = dadosValidacao as ICriarCursoRequestDTO;
         const cursoRecuperado = await this.cursoRepository.buscarPorCodigo(dadosValidcurso.codigo);
         if(!cursoRecuperado){
             throw new RegistroNaoEncontradoException('Curso não encontrado');

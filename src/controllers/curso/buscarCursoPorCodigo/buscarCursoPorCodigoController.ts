@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../baseController";
 import { BuscarCursoPorCodigoUseCase } from "../../../domain/useCases/curso/buscarCursoPorCodigo/buscarCursoPorCodigoUseCase";
+import { BaseControllerAuth } from "../../baseControllerAuth";
 
-export class BuscarCursoPorCodigoController extends BaseController {
+export class BuscarCursoPorCodigoController extends BaseControllerAuth {
 
     constructor(
         private buscarCursoPorCodigoUseCase: BuscarCursoPorCodigoUseCase,
@@ -12,8 +12,8 @@ export class BuscarCursoPorCodigoController extends BaseController {
 
     async execute(request: Request, response: Response): Promise<Response>{
         const codigo = request.query.codigo as string;
-        const listaCursos = await this.buscarCursoPorCodigoUseCase.execute({codigo});
-        return response.status(200).send(listaCursos);
+        const curso = await this.buscarCursoPorCodigoUseCase.execute({codigo});
+        return response.status(200).send(curso);
     }
 
 }

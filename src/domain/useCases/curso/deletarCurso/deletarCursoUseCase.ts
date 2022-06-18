@@ -16,8 +16,7 @@ export class DeletarCursoUseCase {
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
         await this.validaCursoNaoEncontrado.valida(data);
-        const codigo = data.codigo;
-        await this.cursoRepository.deletar(codigo);
+        await this.cursoRepository.deletar(data.codigo);
     }
 
 }

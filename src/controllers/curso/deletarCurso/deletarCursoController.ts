@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../baseController";
 import { DeletarCursoUseCase } from "../../../domain/useCases/curso/deletarCurso/deletarCursoUseCase";
+import { BaseControllerAuth } from "../../baseControllerAuth";
 
-export class DeletarCursoController extends BaseController {
+export class DeletarCursoController extends BaseControllerAuth {
 
     constructor(
         private deletarCursoUseCase: DeletarCursoUseCase,

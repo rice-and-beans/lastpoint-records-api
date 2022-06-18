@@ -14,17 +14,15 @@ export class AuthApi {
     async validaToken(token: string): Promise<string> {
         return await axios.get('http://localhost:3002/auth/', {
             headers: {
-                "x-access-token": token
+                "x-access-token": token ? token : ""
             }
         }).then(function (response) {
             if(response){
-                console.log(response)
                 return response.status ? response.status as string : null
             }else{
                 return null;
             }
-        }).catch((err) => {
-            console.log(err)
+        }).catch(() => {
             throw new ServicoIndisponivelException("Serviço indisponível: AuthApi");
         });
     }

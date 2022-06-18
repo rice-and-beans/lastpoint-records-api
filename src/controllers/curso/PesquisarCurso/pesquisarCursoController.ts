@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../baseController";
 import { PesquisarCursoUseCase } from "../../../domain/useCases/curso/pesquisarCurso/pesquisarCursoUseCase";
+import { BaseControllerAuth } from "../../baseControllerAuth";
 
-export class PesquisarCursoController extends BaseController {
+export class PesquisarCursoController extends BaseControllerAuth {
 
     constructor(
         private pesquisarCursoUseCase: PesquisarCursoUseCase,
