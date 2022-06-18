@@ -57,29 +57,29 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
     }
 
     async pesquisar(data: IPesquisarChamadaRequestDTO){
-        var datainicio = null
-        var datafim = null
+        var dataInicio = null
+        var dataFim = null
 
-        if(data.datahorainicio){
-            datainicio = new Date(data.datahorainicio);
+        if(data.dataHoraInicio){
+            dataInicio = new Date(data.dataHoraInicio);
         }
 
-        if(data.datahorafim){
-            datafim = new Date(data.datahorafim);
+        if(data.dataHoraFim){
+            dataFim = new Date(data.dataHoraFim);
         }
 
         const chamadaLista = await prismaClient.chamada.findMany({
             where: {
                 usuario:{
                     OR:[
-                        {nome: data.campo ? {contains: data.campo} : {contains:""}},
-                        {codigo: data.campo ? {contains: data.campo} : {contains:""}}
+                        {nome: data.campo != null ? {contains: data.campo} : {contains:""}},
+                        {codigo: data.campo != null ? {contains: data.campo} : {contains:""}}
                     ]
                 },
                 aula:{
                     AND:[
-                        {datahorainicio: datainicio ? {gte: datainicio} : undefined},
-                        {datahorafim: datafim ? {lte: datafim} : undefined}
+                        {dataHoraInicio: dataInicio ? {gte: dataInicio} : undefined},
+                        {dataHoraFim: dataFim ? {lte: dataFim} : undefined}
                     ]
                 }
             },
@@ -94,8 +94,8 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
                 aula:{
                     select:{
                         nome:true,
-                        datahorainicio: true,
-                        datahorafim: true
+                        dataHoraInicio: true,
+                        dataHoraFim: true
                     }
                 }
             }

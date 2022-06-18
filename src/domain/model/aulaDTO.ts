@@ -1,7 +1,7 @@
 export interface ICriarAulaRequestDTO {
     codigo: string;
-    datahorainicio: Date;
-    datahorafim: Date;
+    dataHoraInicio: Date;
+    dataHoraFim: Date;
     nome: string;
     descricao?: string;
     usuarioCodigo: string;
@@ -12,8 +12,8 @@ export interface ICriarAulaRequestDTO {
 
 export interface IAtualizarAulaRequestDTO {
     codigo: string;
-    datahorainicio: Date;
-    datahorafim: Date;
+    dataHoraInicio: Date;
+    dataHoraFim: Date;
     nome: string;
     descricao?: string;
     usuarioCodigo: string;
@@ -28,8 +28,8 @@ export interface IDeletarAulaRequestDTO {
 }
 
 export interface IPesquisarAulaRequestDTO {
-    datahorainicio: Date;
-    datahorafim: Date;
+    dataHoraInicio: Date;
+    dataHoraFim: Date;
     campo: string;
 }
 

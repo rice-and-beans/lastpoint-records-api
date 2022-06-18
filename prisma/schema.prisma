@@ -37,8 +37,8 @@ model Disciplina {
 model Aula {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
   codigo String @unique
-  datahorainicio  DateTime 
-  datahorafim   DateTime
+  dataHoraInicio  DateTime 
+  dataHoraFim   DateTime
   nome  String
   descricao   String?
   token String? 

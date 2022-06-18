@@ -1,8 +1,8 @@
 export class Aula {
-    public readonly id: string;
+    public readonly id?: string;
     public codigo: string;
-    public datahorainicio: Date;
-    public datahorafim: Date;
+    public dataHoraInicio: Date;
+    public dataHoraFim: Date;
     public nome: string;
     public descricao?: string;
     public usuarioCodigo: string;

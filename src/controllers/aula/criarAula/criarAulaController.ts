@@ -11,12 +11,12 @@ export class CriarAulaController extends BaseController {
     }
 
     async execute(request: Request, response: Response): Promise<Response>{
-        const { codigo, nome, descricao, datahorainicio, datahorafim, usuarioCodigo, turmaCodigo,
+        const { codigo, nome, descricao, dataHoraInicio, dataHoraFim, usuarioCodigo, turmaCodigo,
             cursoCodigo, disciplinaCodigo} = request.body;
         await this.criarAulaUseCase.execute({
             codigo,
-            datahorainicio,
-            datahorafim,
+            dataHoraInicio,
+            dataHoraFim,
             nome,
             descricao,
             usuarioCodigo,

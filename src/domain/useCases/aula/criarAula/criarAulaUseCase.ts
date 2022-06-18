@@ -14,8 +14,8 @@ export class CriarAulaUseCase {
     async execute(data: ICriarAulaRequestDTO){
         const dadosValidacao = new Map<Object, string>([
             [data.codigo, "codigo"],
-            [data.datahorainicio, "datahorainicio"],
-            [data.datahorafim, "datahorafim"],
+            [data.dataHoraInicio, "dataHoraInicio"],
+            [data.dataHoraFim, "dataHoraFim"],
             [data.nome, "nome"],
             [data.usuarioCodigo, "usuarioCodigo"],
             [data.turmaCodigo, "turmaCodigo"],

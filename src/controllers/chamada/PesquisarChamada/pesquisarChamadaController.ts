@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../baseController";
 import { PesquisarChamadaUseCase } from "../../../domain/useCases/chamada/pesquisarChamada/pesquisarChamadaUseCase";
+import { BaseControllerAuth } from "../../baseControllerAuth";
 
-export class PesquisarChamadaController extends BaseController {
+export class PesquisarChamadaController extends BaseControllerAuth {
 
     constructor(
         private pesquisarChamadaUseCase: PesquisarChamadaUseCase,
@@ -11,10 +11,10 @@ export class PesquisarChamadaController extends BaseController {
     }
 
     async execute(request: Request, response: Response): Promise<Response>{
-        const {datahorainicio, datahorafim, campo} = request.body;
+        const {dataHoraInicio, dataHoraFim, campo} = request.body;
         const listaChamada = await this.pesquisarChamadaUseCase.execute({
-            datahorainicio,
-            datahorafim,
+            dataHoraInicio,
+            dataHoraFim,
             campo
         });
         return response.status(200).send(listaChamada);

@@ -17,8 +17,8 @@ export interface IDeletarChamadaRequestDTO {
 }
 
 export interface IPesquisarChamadaRequestDTO {
-    datahorainicio: Date;
-    datahorafim: Date;
+    dataHoraInicio: Date;
+    dataHoraFim: Date;
     campo: string;
 }
 

@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../baseController";
 import { BuscarChamadaPorCodigoUseCase } from "../../../domain/useCases/chamada/buscarChamadaPorCodigo/buscarChamadaPorCodigoUseCase";
+import { BaseControllerAuth } from "../../baseControllerAuth";
 
-export class BuscarChamadaPorCodigoController extends BaseController {
+export class BuscarChamadaPorCodigoController extends BaseControllerAuth {
 
     constructor(
         private buscarChamadaPorCodigoUseCase: BuscarChamadaPorCodigoUseCase,

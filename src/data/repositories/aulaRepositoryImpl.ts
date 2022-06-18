@@ -7,15 +7,15 @@ import { usuario } from "../../routes/usuarioRoutes";
 export class AulaRepositoryImpl implements IAulaRepository {
     
     async salvar(aula: Aula){
-        const datahorainicio = new Date(aula.datahorainicio);
-        const datahorafim = new Date(aula.datahorafim);
+        const dataHoraInicio = new Date(aula.dataHoraInicio);
+        const dataHoraFim = new Date(aula.dataHoraFim);
         const aulaSalvo = await prismaClient.aula.create({
             data:{
               codigo: aula.codigo,
               descricao: aula.descricao,
               nome: aula.nome,
-              datahorainicio: datahorainicio,
-              datahorafim: datahorafim,
+              dataHoraInicio: dataHoraInicio,
+              dataHoraFim: dataHoraFim,
               usuarioCodigo: aula.usuarioCodigo,
               turmaCodigo: aula.turmaCodigo,
               cursoCodigo: aula.cursoCodigo,
@@ -26,16 +26,16 @@ export class AulaRepositoryImpl implements IAulaRepository {
     }
 
     async atualizar(aula:Aula){  
-        const datahorainicio = new Date(aula.datahorainicio);
-        const datahorafim = new Date(aula.datahorafim);
+        const dataHoraInicio = new Date(aula.dataHoraInicio);
+        const dataHoraFim = new Date(aula.dataHoraFim);
         const aulaAtualizado = await prismaClient.aula.update({
             where:{
                 codigo: aula.codigo,
             },
             data:{
                 codigo: aula.codigo,
-                datahorainicio: datahorainicio,
-                datahorafim: datahorafim,
+                dataHoraInicio: dataHoraInicio,
+                dataHoraFim: dataHoraFim,
                 nome: aula.nome,
                 descricao: aula.descricao,
                 token: aula.token
@@ -65,8 +65,8 @@ export class AulaRepositoryImpl implements IAulaRepository {
     async pesquisar(data?){
         var datainicio = null
         var datafim = null
-        if(data.datahorainicio){
-            datainicio = new Date(data.datahorainicio);
+        if(data.dataHoraInicio){
+            datainicio = new Date(data.dataHoraInicio);
         }
         if(data.datahorafim){
             datafim = new Date(data.datahorafim);
@@ -76,12 +76,12 @@ export class AulaRepositoryImpl implements IAulaRepository {
                 AND:[
                     {
                         
-                        datahorainicio: datainicio != null ? {gte: datainicio} : undefined
+                        dataHoraInicio: datainicio != null ? {gte: datainicio} : undefined
                         
                     },
                     {
                         
-                        datahorafim: datafim != null ? {lte: datafim} : undefined
+                        dataHoraFim: datafim != null ? {lte: datafim} : undefined
                         
                     },
                     {
@@ -107,8 +107,8 @@ export class AulaRepositoryImpl implements IAulaRepository {
         const aulasLista = await prismaClient.aula.findMany({
             where: {
                 AND:[
-                    {datahorainicio:{gte: dataAtual}},
-                    {datahorafim: {lte: dataFim}},
+                    {dataHoraInicio:{gte: dataAtual}},
+                    {dataHoraFim: {lte: dataFim}},
                     {usuarioCodigo: codigo}
                 ]
             },
@@ -124,13 +124,13 @@ export class AulaRepositoryImpl implements IAulaRepository {
         var datafim = new Date();
         const aulasLista = await prismaClient.aula.findMany({
             where: {
-                datahorafim: {lte: datafim},
+                dataHoraFim: {lte: datafim},
                 usuarioCodigo: codigo
             },
             select:{
                 codigo: true,
-                datahorainicio: true,
-                datahorafim: true,
+                dataHoraInicio: true,
+                dataHoraFim: true,
                 usuarioCodigo: true,
                 usuario:{
                     select:{
@@ -157,7 +157,7 @@ export class AulaRepositoryImpl implements IAulaRepository {
         var datafim = new Date();
         const aulasLista = await prismaClient.aula.findMany({
             where: {
-                datahorafim: {lte: datafim},
+                dataHoraFim: {lte: datafim},
                 usuarioCodigo: codigo
             },
             select:{
@@ -168,8 +168,8 @@ export class AulaRepositoryImpl implements IAulaRepository {
                     }
                 },
                 codigo: true,
-                datahorainicio: true,
-                datahorafim: true,
+                dataHoraInicio: true,
+                dataHoraFim: true,
                 usuarioCodigo: true,
                 usuario:{
                     select:{
@@ -209,8 +209,8 @@ export class AulaRepositoryImpl implements IAulaRepository {
         const naAulaAtual = await prismaClient.aula.findFirst({
             where:{
                 AND:[
-                    {datahorainicio: {gt: dataatual}},
-                    {datahorafim: {lt: dataatual}},
+                    {dataHoraInicio: {gt: dataatual}},
+                    {dataHoraFim: {lt: dataatual}},
                     {usuarioCodigo: codigo}
                 ]
             },
