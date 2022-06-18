@@ -1,12 +1,13 @@
-const axios = require('axios');
+import { ServicoIndisponivelException } from "../../domain/exceptions/servicoIndisponivelException";
 
+const axios = require('axios');
 export class AuthApi {
 
     async criptografar(conteudo: string): Promise<string> {
         return await axios.post('http://localhost:3002/auth/cript', {
             conteudo: conteudo
         }).catch(() => {
-            console.log("Serviço indisponível: AuthApi");
+            throw new ServicoIndisponivelException("Serviço indisponível: AuthApi");
         })
     }
 
@@ -23,8 +24,16 @@ export class AuthApi {
                 return null;
             }
         }).catch((err) => {
-            console.log("Serviço indisponível: AuthApi");
-            return null;
+            console.log(err)
+            throw new ServicoIndisponivelException("Serviço indisponível: AuthApi");
+        });
+    }
+
+    async salvarTokenInvalido(token: string): Promise<string> {
+        return await axios.post('http://localhost:3002/auth/invalid', {
+            token: token
+        }).catch(() => {
+            throw new ServicoIndisponivelException("Serviço indisponível: AuthApi");
         });
     }
 

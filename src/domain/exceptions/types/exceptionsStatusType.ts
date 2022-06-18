@@ -3,5 +3,6 @@ export enum ExcpetionStatusType {
     RegistroExistenteException = 400,
     ParamObrigatorioException = 400,
     RegistroNaoEncontradoException = 204,
-    AutenticacaoInvalidaException = 403
+    AutenticacaoInvalidaException = 403,
+    ServicoIndisponivelException = 503
 }
