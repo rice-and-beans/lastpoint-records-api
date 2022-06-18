@@ -17,3 +17,7 @@ export interface IDeletarTurmaRequestDTO {
 export interface IPesquisarTurmaRequestDTO {
     campo: string;
 }
+
+export interface IPesquisarTurmaPorCodigoRequestDTO {
+    codigo: string;
+}

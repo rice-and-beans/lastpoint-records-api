@@ -3,6 +3,7 @@ import { criarCursoController } from "../controllers/curso/criarCurso";
 import { atualizarCursoController } from "../controllers/curso/atualizarCurso";
 import { deletarCursoController } from "../controllers/curso/deletarCurso";
 import { pesquisarCursoController } from "../controllers/curso/PesquisarCurso";
+import { buscarCursoPorCodigoController } from "../controllers/curso/buscarCursoPorCodigo";
 
 const router = Router();
 
@@ -20,6 +21,10 @@ router.put('/', async (request, response) => {
 
 router.delete('/', async (request, response) => {
     return await deletarCursoController.handle(request, response);
+});
+
+router.get('/codigo', async (request, response) => {
+    return await buscarCursoPorCodigoController.handle(request, response);
 });
 
 export { router as curso };

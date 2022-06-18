@@ -2,6 +2,7 @@ import { prismaClient } from "../database/prismaClient";
 import { IAulaRepository } from "../../domain/repositories/aulaRepository";
 import { Aula } from "../entities/aula";
 import { aulaConstants } from "../../constants/aulaConstants";
+import { usuario } from "../../routes/usuarioRoutes";
 
 export class AulaRepositoryImpl implements IAulaRepository {
     async buscarPorCodigo(codigo: string): Promise<Aula>{
@@ -70,14 +71,15 @@ export class AulaRepositoryImpl implements IAulaRepository {
         return aulasLista
     }
 
-    async historicoAulasFuturas(){
+    async historicoAulasFuturas(codigo: string){
         var dataAtual = new Date();
         var dataFim = new Date(Date.now()+aulaConstants.TEMPO_HISTORICO);
         const aulasLista = await prismaClient.aula.findMany({
             where: {
                 AND:[
                     {datahorainicio:{gte: dataAtual}},
-                    {datahorafim: {lte: dataFim}}
+                    {datahorafim: {lte: dataFim}},
+                    {usuarioCodigo: codigo}
                 ]
             },
             select:{
@@ -88,25 +90,45 @@ export class AulaRepositoryImpl implements IAulaRepository {
         return aulasLista
     }
 
-    async historicoAulasPassadasProfessor(){
+    async historicoAulasPassadasProfessor(codigo: string){
         var datafim = new Date();
         const aulasLista = await prismaClient.aula.findMany({
             where: {
-                datahorafim: {lte: datafim}
+                datahorafim: {lte: datafim},
+                usuarioCodigo: codigo
             },
             select:{
                 codigo: true,
+                datahorainicio: true,
+                datahorafim: true,
+                usuarioCodigo: true,
+                usuario:{
+                    select:{
+                        nome:true
+                    }
+                },
+                turma:{
+                    select:{
+                        nome:true
+                    }
+                },
+                disciplina:{
+                    select:{
+                        nome:true
+                    }
+                },
                 nome: true
             }
         })
         return aulasLista
     }
 
-    async historicoAulasPassadasAluno(){
+    async historicoAulasPassadasAluno(codigo: string){
         var datafim = new Date();
         const aulasLista = await prismaClient.aula.findMany({
             where: {
-                datahorafim: {lte: datafim}
+                datahorafim: {lte: datafim},
+                usuarioCodigo: codigo
             },
             select:{
                 chamada:{
@@ -116,6 +138,24 @@ export class AulaRepositoryImpl implements IAulaRepository {
                     }
                 },
                 codigo: true,
+                datahorainicio: true,
+                datahorafim: true,
+                usuarioCodigo: true,
+                usuario:{
+                    select:{
+                        nome:true
+                    }
+                },
+                turma:{
+                    select:{
+                        nome:true
+                    }
+                },
+                disciplina:{
+                    select:{
+                        nome:true
+                    }
+                },
                 nome: true
             }
         })

@@ -37,3 +37,7 @@ export interface IAtualizarAulaTokenRequestDTO {
     codigo: string;
     token?: string;
 }
+
+export interface IPesquisarAulaPorCodigoRequestDTO {
+    codigo: string;
+}

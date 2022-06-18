@@ -3,6 +3,7 @@ import { criarDisciplinaController } from "../controllers/disciplina/criarDiscip
 import { atualizarDisciplinaController } from "../controllers/disciplina/atualizarDisciplina";
 import { deletarDisciplinaController } from "../controllers/disciplina/deletarDisciplina";
 import { pesquisarDisciplinaController } from "../controllers/disciplina/PesquisarDisciplina";
+import { buscarDisciplinaPorCodigoController } from "../controllers/disciplina/buscarDisciplinaPorCodigo";
 
 const router = Router();
 
@@ -20,6 +21,10 @@ router.put('/', async (request, response) => {
 
 router.delete('/', async (request, response) => {
     return await deletarDisciplinaController.handle(request, response);
+});
+
+router.get('/codigo', async (request, response) => {
+    return await buscarDisciplinaPorCodigoController.handle(request, response);
 });
 
 export { router as disciplina };

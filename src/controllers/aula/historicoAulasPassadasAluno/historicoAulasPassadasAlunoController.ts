@@ -11,7 +11,8 @@ export class HistoricoAulasPassadasAlunoController extends BaseController {
     }
 
     async execute(request: Request, response: Response): Promise<Response>{
-        const listaAula = await this.historicoAulasPassadasAlunoUseCase.execute();
+        const codigo = request.query.codigo as string;
+        const listaAula = await this.historicoAulasPassadasAlunoUseCase.execute(codigo);
         return response.status(200).send(listaAula);
     }
 

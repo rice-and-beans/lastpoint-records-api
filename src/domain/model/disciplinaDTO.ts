@@ -17,3 +17,7 @@ export interface IDeletarDisciplinaRequestDTO {
 export interface IPesquisarDisciplinaRequestDTO {
     campo: string;
 }
+
+export interface IPesquisarDisciplinaPorCodigoRequestDTO {
+    codigo: string;
+}

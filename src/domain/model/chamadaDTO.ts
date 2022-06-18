@@ -21,3 +21,7 @@ export interface IPesquisarChamadaRequestDTO {
     datahorafim: Date;
     campo: string;
 }
+
+export interface IPesquisarChamadaPorCodigoRequestDTO {
+    codigo: string;
+}
