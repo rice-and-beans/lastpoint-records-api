@@ -3,6 +3,7 @@ import { UsuarioRepositoryImpl } from "../../../../data/repositories/usuarioRepo
 import { RecuperaAulaProfessorAtualUseCase } from "./recuperaAulaProfessorAtualUseCase";
 import { ValidaUsuarioNaoExisteCodigo } from "../../../validations/usuario/validaUsuarioNaoExisteCodigo";
 import { ValidaParamObrigatorios } from "../../../validations/validaParamObrigatorio";
+import { ValidaAulaNaoEncontrado } from "../../../validations/aula/validaAulaNaoEncontrado";
 
 const aulaRepositoryImpl = new AulaRepositoryImpl();
 
@@ -12,12 +13,17 @@ const validaUsuarioNaoEncontrado = new ValidaUsuarioNaoExisteCodigo(
     usuarioRepositoryImpl
 );
 
+const validaAulaNaoEncontrado = new ValidaAulaNaoEncontrado(
+    aulaRepositoryImpl
+);
+
 const validaParamsObrigatorios = new ValidaParamObrigatorios();
 
 const recuperaAulaAtualProfessorUseCase = new RecuperaAulaProfessorAtualUseCase(
     aulaRepositoryImpl,
     validaUsuarioNaoEncontrado,
-    validaParamsObrigatorios
+    validaParamsObrigatorios,
+    validaAulaNaoEncontrado
 );
 
 export { recuperaAulaAtualProfessorUseCase }

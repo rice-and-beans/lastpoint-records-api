@@ -6,17 +6,19 @@ export class RecuperaAulaProfessorAtualUseCase{
     constructor(
         private aulaRepository: IAulaRepository,
         private ValidaUsuarioNaoEncontrado: ValidacaoBase,
-        private validaParamsObrigatorios: ValidacaoBase
+        private validaParamsObrigatorios: ValidacaoBase,
+        private validaAulaNaoEncontrada: ValidacaoBase
     ){}
 
-    async execute(codigo: string){
+    async execute(codUsuario: string, codAula: string){
         const dadosValidacao = new Map<Object, string>([
-            [codigo, "codigo"]
+            [codUsuario, "codUsuario"],
+            [codAula, "codAula"]
         ]);
-        const data = {"codigo": codigo}
         await this.validaParamsObrigatorios.valida(dadosValidacao);
-        await this.ValidaUsuarioNaoEncontrado.valida(data);
-        return await this.aulaRepository.recuperaAulaAtualProfessor(codigo);
+        await this.ValidaUsuarioNaoEncontrado.valida({"codigo": codUsuario});
+        await this.validaAulaNaoEncontrada.valida({"codigo": codAula});
+        return await this.aulaRepository.recuperaAulaAtualProfessor({codUsuario, codAula});
     }
 
 }

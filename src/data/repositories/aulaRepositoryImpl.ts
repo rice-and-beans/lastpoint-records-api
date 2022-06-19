@@ -2,7 +2,7 @@ import { prismaClient } from "../database/prismaClient";
 import { IAulaRepository } from "../../domain/repositories/aulaRepository";
 import { Aula } from "../entities/aula";
 import { aulaConstants } from "../../constants/aulaConstants";
-import { IAtualizarAulaTokenRequestDTO, IPesquisarAulaRequestDTO } from "../../domain/model/aulaDTO";
+import { IAtualizarAulaTokenRequestDTO, IPesquisarAulaRequestDTO, IRecuperaAulaAtualRequestDTO } from "../../domain/model/aulaDTO";
 
 export class AulaRepositoryImpl implements IAulaRepository {
     
@@ -38,7 +38,6 @@ export class AulaRepositoryImpl implements IAulaRepository {
                 dataHoraFim: dataHoraFim,
                 nome: aula.nome,
                 descricao: aula.descricao,
-                token: aula.token,
                 usuarioCodigo: aula.usuarioCodigo,
                 turmaCodigo: aula.turmaCodigo,
                 cursoCodigo: aula.cursoCodigo,
@@ -118,7 +117,23 @@ export class AulaRepositoryImpl implements IAulaRepository {
             },
             select:{
                 codigo: true,
-                nome: true
+                dataHoraInicio: true,
+                dataHoraFim: true,
+                usuario:{
+                    select:{
+                        nome:true
+                    }
+                },
+                turma:{
+                    select:{
+                        nome:true
+                    }
+                },
+                disciplina:{
+                    select:{
+                        nome:true
+                    }
+                }
             }
         })
         return aulasLista
@@ -140,10 +155,25 @@ export class AulaRepositoryImpl implements IAulaRepository {
             select:{
                 aula:{
                     select:{
-                        codigo: true,
-                        nome: true
+                        dataHoraInicio: true,
+                        dataHoraFim: true,
+                        usuario:{
+                            select:{
+                                nome:true
+                            }
+                        },
+                        turma:{
+                            select:{
+                                nome:true
+                            }
+                        },
+                        disciplina:{
+                            select:{
+                                nome:true
+                            }
+                        },
                     }
-                }
+                }  
             }
         })
         return aulasLista
@@ -160,7 +190,6 @@ export class AulaRepositoryImpl implements IAulaRepository {
                 codigo: true,
                 dataHoraInicio: true,
                 dataHoraFim: true,
-                usuarioCodigo: true,
                 usuario:{
                     select:{
                         nome:true
@@ -184,38 +213,36 @@ export class AulaRepositoryImpl implements IAulaRepository {
 
     async historicoAulasPassadasAluno(codigo: string){
         var datafim = new Date();
-        const aulasLista = await prismaClient.aula.findMany({
+        const aulasLista = await prismaClient.chamada.findMany({
             where: {
-                dataHoraFim: {lte: datafim},
+                aula:{
+                    dataHoraFim: {lte: datafim},
+                },
                 usuarioCodigo: codigo
             },
             select:{
-                chamada:{
+                presenca: true,
+                aula:{
                     select:{
-                        usuarioCodigo: true,
-                        aulaCodigo:true
+                        dataHoraInicio: true,
+                        dataHoraFim: true,
+                        usuario:{
+                            select:{
+                                nome:true
+                            }
+                        },
+                        turma:{
+                            select:{
+                                nome:true
+                            }
+                        },
+                        disciplina:{
+                            select:{
+                                nome:true
+                            }
+                        },
                     }
-                },
-                codigo: true,
-                dataHoraInicio: true,
-                dataHoraFim: true,
-                usuarioCodigo: true,
-                usuario:{
-                    select:{
-                        nome:true
-                    }
-                },
-                turma:{
-                    select:{
-                        nome:true
-                    }
-                },
-                disciplina:{
-                    select:{
-                        nome:true
-                    }
-                },
-                nome: true
+                }  
             }
         })
         return aulasLista
@@ -233,40 +260,40 @@ export class AulaRepositoryImpl implements IAulaRepository {
         return aulaAtualizado
     }
 
-    async recuperaAulaAtualProfessor(codigo: string){
+    async recuperaAulaAtualProfessor(data: IRecuperaAulaAtualRequestDTO){
         const dataatual = new Date()
-        const naAulaAtual = await prismaClient.aula.findMany({
+        const aulaAtual = await prismaClient.aula.findMany({
             where:{
                 AND:[
                     {dataHoraInicio: {lte: dataatual}},
                     {dataHoraFim: {gte: dataatual}},
-                    {usuarioCodigo: codigo}
+                    {usuarioCodigo: data.codUsuario}
                 ]
             },
             select:{
                 codigo: true
             }
         })
-        return naAulaAtual
+        return aulaAtual
     }
     
-    async recuperaAulaAtualAluno(codigo: string){
+    async recuperaAulaAtualAluno(data: IRecuperaAulaAtualRequestDTO){
         const dataatual = new Date()
-        const naAulaAtual = await prismaClient.chamada.findMany({
+        const aulaAtual = await prismaClient.chamada.findMany({
             where:{
                 aula:{
                     AND:[
                         {dataHoraInicio: {lte: dataatual}},
                         {dataHoraFim: {gte: dataatual}},
-                        
+                        {codigo: data.codAula}
                     ]
                 },
-                usuarioCodigo: codigo
+                usuarioCodigo: data.codUsuario
             },
             select:{
                 codigo: true
             }
         })
-        return naAulaAtual
+        return aulaAtual
     }
 }

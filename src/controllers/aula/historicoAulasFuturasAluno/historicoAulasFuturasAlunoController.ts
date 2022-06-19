@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../BaseController";
 import { HistoricoAulasFuturasAlunoUseCase } from "../../../domain/useCases/aula/historicoAulasFuturasAluno/historicoAulasFuturasAlunoUseCase";
+import { BaseControllerAuth } from "../../baseControllerAuth";
 
-export class HistoricoAulasFuturasAlunoController extends BaseController {
+export class HistoricoAulasFuturasAlunoController extends BaseControllerAuth {
 
     constructor(
         private historicoAulasFuturasAlunoUseCase: HistoricoAulasFuturasAlunoUseCase,

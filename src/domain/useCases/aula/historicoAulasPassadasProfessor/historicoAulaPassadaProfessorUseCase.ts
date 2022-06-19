@@ -5,12 +5,16 @@ export class HistoricoAulasPassadasProfessorUseCase{
 
     constructor(
         private aulaRepository: IAulaRepository,
+        private validaParamObrigatorio: ValidacaoBase,
         private ValidaUsuarioNaoEncontrado: ValidacaoBase
     ){}
 
     async execute(codigo: string){
-        const data = {"codigo": codigo}
-        await this.ValidaUsuarioNaoEncontrado.valida(data);
+        const dadosValidacao = new Map<Object, string>([
+            [codigo, "codigo"]
+        ]);
+        await this.validaParamObrigatorio.valida(dadosValidacao);
+        await this.ValidaUsuarioNaoEncontrado.valida({"codigo": codigo});
         return await this.aulaRepository.historicoAulasPassadasProfessor(codigo);
     }
 

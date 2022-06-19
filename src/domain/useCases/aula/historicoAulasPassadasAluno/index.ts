@@ -2,6 +2,7 @@ import { AulaRepositoryImpl } from "../../../../data/repositories/aulaRepository
 import { UsuarioRepositoryImpl } from "../../../../data/repositories/usuarioRepositoryImpl";
 import { HistoricoAulasPassadasAlunoUseCase } from "./historicoAulaPassadaAlunoUseCase";
 import { ValidaUsuarioNaoExisteCodigo } from "../../../validations/usuario/validaUsuarioNaoExisteCodigo";
+import { ValidaParamObrigatorios } from "../../../validations/validaParamObrigatorio";
 
 const aulaRepositoryImpl = new AulaRepositoryImpl();
 
@@ -11,8 +12,11 @@ const validaUsuarioNaoEncontrado = new ValidaUsuarioNaoExisteCodigo(
     usuarioRepositoryImpl
 );
 
+const validaParamObrigatorios = new ValidaParamObrigatorios();
+
 const historicoAulasPassadasAlunoUseCase = new HistoricoAulasPassadasAlunoUseCase(
     aulaRepositoryImpl,
+    validaParamObrigatorios,
     validaUsuarioNaoEncontrado
 );
 

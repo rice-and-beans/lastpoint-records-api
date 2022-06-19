@@ -16,7 +16,7 @@ export class ValidaDisciplinaNaoEncontrado extends ValidacaoBase {
         const dadosValidDisciplina = dadosValidacao as ICriarDisciplinaRequestDTO;
         const disciplinaRecuperado = await this.disciplinaRepository.buscarPorCodigo(dadosValidDisciplina.codigo);
         if(!disciplinaRecuperado){
-            throw new RegistroNaoEncontradoException('Disciplina não encontrado');
+            throw new RegistroNaoEncontradoException('Disciplina não encontrada');
         }
     }
     

@@ -16,7 +16,7 @@ export class ValidaTurmaNaoEncontrado extends ValidacaoBase {
         const dadosValidTurma = dadosValidacao as ICriarTurmaRequestDTO;
         const turmaRecuperado = await this.turmaRepository.buscarPorCodigo(dadosValidTurma.codigo);
         if(!turmaRecuperado){
-            throw new RegistroNaoEncontradoException('Turma não encontrado');
+            throw new RegistroNaoEncontradoException('Turma não encontrada');
         }
     }
     

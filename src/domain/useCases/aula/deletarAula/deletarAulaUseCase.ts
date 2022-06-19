@@ -16,8 +16,7 @@ export class DeletarAulaUseCase {
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
         await this.validaAulaNaoEncontrado.valida(data);
-        const codigo = data.codigo;
-        await this.aulaRepository.deletar(codigo);
+        await this.aulaRepository.deletar(data.codigo);
     }
 
 }

@@ -16,7 +16,7 @@ export class ValidaUsuarioNaoExisteCodigo extends ValidacaoBase {
         const dadosValidUsuario = dadosValidacao as ICriarUsuarioRequestDTO;
         const usuarioRecuperado = await this.usuarioRepository.buscarPorCodigo(dadosValidUsuario.codigo);
         if(!usuarioRecuperado){
-            throw new RegistroNaoEncontradoException('Código usuario não encontrado');
+            throw new RegistroNaoEncontradoException('Usuario não encontrado');
         }
     }
     

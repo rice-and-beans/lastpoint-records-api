@@ -17,7 +17,7 @@ export class ValidaAulaNaoEncontrado extends ValidacaoBase {
         const aulaRecuperado = await this.aulaRepository.buscarPorCodigo(dadosValidaula.codigo);
         
         if(!aulaRecuperado){
-            throw new RegistroNaoEncontradoException('');
+            throw new RegistroNaoEncontradoException('Aula não existe');
         }
     }
     

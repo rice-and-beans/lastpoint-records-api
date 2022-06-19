@@ -1,5 +1,6 @@
 import { Aula } from "../../data/entities/aula";
 import { IPesquisarAulaRequestDTO } from "../model/aulaDTO";
+import { IRecuperaAulaAtualRequestDTO } from "../model/aulaDTO";
 
 export interface IAulaRepository {
     buscarPorCodigo(codigo: string): Promise<Aula>;
@@ -8,8 +9,8 @@ export interface IAulaRepository {
     historicoAulasFuturasAluno(codigo: string);
     historicoAulasPassadasProfessor(codigo: string);
     historicoAulasPassadasAluno(codigo: string);
-    recuperaAulaAtualProfessor(codigo: string);
-    recuperaAulaAtualAluno(codigo: string);
+    recuperaAulaAtualProfessor(data: IRecuperaAulaAtualRequestDTO);
+    recuperaAulaAtualAluno(codigo: IRecuperaAulaAtualRequestDTO);
     salvar(aula: Aula);
     atualizar(codigo: Aula);
     adicionarToken(aula: Object);
