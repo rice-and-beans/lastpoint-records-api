@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { BuscarUsuarioPorEmailUseCase } from "../../../domain/useCases/usuario/buscarUsuarioPorEmail/buscarUsuarioPorEmailUseCase";
-import { BaseController } from "../../BaseController";
+import { BaseController } from "../../baseController";
 
 export class BuscarUsuarioPorEmailController extends BaseController {
 

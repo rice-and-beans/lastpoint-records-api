@@ -17,6 +17,7 @@ export class AtualizarChamadaUseCase {
         const dadosValidacao = new Map<Object, string>([
             [data.codigo, "codigo"]
         ]);
+
         await this.validaParamObrigatorio.valida(dadosValidacao);
 
         if(data.usuarioCodigo){

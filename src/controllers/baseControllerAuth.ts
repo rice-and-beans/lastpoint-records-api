@@ -1,13 +1,13 @@
 import { AutenticacaoInvalidaException } from "../domain/exceptions/autenticacaoInvalidaException";
 import { authApi } from "../services/auth";
-import { BaseController } from "./BaseController";
+import { BaseController } from "./baseController";
 
 export abstract class BaseControllerAuth extends BaseController{
 
     protected async auth(request){
         const token = request.headers['x-access-token'];
         var retorno: any;
-
+        
         try {
             retorno = await authApi.validaToken(token);
         } catch (error) {

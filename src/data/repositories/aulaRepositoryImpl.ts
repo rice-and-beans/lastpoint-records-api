@@ -279,7 +279,7 @@ export class AulaRepositoryImpl implements IAulaRepository {
     
     async recuperaAulaAtualAluno(data: IRecuperaAulaAtualRequestDTO){
         const dataatual = new Date()
-        const aulaAtual = await prismaClient.chamada.findMany({
+        const aulaAtual = await prismaClient.chamada.findFirst({
             where:{
                 aula:{
                     AND:[

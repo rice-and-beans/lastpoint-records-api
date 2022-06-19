@@ -103,7 +103,8 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
             where:{
                 AND:[
                     {usuarioCodigo: data.codUsuario},
-                    {aulaCodigo: data.codAula}
+                    {aulaCodigo: data.codAula},
+                    {presenca: "P"}
                 ]
             },
             select:{

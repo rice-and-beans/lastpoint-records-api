@@ -27,8 +27,6 @@ const recuperaChamadaJafeitaUseCase = new RecuperaChamadaJafeitaUseCase(
     validaParamsObrigatorios,
     validaUsuarioNaoExisteCodigo,
     validaAulaNaoEncontrado
-    
-    
 );
 
 export { recuperaChamadaJafeitaUseCase }
