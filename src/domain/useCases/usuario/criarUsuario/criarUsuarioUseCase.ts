@@ -8,7 +8,8 @@ export class CriarUsuarioUseCase {
     constructor(
         private usuarioRepository: IUsuarioRepository,
         private validaParamObrigatorio: ValidacaoBase,
-        private validaUsuarioExiste: ValidacaoBase
+        private validaUsuarioExiste: ValidacaoBase,
+        private ValidaUsuarioCodigoExiste: ValidacaoBase
         
     ){}
 
@@ -22,6 +23,7 @@ export class CriarUsuarioUseCase {
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
         await this.validaUsuarioExiste.valida(data);
+        await this.ValidaUsuarioCodigoExiste.valida(data);
         const usuario = new Usuario(data);
         await this.usuarioRepository.salvar(usuario);
     }

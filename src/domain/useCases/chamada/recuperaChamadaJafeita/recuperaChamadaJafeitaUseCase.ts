@@ -1,3 +1,4 @@
+import { IRecuperaChamadaJaFeitaRequestDTO } from "../../../model/chamadaDTO";
 import { IChamadaRepository } from "../../../repositories/chamadaRepository";
 import { ValidacaoBase } from "../../../validations/ValidacaoBase";
 
@@ -5,18 +6,18 @@ export class RecuperaChamadaJafeitaUseCase {
 
     constructor(
         private chamadaRepository: IChamadaRepository,
+        private validaParamsObrigatorios: ValidacaoBase,
         private validaUsuarioNaoEncontrado: ValidacaoBase,
-        private validaAulaNaoEncontrado: ValidacaoBase,
-        private validaParamsObrigatorios: ValidacaoBase
+        private validaAulaNaoEncontrado: ValidacaoBase
     ){}
 
-    async execute(data){
+    async execute(data: IRecuperaChamadaJaFeitaRequestDTO){
         const dadosValidacao = new Map<Object, string>([
-            [data.codusuario, "codigoUsuario"],
-            [data.codaula, "codigoAula"]
+            [data.codUsuario, "codigoUsuario"],
+            [data.codAula, "codigoAula"]
         ]);
-        const codUsuario = {"codigo": data.codusuario}
-        const codAula = {"codigo": data.codaula}
+        const codUsuario = {"codigo": data.codUsuario}
+        const codAula = {"codigo": data.codAula}
         await this.validaParamsObrigatorios.valida(dadosValidacao);
         await this.validaUsuarioNaoEncontrado.valida(codUsuario);
         await this.validaAulaNaoEncontrado.valida(codAula);

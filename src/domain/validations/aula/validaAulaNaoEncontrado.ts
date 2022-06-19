@@ -15,8 +15,9 @@ export class ValidaAulaNaoEncontrado extends ValidacaoBase {
     public async verifica(dadosValidacao: Object){
         const dadosValidaula= dadosValidacao as ICriarAulaRequestDTO;
         const aulaRecuperado = await this.aulaRepository.buscarPorCodigo(dadosValidaula.codigo);
+        
         if(!aulaRecuperado){
-            throw new RegistroNaoEncontradoException('Aula não encontrado');
+            throw new RegistroNaoEncontradoException('');
         }
     }
     

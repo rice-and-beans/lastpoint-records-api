@@ -14,9 +14,9 @@ export class ValidaUsuarioNaoEncontrado extends ValidacaoBase {
 
     public async verifica(dadosValidacao: Object){
         const dadosValidUsuario = dadosValidacao as IAtualizarUsuarioRequestDTO;
-        const usuarioRecuperado = await this.usuarioRepository.buscarPorCodigo(dadosValidUsuario.codigo);
+        const usuarioRecuperado = await this.usuarioRepository.buscarPorEmail(dadosValidUsuario.email);
         if(!usuarioRecuperado){
-            throw new RegistroNaoEncontradoException('');
+            throw new RegistroNaoEncontradoException('Email de Usuário não existe');
         }
     }
     

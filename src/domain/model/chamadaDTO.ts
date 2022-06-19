@@ -3,6 +3,7 @@ export interface ICriarChamadaRequestDTO {
     justificativa?: string;
     usuarioCodigo: string;
     aulaCodigo: string;
+    presenca: string;
 }
 
 export interface IAtualizarChamadaRequestDTO {
@@ -10,6 +11,7 @@ export interface IAtualizarChamadaRequestDTO {
     justificativa: string;
     usuarioCodigo: string;
     aulaCodigo: string;
+    presenca: string;
 }
 
 export interface IDeletarChamadaRequestDTO {
@@ -24,4 +26,9 @@ export interface IPesquisarChamadaRequestDTO {
 
 export interface IPesquisarChamadaPorCodigoRequestDTO {
     codigo: string;
+}
+
+export interface IRecuperaChamadaJaFeitaRequestDTO {
+    codUsuario: string;
+    codAula: string;
 }

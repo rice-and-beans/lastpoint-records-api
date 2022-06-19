@@ -8,7 +8,7 @@ export class AtualizarUsuarioUseCase {
     constructor(
         private usuarioRepository: IUsuarioRepository,
         private validaParamObrigatorio: ValidacaoBase,
-        private validaUsuarioNaoEncontrado: ValidacaoBase
+        private validaUsuarioNaoExisteCodigo: ValidacaoBase
     ){}
 
     async execute(data: IAtualizarUsuarioRequestDTO){
@@ -16,9 +16,8 @@ export class AtualizarUsuarioUseCase {
             [data.codigo, "codigo"]
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
-        await this.validaUsuarioNaoEncontrado.valida(data);
+        await this.validaUsuarioNaoExisteCodigo.valida(data);
         const usuario = new Usuario(data);
-        
         await this.usuarioRepository.atualizar(usuario);
     }
 

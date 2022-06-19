@@ -1,5 +1,5 @@
 import { UsuarioRepositoryImpl } from "../../../../data/repositories/usuarioRepositoryImpl";
-import { ValidaUsuarioNaoEncontrado } from "../../../validations/usuario/validaUsuarioNaoEncontrado";
+import { ValidaUsuarioNaoExisteCodigo } from "../../../validations/usuario/validaUsuarioNaoExisteCodigo";
 import { AtualizarUsuarioUseCase } from "./atualizarUsuarioUseCase";
 import { ValidaParamObrigatorios } from "../../../validations/validaParamObrigatorio";
 
@@ -8,14 +8,14 @@ const usuarioRepositoryImpl = new UsuarioRepositoryImpl();
 const validaParamObrigatorios = new ValidaParamObrigatorios(
 );
 
-const validaUsuarioNaoEncontrado = new ValidaUsuarioNaoEncontrado(
+const validaUsuarioNaoExisteCodigo = new ValidaUsuarioNaoExisteCodigo(
     usuarioRepositoryImpl
 );
 
 const atualizarUsuarioUseCase = new AtualizarUsuarioUseCase(
     usuarioRepositoryImpl,
     validaParamObrigatorios,
-    validaUsuarioNaoEncontrado
+    validaUsuarioNaoExisteCodigo
 );
 
 export { atualizarUsuarioUseCase }

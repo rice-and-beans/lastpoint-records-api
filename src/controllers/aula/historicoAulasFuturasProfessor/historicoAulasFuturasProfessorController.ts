@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../baseController";
+import { BaseController } from "../../BaseController";
 import { HistoricoAulasFuturasProfessorUseCase } from "../../../domain/useCases/aula/historicoAulasFuturasProfessor/historicoAulasFuturasProfessorUseCase";
 
 export class HistoricoAulasFuturasProfessorController extends BaseController {

@@ -18,6 +18,7 @@ export class CriarChamadaUseCase {
             [data.codigo, "codigo"],
             [data.usuarioCodigo, "usuarioCodigo"],
             [data.aulaCodigo, "aulaCodigo"],
+            [data.presenca, "presenca"],
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
         await this.validaChamadaExiste.valida(data);

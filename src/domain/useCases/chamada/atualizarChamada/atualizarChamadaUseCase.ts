@@ -23,7 +23,7 @@ export class AtualizarChamadaUseCase {
             await this.validaUsuarioNaoExisteCodigo.valida({"codigo": data.usuarioCodigo});
         }
         if(data.aulaCodigo){
-            //await this.validaAulaNaoExiste.valida({"codigo": data.aulaCodigo});
+            await this.validaAulaNaoExiste.valida({"codigo": data.aulaCodigo});
         }
 
         await this.validaChamadaNaoEncontrado.valida(data);

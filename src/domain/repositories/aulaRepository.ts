@@ -8,8 +8,9 @@ export interface IAulaRepository {
     historicoAulasFuturasAluno(codigo: string);
     historicoAulasPassadasProfessor(codigo: string);
     historicoAulasPassadasAluno(codigo: string);
-    recuperaAulaAtual(codigo: string);
-    salvar(Curso: Aula);
+    recuperaAulaAtualProfessor(codigo: string);
+    recuperaAulaAtualAluno(codigo: string);
+    salvar(aula: Aula);
     atualizar(codigo: Aula);
     adicionarToken(aula: Object);
     deletar(codigo:string)

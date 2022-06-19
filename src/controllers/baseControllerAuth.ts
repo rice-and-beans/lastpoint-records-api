@@ -1,6 +1,6 @@
 import { AutenticacaoInvalidaException } from "../domain/exceptions/autenticacaoInvalidaException";
 import { authApi } from "../services/auth";
-import { BaseController } from "./baseController";
+import { BaseController } from "./BaseController";
 
 export abstract class BaseControllerAuth extends BaseController{
 

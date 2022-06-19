@@ -9,7 +9,8 @@ import { historicoAulasFuturasAlunoController } from "../controllers/aula/histor
 import { historicoAulasPassadasAlunoController } from "../controllers/aula/historicoAulasPassadasAluno";
 import { historicoAulasPassadasProfessorController } from "../controllers/aula/historicoAulasPassadasProfessor";
 import { buscarAulaPorCodigoController } from "../controllers/aula/buscarAulaPorCodigo";
-import { recuperaAulaAtualController } from "../controllers/aula/recuperaAulaAtual";
+import { recuperaAulaProfessorAtualController } from "../controllers/aula/recuperaAulaAtualProfessor";
+import { recuperaAulaAlunoAtualController } from "../controllers/aula/recuperaAulaAlunoAtual";
 
 const router = Router();
 
@@ -53,8 +54,12 @@ router.get('/codigo', async (request, response) => {
     return await buscarAulaPorCodigoController.handle(request, response);
 });
 
-router.get('/recuperaAulaAtual', async (request, response) => {
-    return await recuperaAulaAtualController.handle(request, response);
+router.get('/recuperaAulaProfessorAtual', async (request, response) => {
+    return await recuperaAulaProfessorAtualController.handle(request, response);
+});
+
+router.get('/recuperaAulaAlunoAtual', async (request, response) => {
+    return await recuperaAulaAlunoAtualController.handle(request, response);
 });
 
 export { router as aula };

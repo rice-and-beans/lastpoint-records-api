@@ -2,6 +2,7 @@ import { prismaClient } from "../database/prismaClient";
 import { IChamadaRepository } from "../../domain/repositories/chamadaRepository";
 import { Chamada } from "../entities/chamada";
 import { IPesquisarChamadaRequestDTO } from "../../domain/model/chamadaDTO";
+import { IRecuperaChamadaJaFeitaRequestDTO } from "../../domain/model/chamadaDTO";
 
 export class ChamadaRepositoryImpl implements IChamadaRepository {
 
@@ -11,7 +12,8 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
               codigo: chamada.codigo,
               justificativa: chamada.justificativa,
               usuarioCodigo: chamada.usuarioCodigo,
-              aulaCodigo: chamada.aulaCodigo
+              aulaCodigo: chamada.aulaCodigo,
+              presenca: chamada.presenca
             },
           })
         return chamadaSalva
@@ -23,10 +25,10 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
                 codigo: chamada.codigo,
             },
             data:{
-                 codigo: chamada.codigo,
                  justificativa: chamada.justificativa,
                  usuarioCodigo: chamada.usuarioCodigo,
-                 aulaCodigo: chamada.aulaCodigo
+                 aulaCodigo: chamada.aulaCodigo,
+                 presenca: chamada.presenca
              }
         })
         return chamadaAtualizada
@@ -50,7 +52,8 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
                 codigo: true,
                 aulaCodigo: true,
                 usuarioCodigo: true,
-                justificativa: true
+                justificativa: true,
+                presenca: true
             }
         })
         return chamada != null ? new Chamada(chamada) : chamada;
@@ -87,15 +90,7 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
                 codigo: true,
                 usuario: {
                     select: {
-                        codigo:true,
                         nome: true,
-                    }
-                },
-                aula:{
-                    select:{
-                        nome:true,
-                        dataHoraInicio: true,
-                        dataHoraFim: true
                     }
                 }
             }
@@ -103,12 +98,12 @@ export class ChamadaRepositoryImpl implements IChamadaRepository {
         return chamadaLista
     }
    
-    async recuperaChamadaJafeita(data){ 
+    async recuperaChamadaJafeita(data: IRecuperaChamadaJaFeitaRequestDTO){ 
         const chamada = await prismaClient.chamada.findFirst({
             where:{
                 AND:[
-                    {usuarioCodigo: data.codusuario},
-                    {aulaCodigo: data.codaula}
+                    {usuarioCodigo: data.codUsuario},
+                    {aulaCodigo: data.codAula}
                 ]
             },
             select:{

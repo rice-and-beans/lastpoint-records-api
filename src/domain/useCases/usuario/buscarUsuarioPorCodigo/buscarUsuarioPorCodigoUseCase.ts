@@ -1,4 +1,3 @@
-import { Usuario } from "../../../../data/entities/usuario";
 import { IUsuarioRepository } from "../../../repositories/usuarioRepository";
 import { IPesquisarUsuarioPorCodigoRequestDTO } from "../../../model/usuarioDTO";
 import { ValidacaoBase } from "../../../validations/ValidacaoBase";
@@ -8,6 +7,7 @@ export class BuscarUsuarioPorCodigoUseCase {
     constructor(
         private usuarioRepository: IUsuarioRepository,
         private validaParamObrigatorio: ValidacaoBase,
+        private validaUsuarioNaoExisteCodigo: ValidacaoBase
     ){}
 
     async execute(data: IPesquisarUsuarioPorCodigoRequestDTO){
@@ -15,6 +15,7 @@ export class BuscarUsuarioPorCodigoUseCase {
             [data.codigo, "codigo"]
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
+        await this.validaUsuarioNaoExisteCodigo.valida(data);
         return await this.usuarioRepository.buscarPorCodigo(data.codigo);
     }
 

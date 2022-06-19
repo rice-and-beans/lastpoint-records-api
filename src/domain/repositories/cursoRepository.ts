@@ -1,5 +1,4 @@
 import { Curso } from "../../data/entities/curso";
-import { IPesquisarCursoRequestDTO } from "../model/cursoDTO";
 
 export interface ICursoRepository {
     buscarPorCodigo(codigo: string): Promise<Curso>;

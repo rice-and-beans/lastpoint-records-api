@@ -6,7 +6,8 @@ export class BuscarUsuarioPorEmailUseCase {
 
     constructor(
         private usuarioRepository: IUsuarioRepository,
-        private validaParamObrigatorio: ValidacaoBase,
+        private validaUsuarioNaoEncontrado: ValidacaoBase,
+        private validaParamObrigatorio: ValidacaoBase
     ){}
 
     async execute(data: IPesquisarUsuarioPorEmailRequestDTO){
@@ -14,6 +15,7 @@ export class BuscarUsuarioPorEmailUseCase {
             [data.email, "email"]
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
+        await this.validaUsuarioNaoEncontrado.valida(data);
         return await this.usuarioRepository.buscarPorEmail(data.email);
     }
 

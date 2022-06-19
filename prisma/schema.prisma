@@ -65,6 +65,7 @@ model Chamada {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   codigo String @unique
   justificativa String?
+  presenca String
   usuario Usuario   @relation(fields: [usuarioCodigo], references: [codigo], onDelete: Cascade)
   usuarioCodigo String 
   aula Aula   @relation(fields: [aulaCodigo], references: [codigo], onDelete: Cascade)

@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { BaseController } from "../../baseController";
 import { RecuperaChamadaJafeitaUseCase } from "../../../domain/useCases/chamada/recuperaChamadaJafeita/recuperaChamadaJafeitaUseCase";
+import { BaseControllerAuth } from "../../baseControllerAuth";
 
-export class RecuperaChamadaJafeitaController extends BaseController {
+export class RecuperaChamadaJafeitaController extends BaseControllerAuth {
 
     constructor(
         private recuperaChamadaJafeitaUseCase: RecuperaChamadaJafeitaUseCase,

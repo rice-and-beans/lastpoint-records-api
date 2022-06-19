@@ -2,8 +2,7 @@ import { prismaClient } from "../database/prismaClient";
 import { IAulaRepository } from "../../domain/repositories/aulaRepository";
 import { Aula } from "../entities/aula";
 import { aulaConstants } from "../../constants/aulaConstants";
-import { usuario } from "../../routes/usuarioRoutes";
-import { IPesquisarAulaRequestDTO } from "../../domain/model/aulaDTO";
+import { IAtualizarAulaTokenRequestDTO, IPesquisarAulaRequestDTO } from "../../domain/model/aulaDTO";
 
 export class AulaRepositoryImpl implements IAulaRepository {
     
@@ -39,7 +38,11 @@ export class AulaRepositoryImpl implements IAulaRepository {
                 dataHoraFim: dataHoraFim,
                 nome: aula.nome,
                 descricao: aula.descricao,
-                token: aula.token
+                token: aula.token,
+                usuarioCodigo: aula.usuarioCodigo,
+                turmaCodigo: aula.turmaCodigo,
+                cursoCodigo: aula.cursoCodigo,
+                disciplinaCodigo: aula.disciplinaCodigo
             }
         })
         return aulaAtualizado
@@ -218,7 +221,7 @@ export class AulaRepositoryImpl implements IAulaRepository {
         return aulasLista
     }
 
-   async adicionarToken(aula: Aula){ 
+   async adicionarToken(aula: IAtualizarAulaTokenRequestDTO){ 
         const aulaAtualizado = await prismaClient.aula.update({
             where:{
                 codigo: aula.codigo,
@@ -230,13 +233,13 @@ export class AulaRepositoryImpl implements IAulaRepository {
         return aulaAtualizado
     }
 
-    async recuperaAulaAtual(codigo: string){
-        const dataatual = new Date() 
-        const naAulaAtual = await prismaClient.aula.findFirst({
+    async recuperaAulaAtualProfessor(codigo: string){
+        const dataatual = new Date()
+        const naAulaAtual = await prismaClient.aula.findMany({
             where:{
                 AND:[
-                    {dataHoraInicio: {gt: dataatual}},
-                    {dataHoraFim: {lt: dataatual}},
+                    {dataHoraInicio: {lte: dataatual}},
+                    {dataHoraFim: {gte: dataatual}},
                     {usuarioCodigo: codigo}
                 ]
             },
@@ -246,5 +249,24 @@ export class AulaRepositoryImpl implements IAulaRepository {
         })
         return naAulaAtual
     }
-       
+    
+    async recuperaAulaAtualAluno(codigo: string){
+        const dataatual = new Date()
+        const naAulaAtual = await prismaClient.chamada.findMany({
+            where:{
+                aula:{
+                    AND:[
+                        {dataHoraInicio: {lte: dataatual}},
+                        {dataHoraFim: {gte: dataatual}},
+                        
+                    ]
+                },
+                usuarioCodigo: codigo
+            },
+            select:{
+                codigo: true
+            }
+        })
+        return naAulaAtual
+    }
 }

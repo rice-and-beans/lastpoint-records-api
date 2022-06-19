@@ -1,23 +1,23 @@
 import { AulaRepositoryImpl } from "../../../../data/repositories/aulaRepositoryImpl";
 import { UsuarioRepositoryImpl } from "../../../../data/repositories/usuarioRepositoryImpl";
-import { RecuperaAulaAtualUseCase } from "./recuperaAulaAtualUseCase";
-import { ValidaUsuarioNaoEncontrado } from "../../../validations/usuario/validaUsuarioNaoEncontrado";
+import { RecuperaAulaAlunoAtualUseCase } from "./recuperaAulaAlunoAtualUseCase";
+import { ValidaUsuarioNaoExisteCodigo } from "../../../validations/usuario/validaUsuarioNaoExisteCodigo";
 import { ValidaParamObrigatorios } from "../../../validations/validaParamObrigatorio";
 
 const aulaRepositoryImpl = new AulaRepositoryImpl();
 
 const usuarioRepositoryImpl = new UsuarioRepositoryImpl();
 
-const validaUsuarioNaoEncontrado = new ValidaUsuarioNaoEncontrado(
+const validaUsuarioNaoEncontrado = new ValidaUsuarioNaoExisteCodigo(
     usuarioRepositoryImpl
 );
 
 const validaParamsObrigatorios = new ValidaParamObrigatorios();
 
-const recuperaAulaAtualUseCase = new RecuperaAulaAtualUseCase(
+const recuperaAulaAtualAlunoUseCase = new RecuperaAulaAlunoAtualUseCase(
     aulaRepositoryImpl,
-    validaParamsObrigatorios,
-    validaUsuarioNaoEncontrado
+    validaUsuarioNaoEncontrado,
+    validaParamsObrigatorios
 );
 
-export { recuperaAulaAtualUseCase }
+export { recuperaAulaAtualAlunoUseCase }

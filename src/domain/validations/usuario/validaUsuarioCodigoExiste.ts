@@ -1,9 +1,9 @@
-import { RegistroNaoEncontradoException } from "../../exceptions/registroNaoEncontradoException";
+import { RegistroExistenteException } from "../../exceptions/registroExistenteException";
 import { IUsuarioRepository } from "../../repositories/usuarioRepository";
 import { ICriarUsuarioRequestDTO } from "../../model/usuarioDTO";
 import { ValidacaoBase } from "../ValidacaoBase";
 
-export class ValidaUsuarioNaoExisteCodigo extends ValidacaoBase {
+export class ValidaUsuarioCodigoExiste extends ValidacaoBase {
 
     constructor(
         private usuarioRepository: IUsuarioRepository,
@@ -15,8 +15,8 @@ export class ValidaUsuarioNaoExisteCodigo extends ValidacaoBase {
     public async verifica(dadosValidacao: Object){
         const dadosValidUsuario = dadosValidacao as ICriarUsuarioRequestDTO;
         const usuarioRecuperado = await this.usuarioRepository.buscarPorCodigo(dadosValidUsuario.codigo);
-        if(!usuarioRecuperado){
-            throw new RegistroNaoEncontradoException('Código usuario não encontrado');
+        if(usuarioRecuperado){
+            throw new RegistroExistenteException('Usuario já existe');
         }
     }
     
