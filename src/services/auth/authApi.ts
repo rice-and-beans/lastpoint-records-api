@@ -3,9 +3,16 @@ import { ServicoIndisponivelException } from "../../domain/exceptions/servicoInd
 const axios = require('axios');
 export class AuthApi {
 
-    async criptografar(conteudo: string): Promise<string> {
-        return await axios.post('http://localhost:3002/auth/cript', {
-            conteudo: conteudo
+    async criptografar(conteudo: string, token: string): Promise<string> {
+        return await axios.post('http://localhost:3002/auth/cript', {}, {
+            headers:{
+                "x-access-token": token
+            },
+            params:{
+                conteudo: conteudo
+            }
+        }).then(function (response) {
+            return response.data ? response.data : ''
         }).catch(() => {
             throw new ServicoIndisponivelException("Serviço indisponível: AuthApi");
         })
@@ -22,14 +29,6 @@ export class AuthApi {
             }else{
                 return null;
             }
-        }).catch(() => {
-            throw new ServicoIndisponivelException("Serviço indisponível: AuthApi");
-        });
-    }
-
-    async salvarTokenInvalido(token: string): Promise<string> {
-        return await axios.post('http://localhost:3002/auth/invalid', {
-            token: token
         }).catch(() => {
             throw new ServicoIndisponivelException("Serviço indisponível: AuthApi");
         });

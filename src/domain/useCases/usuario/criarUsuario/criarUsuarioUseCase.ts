@@ -25,7 +25,7 @@ export class CriarUsuarioUseCase {
         await this.validaParamObrigatorio.valida(dadosValidacao);
         await this.validaUsuarioExiste.valida(data);
         await this.ValidaUsuarioCodigoExiste.valida(data);
-        const senhaCript = await authApi.criptografar(data.senha);
+        const senhaCript = await authApi.criptografar(data.senha, data.token);
         data.senha = senhaCript;
         const usuario = new Usuario(data);
         await this.usuarioRepository.salvar(usuario);

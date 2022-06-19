@@ -12,12 +12,14 @@ export class CriarUsuarioController extends BaseControllerAuth {
 
     async execute(request: Request, response: Response): Promise<Response>{
         const { codigo, nome, email, senha, tipo } = request.body;
+        const token = request.headers['x-access-token'] as string;
         await this.criarUsuarioUseCase.execute({
             codigo,
             nome,
             email,
             senha,
-            tipo
+            tipo,
+            token
         });
         return response.status(201).send();
     }

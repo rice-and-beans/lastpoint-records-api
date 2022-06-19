@@ -4,6 +4,7 @@ export interface ICriarUsuarioRequestDTO {
     email: string;
     senha: string;
     tipo: number;
+    token: string;
 }
 
 export interface IAtualizarUsuarioRequestDTO {

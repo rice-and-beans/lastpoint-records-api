@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { BuscarUsuarioPorEmailUseCase } from "../../../domain/useCases/usuario/buscarUsuarioPorEmail/buscarUsuarioPorEmailUseCase";
-import { BaseControllerAuth } from "../../baseControllerAuth";
+import { BaseController } from "../../BaseController";
 
-export class BuscarUsuarioPorEmailController extends BaseControllerAuth {
+export class BuscarUsuarioPorEmailController extends BaseController {
 
     constructor(
         private buscarUsuarioPorEmailUseCase: BuscarUsuarioPorEmailUseCase,
