@@ -1,7 +1,7 @@
 import { RegistroNaoEncontradoException } from "../../exceptions/registroNaoEncontradoException";
 import { IUsuarioRepository } from "../../repositories/usuarioRepository";
 import { ICriarUsuarioRequestDTO } from "../../model/usuarioDTO";
-import { ValidacaoBase } from "../ValidacaoBase";
+import { ValidacaoBase } from "../validacaoBase";
 
 export class ValidaUsuarioNaoExisteCodigo extends ValidacaoBase {
 

@@ -1,7 +1,7 @@
 import { Usuario } from "../../../../data/entities/usuario";
 import { IUsuarioRepository } from "../../../repositories/usuarioRepository";
 import { IAtualizarUsuarioRequestDTO } from "../../../model/usuarioDTO";
-import { ValidacaoBase } from "../../../validations/ValidacaoBase";
+import { ValidacaoBase } from "../../../validations/validacaoBase";
 
 export class AtualizarUsuarioUseCase {
 

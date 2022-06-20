@@ -1,6 +1,6 @@
 import { IUsuarioRepository } from "../../../repositories/usuarioRepository";
 import { IDeletarUsuarioRequestDTO } from "../../../model/usuarioDTO";
-import { ValidacaoBase } from "../../../validations/ValidacaoBase";
+import { ValidacaoBase } from "../../../validations/validacaoBase";
 
 export class DeletarUsuarioUseCase {
 

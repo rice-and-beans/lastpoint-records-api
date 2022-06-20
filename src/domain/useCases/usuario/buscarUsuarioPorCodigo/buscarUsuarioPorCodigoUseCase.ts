@@ -1,6 +1,6 @@
 import { IUsuarioRepository } from "../../../repositories/usuarioRepository";
 import { IPesquisarUsuarioPorCodigoRequestDTO } from "../../../model/usuarioDTO";
-import { ValidacaoBase } from "../../../validations/ValidacaoBase";
+import { ValidacaoBase } from "../../../validations/validacaoBase";
 
 export class BuscarUsuarioPorCodigoUseCase {
 

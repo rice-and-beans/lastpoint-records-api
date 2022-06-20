@@ -1,6 +1,6 @@
 import { ITurmaRepository } from "../../repositories/turmaRepository";
 import { ICriarTurmaRequestDTO } from "../../model/turmaDTO";
-import { ValidacaoBase } from "../ValidacaoBase";
+import { ValidacaoBase } from "../validacaoBase";
 import { RegistroNaoEncontradoException } from "../../exceptions/registroNaoEncontradoException";
 
 export class ValidaTurmaNaoEncontrado extends ValidacaoBase {

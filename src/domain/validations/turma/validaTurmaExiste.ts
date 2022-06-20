@@ -1,7 +1,7 @@
 import { RegistroExistenteException } from "../../exceptions/registroExistenteException";
 import { ITurmaRepository } from "../../repositories/turmaRepository";
 import { ICriarTurmaRequestDTO } from "../../model/turmaDTO";
-import { ValidacaoBase } from "../ValidacaoBase";
+import { ValidacaoBase } from "../validacaoBase";
 
 export class ValidaTurmaExiste extends ValidacaoBase {
 

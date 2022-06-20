@@ -1,6 +1,6 @@
 import { IChamadaRepository } from "../../repositories/chamadaRepository";
 import { ICriarChamadaRequestDTO } from "../../model/chamadaDTO";
-import { ValidacaoBase } from "../ValidacaoBase";
+import { ValidacaoBase } from "../validacaoBase";
 import { RegistroNaoEncontradoException } from "../../exceptions/registroNaoEncontradoException";
 
 export class ValidaChamadaNaoEncontrado extends ValidacaoBase {

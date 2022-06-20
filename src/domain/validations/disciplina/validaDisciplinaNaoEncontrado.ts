@@ -1,6 +1,6 @@
 import { IDisciplinaRepository } from "../../repositories/disciplinaRepository.ts";
 import { ICriarDisciplinaRequestDTO } from "../../model/disciplinaDTO";
-import { ValidacaoBase } from "../ValidacaoBase";
+import { ValidacaoBase } from "../validacaoBase";
 import { RegistroNaoEncontradoException } from "../../exceptions/registroNaoEncontradoException";
 
 export class ValidaDisciplinaNaoEncontrado extends ValidacaoBase {

@@ -1,6 +1,6 @@
 import { IUsuarioRepository } from "../../repositories/usuarioRepository";
 import { IAtualizarUsuarioRequestDTO } from "../../model/usuarioDTO";
-import { ValidacaoBase } from "../ValidacaoBase";
+import { ValidacaoBase } from "../validacaoBase";
 import { RegistroNaoEncontradoException } from "../../exceptions/registroNaoEncontradoException";
 
 export class ValidaUsuarioNaoEncontrado extends ValidacaoBase {

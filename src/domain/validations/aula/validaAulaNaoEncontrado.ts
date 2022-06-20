@@ -1,6 +1,6 @@
 import { IAulaRepository } from "../../repositories/aulaRepository";
 import { ICriarAulaRequestDTO } from "../../model/aulaDTO";
-import { ValidacaoBase } from "../ValidacaoBase";
+import { ValidacaoBase } from "../validacaoBase";
 import { RegistroNaoEncontradoException } from "../../exceptions/registroNaoEncontradoException";
 
 export class ValidaAulaNaoEncontrado extends ValidacaoBase {

@@ -1,6 +1,6 @@
 import { ICursoRepository } from "../../../repositories/cursoRepository";
 import { IDeletarCursoRequestDTO } from "../../../model/cursoDTO";
-import { ValidacaoBase } from "../../../validations/ValidacaoBase";
+import { ValidacaoBase } from "../../../validations/validacaoBase";
 
 export class DeletarCursoUseCase {
 

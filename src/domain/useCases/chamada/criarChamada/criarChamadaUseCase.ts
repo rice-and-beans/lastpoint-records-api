@@ -1,7 +1,7 @@
 import { Chamada } from "../../../../data/entities/chamada";
 import { IChamadaRepository } from "../../../repositories/chamadaRepository";
 import { ICriarChamadaRequestDTO } from "../../../model/chamadaDTO";
-import { ValidacaoBase } from "../../../validations/ValidacaoBase";
+import { ValidacaoBase } from "../../../validations/validacaoBase";
 
 export class CriarChamadaUseCase {
 

@@ -1,6 +1,6 @@
 import { ICursoRepository } from "../../repositories/cursoRepository";
 import { ICriarCursoRequestDTO } from "../../model/cursoDTO";
-import { ValidacaoBase } from "../ValidacaoBase";
+import { ValidacaoBase } from "../validacaoBase";
 import { RegistroNaoEncontradoException } from "../../exceptions/registroNaoEncontradoException";
 
 export class ValidaCursoNaoEncontrado extends ValidacaoBase {

@@ -1,6 +1,6 @@
 import { IRecuperaChamadaJaFeitaRequestDTO } from "../../../model/chamadaDTO";
 import { IChamadaRepository } from "../../../repositories/chamadaRepository";
-import { ValidacaoBase } from "../../../validations/ValidacaoBase";
+import { ValidacaoBase } from "../../../validations/validacaoBase";
 
 export class RecuperaChamadaJafeitaUseCase {
 

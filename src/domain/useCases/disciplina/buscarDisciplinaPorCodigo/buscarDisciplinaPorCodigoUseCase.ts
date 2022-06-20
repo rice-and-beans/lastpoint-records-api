@@ -1,6 +1,6 @@
 import { IDisciplinaRepository } from "../../../repositories/disciplinaRepository.ts";
 import { IPesquisarDisciplinaPorCodigoRequestDTO } from "../../../model/disciplinaDTO";
-import { ValidacaoBase } from "../../../validations/ValidacaoBase";
+import { ValidacaoBase } from "../../../validations/validacaoBase";
 
 export class BuscarDisciplinaPorCodigoUseCase {
 

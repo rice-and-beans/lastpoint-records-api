@@ -1,6 +1,6 @@
 import { ICursoRepository } from "../../../repositories/cursoRepository";
 import { IPesquisarCursoPorCodigoRequestDTO } from "../../../model/cursoDTO";
-import { ValidacaoBase } from "../../../validations/ValidacaoBase";
+import { ValidacaoBase } from "../../../validations/validacaoBase";
 
 export class BuscarCursoPorCodigoUseCase {
 

@@ -1,7 +1,7 @@
 import { Turma } from "../../../../data/entities/turma";
 import { ITurmaRepository } from "../../../repositories/turmaRepository";
 import { IPesquisarTurmaPorCodigoRequestDTO } from "../../../model/turmaDTO";
-import { ValidacaoBase } from "../../../validations/ValidacaoBase";
+import { ValidacaoBase } from "../../../validations/validacaoBase";
 
 export class BuscarTurmaPorCodigoUseCase {
 

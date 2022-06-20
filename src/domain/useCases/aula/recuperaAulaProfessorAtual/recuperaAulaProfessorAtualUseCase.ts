@@ -1,5 +1,5 @@
 import { IAulaRepository } from "../../../repositories/aulaRepository";
-import { ValidacaoBase } from "../../../validations/ValidacaoBase";
+import { ValidacaoBase } from "../../../validations/validacaoBase";
 
 export class RecuperaAulaProfessorAtualUseCase{
 

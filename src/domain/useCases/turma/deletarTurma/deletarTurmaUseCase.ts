@@ -1,6 +1,6 @@
 import { ITurmaRepository } from "../../../repositories/turmaRepository";
 import { IDeletarTurmaRequestDTO } from "../../../model/turmaDTO";
-import { ValidacaoBase } from "../../../validations/ValidacaoBase";
+import { ValidacaoBase } from "../../../validations/validacaoBase";
 
 export class DeletarTurmaUseCase {
 

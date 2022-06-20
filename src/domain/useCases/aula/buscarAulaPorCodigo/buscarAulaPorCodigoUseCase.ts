@@ -1,7 +1,7 @@
 import { Aula } from "../../../../data/entities/aula";
 import { IAulaRepository } from "../../../repositories/aulaRepository";
 import { IPesquisarAulaPorCodigoRequestDTO } from "../../../model/aulaDTO";
-import { ValidacaoBase } from "../../../validations/ValidacaoBase";
+import { ValidacaoBase } from "../../../validations/validacaoBase";
 
 export class BuscarAulaPorCodigoUseCase {
 
