@@ -3,6 +3,7 @@ import { IAulaRepository } from "../../domain/repositories/aulaRepository";
 import { Aula } from "../entities/aula";
 import { aulaConstants } from "../../constants/aulaConstants";
 import { IAtualizarAulaTokenRequestDTO, IPesquisarAulaRequestDTO, IRecuperaAulaAtualRequestDTO } from "../../domain/model/aulaDTO";
+import { Console } from "console";
 
 export class AulaRepositoryImpl implements IAulaRepository {
     
@@ -109,10 +110,20 @@ export class AulaRepositoryImpl implements IAulaRepository {
         var dataFim = new Date(Date.now()+aulaConstants.TEMPO_HISTORICO);
         const aulasLista = await prismaClient.aula.findMany({
             where: {
-                AND:[
-                    {dataHoraInicio:{gte: dataAtual}},
-                    {dataHoraFim: {lte: dataFim}},
-                    {usuarioCodigo: codigo}
+                OR:[
+                    {
+                        AND:[
+                            {dataHoraInicio: {lte: dataAtual}},
+                            {dataHoraFim: {gte: dataAtual}},
+                        ]
+                    },
+                    {
+                        AND:[
+                            {dataHoraInicio:{gte: dataAtual}},
+                            {dataHoraFim: {lte: dataFim}},
+                            {usuarioCodigo: codigo}
+                        ]
+                    }
                 ]
             },
             select:{
@@ -145,10 +156,20 @@ export class AulaRepositoryImpl implements IAulaRepository {
         const aulasLista = await prismaClient.chamada.findMany({
             where: {
                 aula:{
-                    AND:[
-                        {dataHoraInicio:{gte: dataAtual}},
-                        {dataHoraFim: {lte: dataFim}}
-                    ] 
+                    OR:[
+                        {
+                            AND:[
+                                {dataHoraInicio: {lte: dataAtual}},
+                                {dataHoraFim: {gte: dataAtual}},
+                            ]
+                        },
+                        {
+                            AND:[
+                                {dataHoraInicio:{gte: dataAtual}},
+                                {dataHoraFim: {lte: dataFim}}
+                            ]
+                        }
+                    ]
                 },
                 usuarioCodigo: codigo
             },
@@ -172,6 +193,7 @@ export class AulaRepositoryImpl implements IAulaRepository {
                                 nome:true
                             }
                         },
+                        codigo: true
                     }
                 }  
             }
