@@ -16,6 +16,8 @@ export class BuscarUsuarioPorEmailUseCase {
         ]);
         await this.validaParamObrigatorio.valida(dadosValidacao);
         await this.validaUsuarioNaoEncontrado.valida(data);
+        await this.usuarioRepository.buscarPorEmail(data.email)
+       
         return await this.usuarioRepository.buscarPorEmail(data.email);
     }
 
